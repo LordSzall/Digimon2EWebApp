@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = uid();
 
     const tab = el(`<div class="tab active" data-id="${id}">
-      <span>📄 ${title}</span><span class="close" title="Close">✕</span>
+    <span>📄 ${title}</span><span class="close" title="Close">✕</span>
     </div>`);
     tab.querySelector('.close').addEventListener('click', (e)=>{
       e.stopPropagation();
@@ -89,10 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(type==='digimon'){
       sheet.appendChild(renderDigimonSheet(id, data));
+    } else if (type==='tamer') {
+      sheet.appendChild(renderTamerSheet(id, data));
     } else {
       const coming = el(`<div class="panel">
-        <h2 class="section-title">Tamer Sheet</h2>
-        <div class="help">Coming soon ✨</div>
+      <h2 class="section-title">Unknown Sheet Type</h2>
+      <div class="help">Cannot render this sheet type.</div>
       </div>`);
       sheet.appendChild(coming);
     }
@@ -124,166 +126,428 @@ document.addEventListener("DOMContentLoaded", () => {
     return document.querySelector(`.sheet[data-id="${state.active}"]`);
   }
 
+  // ===== Tamer Sheet =====
+  const defaultTamer = {
+    meta: { name:'', size:'Medium', age:0 },
+    combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
+    attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
+    skills: {
+      AGI:{ Evade:0, Precision:0, Stealth:0 },
+      BOD:{ Athletics:0, Endurance:0, FeatsOfStrength:0 },
+      CHA:{ Manipulate:0, Perform:0, Persuasion:0 },
+      INT:{ DecipherIntent:0, Survival:0, Knowledge:0 },
+      WIL:{ Bravery:0, Fortitude:0, Awareness:0 }
+    },
+    aspects: { major:{ name:'', desc:'' }, minor:{ name:'', desc:'' } },
+    torments: { marks:Array(10).fill(0), desc:'' },
+                          talents: '',
+                          milestones: {
+                            Qualities: 0,
+                            ACC: 0,
+                            DOD: 0,
+                            DAM: 0,
+                            ARM: 0,
+                            HP: 0
+                          }
+  };
+
+  function renderTamerSheet(id, data){
+    data = data || JSON.parse(JSON.stringify(defaultTamer));
+    const root = document.createElement('div');
+
+    // Basic Info
+    root.appendChild(el(`<section class="panel">
+    <h2 class="section-title">Tamer Info</h2>
+    <div class="grid g-3">
+    ${textField('Name','meta.name')}
+    ${selectField('Size','meta.size',['Small','Medium'])}
+    ${numberField('Age','meta.age',{min:0})}
+    </div>
+    </section>`));
+
+    // Combat
+    const combatPanel = el(`<section class="panel">
+    <h2 class="section-title">Combat</h2>
+    <div class="grid g-3">
+    <div>
+    <label>Wound Boxes:<input type="number" data-bind="combat.wounds"/></label>
+    <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:woundTotal">0</div></div>
+    </div>
+    <div>
+    <label>Inspiration:<input type="number" data-bind="combat.inspiration"/></label>
+    <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:inspireTotal">0</div></div>
+    </div>
+    <div>
+    ${selectField('Speed','combat.speed',['Agility','Body'])}
+    <label>Milestones:<input type="number" data-bind="combat.milestones"/></label>
+    </div>
+    </div>
+    </section>`);
+    root.appendChild(combatPanel);
+
+    // Milestone Tracker
+    const milestonePanel = el(`<section class="panel">
+    <h2 class="section-title">Milestone Tracker</h2>
+    <div class="milestone-tracker" id="milestoneTracker"></div>
+    </section>`);
+    root.appendChild(milestonePanel);
+
+    const milestoneTracker = milestonePanel.querySelector('#milestoneTracker');
+
+    // Initialize or update the milestone tracker
+    function updateMilestoneTracker() {
+      milestoneTracker.innerHTML = '';
+
+      const milestoneTypes = ['Qualities', 'ACC', 'DOD', 'DAM', 'ARM', 'HP'];
+
+      milestoneTypes.forEach(type => {
+        // Ensure we have a numeric value
+        if (typeof data.milestones[type] !== 'number') {
+          data.milestones[type] = 0;
+        }
+
+        const item = el(`<div class="milestone-item">
+        <div class="milestone-name">${type}</div>
+        <div class="milestone-input">
+        <input type="number" min="0" max="5" step="1" data-bind="milestones.${type}" value="${data.milestones[type]}" />
+        </div>
+        </div>`);
+
+        milestoneTracker.appendChild(item);
+      });
+    }
+    updateMilestoneTracker();
+
+    // Attributes
+    const attrPanel = el(`<section class="panel">
+    <h2 class="section-title">Attributes</h2>
+    <div class="grid g-5" id="attrGrid"></div>
+    </section>`);
+    root.appendChild(attrPanel);
+    const attrGrid = attrPanel.querySelector('#attrGrid');
+    Object.keys(data.attributes).forEach(k=>{
+      const card = el(`<div class="stat-card">
+      <div class="stat-total" data-out="attr:${k}">0</div>
+      <div class="stat-name">${k}</div>
+      <label>DP:<input type="number" data-bind="attributes.${k}.dp"/></label>
+      </div>`);
+      attrGrid.appendChild(card);
+    });
+
+    // ===== Skills Section =====
+    const skillsByAttr = {
+      AGI: ["Evade", "Precision", "Stealth"],
+      BOD: ["Athletics", "Endurance", "Feats of Strength"],
+      CHA: ["Manipulate", "Perform", "Persuasion"],
+      INT: ["Decipher Intent", "Survival", "Knowledge"],
+      WIL: ["Bravery", "Fortitude", "Awareness"]
+    };
+
+    const skillsPanel = el(`<section class="panel"><h2 class="section-title">Skills</h2></section>`);
+    const tabs = el(`<div class="skill-tabs"></div>`);
+    const skillsContainer = el(`<div id="skillsContainer"></div>`);
+
+    Object.keys(skillsByAttr).forEach(attr => {
+      const btn = el(`<button data-skilltab="${attr}">${attr}</button>`);
+      btn.addEventListener("click", () => showSkills(attr));
+      tabs.appendChild(btn);
+    });
+
+    skillsPanel.appendChild(tabs);
+    skillsPanel.appendChild(skillsContainer);
+    root.appendChild(skillsPanel);
+
+    function showSkills(attr) {
+      skillsContainer.innerHTML = "";
+      skillsByAttr[attr].forEach(skill => {
+        const val = data.skills[attr][skill] || 0;
+        const entry = el(`<div class="skill-entry">
+        <label>${skill}</label>
+        <input type="number" value="${val}" data-bind="skills.${attr}.${skill}" />
+        </div>`);
+        skillsContainer.appendChild(entry);
+      });
+
+      // highlight active tab
+      [...tabs.children].forEach(b => b.classList.remove("active"));
+      tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
+    }
+
+    // open default tab
+    showSkills("AGI");
+
+    // Aspects
+    const aspectPanel = el(`<section class="panel">
+    <h2 class="section-title">Aspects</h2>
+    <div class="grid g-2">
+    <div>
+    <h3>Major Aspect</h3>
+    ${textField('Name','aspects.major.name')}
+    <label>Description:<textarea data-bind="aspects.major.desc"></textarea></label>
+    </div>
+    <div>
+    <h3>Minor Aspect</h3>
+    ${textField('Name','aspects.minor.name')}
+    <label>Description:<textarea data-bind="aspects.minor.desc"></textarea></label>
+    </div>
+    </div>
+    </section>`);
+    root.appendChild(aspectPanel);
+
+    // Torments
+    const tormentPanel = el(`<section class="panel">
+    <h2 class="section-title">Torments</h2>
+    <div class="torment-track" id="tormentTrack"></div>
+    <label>Description:<textarea data-bind="torments.desc" placeholder="Describe torments and their effects..."></textarea></label>
+    </section>`);
+    root.appendChild(tormentPanel);
+    const tormentTrack = tormentPanel.querySelector('#tormentTrack');
+
+    // Initialize or update the torment track
+    function updateTormentTrack() {
+      tormentTrack.innerHTML = '';
+
+      // Ensure we have exactly 10 torment boxes
+      if (!data.torments.marks || data.torments.marks.length !== 10) {
+        data.torments.marks = Array(10).fill(0);
+      }
+
+      data.torments.marks.forEach((mark, i)=>{
+        const box = el(`<div class="torment-box" data-index="${i}">${i+1}</div>`);
+        box.classList.add(`state-${mark}`);
+        box.addEventListener('click', ()=>{
+          // Cycle through states: 0 → 1 → 2 → 0
+          data.torments.marks[i] = (data.torments.marks[i] + 1) % 3;
+          updateTormentTrack();
+        });
+        tormentTrack.appendChild(box);
+      });
+    }
+    updateTormentTrack();
+
+    // Talents
+    root.appendChild(el(`<section class="panel">
+    <h2 class="section-title">Talents</h2>
+    <label><textarea data-bind="talents" placeholder="Describe your talents..."></textarea></label>
+    </section>`));
+
+    // Data binding
+    root.addEventListener('input', (e)=>{
+      const path = e.target.getAttribute('data-bind');
+      if(path){
+        setByPath(data, path, coerce(e.target.value));
+        computeTamer();
+      }
+    });
+
+    root.querySelectorAll('[data-bind]').forEach(input=>{
+      const path = input.getAttribute('data-bind');
+      const v = getByPath(data, path);
+      if(typeof v !== 'undefined' && v !== null) input.value = v;
+    });
+
+      function computeTamer(){
+        // Calculate attribute totals
+        Object.keys(data.attributes).forEach(k=>{
+          const total = 1 + (Number(data.attributes[k].dp)||0);
+          const out = root.querySelector(`[data-out="attr:${k}"]`);
+          if(out) out.textContent = total;
+        });
+          // Calculate derived stats
+          const bod = 1 + (Number(data.attributes.BOD.dp)||0);
+          const wil = 1 + (Number(data.attributes.WIL.dp)||0);
+          setTamerOut('combat:woundTotal', bod);
+          setTamerOut('combat:inspireTotal', wil + 2);
+      }
+
+      function setTamerOut(key,val){
+        const out = root.querySelector(`[data-out="${key}"]`);
+        if(out) out.textContent = val;
+      }
+
+      computeTamer();
+
+      root.__getData = ()=> JSON.parse(JSON.stringify(data));
+      root.__setData = (payload)=>{
+        const newData = JSON.parse(JSON.stringify(payload || {}));
+        Object.keys(newData).forEach(key => {
+          data[key] = newData[key];
+        });
+
+        root.querySelectorAll('[data-bind]').forEach(input=>{
+          const path = input.getAttribute('data-bind');
+          const v = getByPath(data, path);
+          if(typeof v !== 'undefined' && v !== null) input.value = v;
+        });
+
+          updateTormentTrack();
+          updateMilestoneTracker(); // Update the milestone tracker
+          computeTamer();
+      };
+
+      return root;
+  }
+
   // -----------------------------
   // Render Digimon Sheet
   // -----------------------------
-function renderDigimonSheet(id, data){
-  // defaults
-  data = data || {
-    meta:{ name:'', digimon:'', type:'', attribute:'Vaccine', stage:'Child', size:'Medium' },
-    combat:{ woundBoxes:0, tempWounds:0, batteryManual:0 },
-    stats:{ ACC:{dp:0, bonus:0}, DOD:{dp:0, bonus:0}, DAM:{dp:0, bonus:0}, ARM:{dp:0, bonus:0}, HP:{dp:0, bonus:0} },
-    derived:{ BIT:{bonus:0}, RAM:{bonus:0}, DOS:{bonus:0}, CPU:{bonus:0} },
-    attacks:[ {name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']} ],
-    dp:{ quality:0, bonus:0 },
-    qualities: ''
-  };
+  function renderDigimonSheet(id, data){
+    // defaults
+    data = data || {
+      meta:{ name:'', digimon:'', type:'', attribute:'Vaccine', stage:'Child', size:'Medium' },
+      combat:{ woundBoxes:0, tempWounds:0, batteryManual:0 },
+      stats:{ ACC:{dp:0, bonus:0}, DOD:{dp:0, bonus:0}, DAM:{dp:0, bonus:0}, ARM:{dp:0, bonus:0}, HP:{dp:0, bonus:0} },
+      derived:{ BIT:{bonus:0}, RAM:{bonus:0}, DOS:{bonus:0}, CPU:{bonus:0} },
+      attacks:[ {name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']} ],
+      dp:{ quality:0, bonus:0 },
+      qualities: ''
+    };
 
-  const stageValue = ()=> STAGE_MAP[String(data.meta.stage)]||1;
-  const statTotal = (k)=> stageValue() + (Number(data.stats[k].dp)||0) + (Number(data.stats[k].bonus)||0);
-  const derivedBase = { BIT:'ACC', RAM:'DOD', DOS:'DAM', CPU:'ARM' };
-  const derivedTotal = (k)=> {
-    const baseKey = derivedBase[k];
-    const baseWithoutBonus = stageValue() + (Number(data.stats[baseKey].dp)||0) + 3;
-    let total = Math.floor(baseWithoutBonus/3) + (Number(data.derived[k].bonus)||0);
-    const sizeB = SIZE_BONUS(data.meta.size);
-    total += sizeB[k]||0;
-    return total;
-  };
-  const woundTotal = ()=> (stageValue() - 1) + (statTotal('HP')*2) - (Number(data.stats.HP.bonus)||0);
-  const batteryTotal = ()=> stageValue() + 1;
-  const statDPSum = ()=> ['ACC','DOD','DAM','ARM','HP'].reduce((s,k)=> s + (Number(data.stats[k].dp)||0), 0);
-  const spentDP = ()=> (Number(data.dp.quality)||0) + statDPSum();
-  const totalAllocDP = ()=> ((stageValue()-1)*10) + (Number(data.dp.bonus)||0);
+    const stageValue = ()=> STAGE_MAP[String(data.meta.stage)]||1;
+    const statTotal = (k)=> stageValue() + (Number(data.stats[k].dp)||0) + (Number(data.stats[k].bonus)||0);
+    const derivedBase = { BIT:'ACC', RAM:'DOD', DOS:'DAM', CPU:'ARM' };
+    const derivedTotal = (k)=> {
+      const baseKey = derivedBase[k];
+      const baseWithoutBonus = stageValue() + (Number(data.stats[baseKey].dp)||0) + 3;
+      let total = Math.floor(baseWithoutBonus/3) + (Number(data.derived[k].bonus)||0);
+      const sizeB = SIZE_BONUS(data.meta.size);
+      total += sizeB[k]||0;
+      return total;
+    };
+    const woundTotal = ()=> (statTotal('HP')*2) - (Number(data.stats.HP.bonus)||0);
+    const batteryTotal = ()=> stageValue() + 1;
+    const statDPSum = ()=> ['ACC','DOD','DAM','ARM','HP'].reduce((s,k)=> s + (Number(data.stats[k].dp)||0), 0);
+    const spentDP = ()=> (Number(data.dp.quality)||0) + statDPSum();
+    const totalAllocDP = ()=> (stageValue()*10) + (Number(data.dp.bonus)||0);
 
-  const root = document.createElement('div');
+    const root = document.createElement('div');
 
-  // Basic Info
-  root.appendChild(el(`
+    // Basic Info
+    root.appendChild(el(`
     <section class="panel">
-      <h2 class="section-title">Basic Info</h2>
-      <div class="grid g-3">
-        ${textField('Name','meta.name')}
-        ${textField('Digimon','meta.digimon')}
-        ${textField('Type','meta.type')}
-        ${selectField('Attribute','meta.attribute',['Vaccine','Data','Virus'])}
-        ${selectField('Stage','meta.stage',['Child','Adult','Perfect','Ultimate'])}
-        ${selectField('Size','meta.size',['Small','Medium','Large','Huge','Gigantic','Colossal'])}
-      </div>
-      <div class="note mt-8">Stage value: Child=2, Adult=3, Perfect=4, Ultimate=5</div>
+    <h2 class="section-title">Basic Info</h2>
+    <div class="grid g-3">
+    ${textField('Name','meta.name')}
+    ${textField('Digimon','meta.digimon')}
+    ${textField('Type','meta.type')}
+    ${selectField('Attribute','meta.attribute',['Vaccine','Data','Virus'])}
+    ${selectField('Stage','meta.stage',['Child','Adult','Perfect','Ultimate'])}
+    ${selectField('Size','meta.size',['Small','Medium','Large','Huge','Gigantic','Colossal'])}
+    </div>
+    <div class="note mt-8">Stage value: Child=2, Adult=3, Perfect=4, Ultimate=5</div>
     </section>
-  `));
+    `));
 
-  // Combat
-  const combatPanel = el(`
+    // Combat
+    const combatPanel = el(`
     <section class="panel">
-      <h2 class="section-title">Combat</h2>
-      <div class="grid g-3">
-        <div>
-          <label>Wound Boxes:
-            <input type="number" step="1" min="0" data-bind="combat.woundBoxes" />
-          </label>
-          <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="woundTotal">0</div></div>
-          <div class="tiny">Formula: (Stage Value - 1) + (HP × 2) − HP Bonus</div>
-        </div>
-        <div>
-          <label>Temp. Wound Boxes:
-            <input type="number" step="1" min="0" data-bind="combat.tempWounds" />
-          </label>
-        </div>
-        <div>
-          <label>Battery:
-            <input type="number" step="1" min="0" data-bind="combat.batteryManual" />
-          </label>
-          <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="batteryTotal">0</div></div>
-          <div class="tiny">Formula: Stage + 1</div>
-        </div>
-      </div>
+    <h2 class="section-title">Combat</h2>
+    <div class="grid g-3">
+    <div>
+    <label>Wound Boxes:
+    <input type="number" step="1" min="0" data-bind="combat.woundBoxes" />
+    </label>
+    <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="woundTotal">0</div></div>
+    <div class="tiny">Formula: (HP × 2) − HP Bonus</div>
+    </div>
+    <div>
+    <label>Temp. Wound Boxes:
+    <input type="number" step="1" min="0" data-bind="combat.tempWounds" />
+    </label>
+    </div>
+    <div>
+    <label>Battery:
+    <input type="number" step="1" min="0" data-bind="combat.batteryManual" />
+    </label>
+    <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="batteryTotal">0</div></div>
+    <div class="tiny">Formula: Stage + 1</div>
+    </div>
+    </div>
     </section>
-  `);
-  root.appendChild(combatPanel);
+    `);
+    root.appendChild(combatPanel);
 
-  // Stats
-  const statsPanel = el(`<section class="panel">
+    // Stats
+    const statsPanel = el(`<section class="panel">
     <h2 class="section-title">Stats</h2>
     <div class="grid g-5" id="statsGrid"></div>
-  </section>`);
-  root.appendChild(statsPanel);
+    </section>`);
+    root.appendChild(statsPanel);
 
-  const statOrder = ['ACC','DOD','DAM','ARM','HP'];
-  const statsGrid = statsPanel.querySelector('#statsGrid');
-  statOrder.forEach(k=>{
-    const card = el(`<div class="stat-card" data-stat="${k}">
+    const statOrder = ['ACC','DOD','DAM','ARM','HP'];
+    const statsGrid = statsPanel.querySelector('#statsGrid');
+    statOrder.forEach(k=>{
+      const card = el(`<div class="stat-card" data-stat="${k}">
       <div class="stat-total" data-out="stat:${k}">0</div>
       <div class="stat-name">${k}</div>
       <label>DP:<input type="number" step="1" min="0" data-bind="stats.${k}.dp" /></label>
       <label>Bonus:<input type="number" step="1" data-bind="stats.${k}.bonus" /></label>
       <div class="tiny">Total = Stage + DP + Bonus</div>
-    </div>`);
-    statsGrid.appendChild(card);
-  });
+      </div>`);
+      statsGrid.appendChild(card);
+    });
 
-  // Derived Stats
-  const derivedPanel = el(`<section class="panel">
+    // Derived Stats
+    const derivedPanel = el(`<section class="panel">
     <h2 class="section-title">Derived Stats</h2>
     <div class="grid g-4" id="derivedGrid"></div>
     <div class="note mt-6">Total = ⌊Associated Stat ÷ 3⌋ + Bonus, plus Size bonus.</div>
-  </section>`);
-  root.appendChild(derivedPanel);
+    </section>`);
+    root.appendChild(derivedPanel);
 
-  // Misc Stats
-  const miscPanel = el(`<section class="panel">
-  <h2 class="section-title">Misc Stats</h2>
-  <div class="grid g-6" id="miscGrid"></div>
-  <div class="note mt-6">Formulas auto-calculate totals. Adjust Bonus to tweak values.</div>
-  </section>`);
-  root.appendChild(miscPanel);
+    // Misc Stats
+    const miscPanel = el(`<section class="panel">
+    <h2 class="section-title">Misc Stats</h2>
+    <div class="grid g-6" id="miscGrid"></div>
+    <div class="note mt-6">Formulas auto-calculate totals. Adjust Bonus to tweak values.</div>
+    </section>`);
+    root.appendChild(miscPanel);
 
-  const miscGrid = miscPanel.querySelector('#miscGrid');
-  const miscOrder = ['Movement','Range','MaxRange','Initiative','Clash','Resist'];
-  miscOrder.forEach(k=>{
-    const card = el(`<div class="stat-card" data-misc="${k}">
-    <div class="stat-total" data-out="misc:${k}">0</div>
-    <div class="stat-name">${k}</div>
-    <label>Bonus:<input type="number" step="1" data-bind="misc.${k}.bonus" /></label>
-    </div>`);
-    miscGrid.appendChild(card);
-  });
+    const miscGrid = miscPanel.querySelector('#miscGrid');
+    const miscOrder = ['Movement','Range','MaxRange','Initiative','Clash','Resist'];
+    miscOrder.forEach(k=>{
+      const card = el(`<div class="stat-card" data-misc="${k}">
+      <div class="stat-total" data-out="misc:${k}">0</div>
+      <div class="stat-name">${k}</div>
+      <label>Bonus:<input type="number" step="1" data-bind="misc.${k}.bonus" /></label>
+      </div>`);
+      miscGrid.appendChild(card);
+    });
 
-  // defaults if not present
-  data.misc = data.misc || {};
-  miscOrder.forEach(k=>{
-    data.misc[k] = data.misc[k] || { bonus:0 };
-  });
+    // defaults if not present
+    data.misc = data.misc || {};
+    miscOrder.forEach(k=>{
+      data.misc[k] = data.misc[k] || { bonus:0 };
+    });
 
-  const derivedOrder = ['BIT','RAM','DOS','CPU'];
-  const derivedGrid = derivedPanel.querySelector('#derivedGrid');
-  derivedOrder.forEach(k=>{
-    const base = derivedBase[k];
-    const card = el(`<div class="stat-card" data-derived="${k}">
+    const derivedOrder = ['BIT','RAM','DOS','CPU'];
+    const derivedGrid = derivedPanel.querySelector('#derivedGrid');
+    derivedOrder.forEach(k=>{
+      const base = derivedBase[k];
+      const card = el(`<div class="stat-card" data-derived="${k}">
       <div class="stat-total" data-out="derived:${k}">0</div>
       <div class="stat-name">${k} <span class="tiny">(from ${base})</span></div>
       <label>Bonus:<input type="number" step="1" data-bind="derived.${k}.bonus" /></label>
-    </div>`);
-    derivedGrid.appendChild(card);
-  });
+      </div>`);
+      derivedGrid.appendChild(card);
+    });
 
-  // Attacks
-  const attacksPanel = el(`<section class="panel">
+    // Attacks
+    const attacksPanel = el(`<section class="panel">
     <h2 class="section-title">Attacks</h2>
     <div class="badge">SIGNATURE MOVE</div>
     <div id="attacks"></div>
     <div class="row mt-12">
-      <button class="btn" id="addAttack">➕ Add Attack</button>
+    <button class="btn" id="addAttack">➕ Add Attack</button>
     </div>
-  </section>`);
-  root.appendChild(attacksPanel);
+    </section>`);
+    root.appendChild(attacksPanel);
 
-  const attacksBox = attacksPanel.querySelector('#attacks');
+    const attacksBox = attacksPanel.querySelector('#attacks');
 
-  function renderAttackRow(idx){
-    const a = data.attacks[idx];
-    const row = el(`<div class="attack-row" data-idx="${idx}">
+    function renderAttackRow(idx){
+      const a = data.attacks[idx];
+      const row = el(`<div class="attack-row" data-idx="${idx}">
       <label>Name<input type="text" data-attack="name"></label>
       <label>Range<select data-attack="range"><option>Melee</option><option>Ranged</option></select></label>
       <label>Kind<select data-attack="type"><option>Damage</option><option>Support</option></select></label>
@@ -293,155 +557,154 @@ function renderDigimonSheet(id, data){
       <label class="taglabel">Tag 2<input type="text" data-attack="tag1"></label>
       <label class="taglabel">Tag 3<input type="text" data-attack="tag2"></label>
       <button class="btn danger x" title="Delete">✕</button>
-    </div>`);
+      </div>`);
 
-    row.querySelector('[data-attack="name"]').value = a.name||'';
-    row.querySelector('[data-attack="range"]').value = a.range||'Melee';
-    row.querySelector('[data-attack="type"]').value = a.type||'Damage';
-    row.querySelector('[data-attack="acc"]').value = a.acc||0;
-    row.querySelector('[data-attack="dmg"]').value = a.dmg||0;
-    row.querySelector('[data-attack="tag0"]').value = a.tags?.[0]||'';
-    row.querySelector('[data-attack="tag1"]').value = a.tags?.[1]||'';
-    row.querySelector('[data-attack="tag2"]').value = a.tags?.[2]||'';
+      row.querySelector('[data-attack="name"]').value = a.name||'';
+      row.querySelector('[data-attack="range"]').value = a.range||'Melee';
+      row.querySelector('[data-attack="type"]').value = a.type||'Damage';
+      row.querySelector('[data-attack="acc"]').value = a.acc||0;
+      row.querySelector('[data-attack="dmg"]').value = a.dmg||0;
+      row.querySelector('[data-attack="tag0"]').value = a.tags?.[0]||'';
+      row.querySelector('[data-attack="tag1"]').value = a.tags?.[1]||'';
+      row.querySelector('[data-attack="tag2"]').value = a.tags?.[2]||'';
 
-    const dmgLabel = row.querySelector('.dmg');
-    function toggleDmg(){ dmgLabel.style.display = (row.querySelector('[data-attack="type"]').value==='Support') ? 'none' : 'block'; }
-    toggleDmg();
+      const dmgLabel = row.querySelector('.dmg');
+      function toggleDmg(){ dmgLabel.style.display = (row.querySelector('[data-attack="type"]').value==='Support') ? 'none' : 'block'; }
+      toggleDmg();
 
-    row.addEventListener('input', (e)=>{
-      const t = e.target.getAttribute('data-attack');
-      if(!t) return;
-      if(t.startsWith('tag')){
-        const i = Number(t.slice(3));
-        a.tags = a.tags || ['','',''];
-        a.tags[i] = e.target.value;
-      } else if(['name','range','type'].includes(t)){
-        a[t] = e.target.value;
-        if(t==='type') toggleDmg();
-      } else if(['acc','dmg'].includes(t)){
-        a[t] = Number(e.target.value)||0;
-      }
-    });
+      row.addEventListener('input', (e)=>{
+        const t = e.target.getAttribute('data-attack');
+        if(!t) return;
+        if(t.startsWith('tag')){
+          const i = Number(t.slice(3));
+          a.tags = a.tags || ['','',''];
+          a.tags[i] = e.target.value;
+        } else if(['name','range','type'].includes(t)){
+          a[t] = e.target.value;
+          if(t==='type') toggleDmg();
+        } else if(['acc','dmg'].includes(t)){
+          a[t] = Number(e.target.value)||0;
+        }
+      });
 
-    row.querySelector('.x').addEventListener('click', ()=>{
-      if(idx===0){ alert('Signature Move row cannot be removed.'); return; }
-      data.attacks.splice(idx,1);
+      row.querySelector('.x').addEventListener('click', ()=>{
+        if(idx===0){ alert('Signature Move row cannot be removed.'); return; }
+        data.attacks.splice(idx,1);
+        refreshAttacks();
+      });
+
+      return row;
+    }
+
+    function refreshAttacks(){
+      attacksBox.innerHTML = '';
+      data.attacks.forEach((_,i)=> attacksBox.appendChild(renderAttackRow(i)));
+    }
+    refreshAttacks();
+
+    attacksPanel.querySelector('#addAttack').addEventListener('click', ()=>{
+      data.attacks.push({name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']});
       refreshAttacks();
     });
 
-    return row;
-  }
-
-  function refreshAttacks(){
-    attacksBox.innerHTML = '';
-    data.attacks.forEach((_,i)=> attacksBox.appendChild(renderAttackRow(i)));
-  }
-  refreshAttacks();
-
-  attacksPanel.querySelector('#addAttack').addEventListener('click', ()=>{
-    data.attacks.push({name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']});
-    refreshAttacks();
-  });
-
-  // DP Allocation
-  const dpPanel = el(`<section class="panel">
+    // DP Allocation
+    const dpPanel = el(`<section class="panel">
     <h2 class="section-title">DP Allocation</h2>
     <div class="grid g-3">
-      <div><label>Quality DP:<input type="number" step="1" min="0" data-bind="dp.quality" /></label></div>
-      <div><div class="muted">Stat DP:</div><div class="kpi"><div class="value" data-out="statDP">0</div></div></div>
-      <div><label>Bonus DP:<input type="number" step="1" data-bind="dp.bonus" /></label></div>
+    <div><label>Quality DP:<input type="number" step="1" min="0" data-bind="dp.quality" /></label></div>
+    <div><div class="muted">Stat DP:</div><div class="kpi"><div class="value" data-out="statDP">0</div></div></div>
+    <div><label>Bonus DP:<input type="number" step="1" data-bind="dp.bonus" /></label></div>
     </div>
     <div class="row mt-10 align-center">
-      <div class="muted">Total DP:</div>
-      <div class="kpi"><div class="value"><span class="fraction"><span class="num" data-out="spentDP">0</span><span data-out="totalDP">0</span></span></div></div>
+    <div class="muted">Total DP:</div>
+    <div class="kpi"><div class="value"><span class="fraction"><span class="num" data-out="spentDP">0</span><span data-out="totalDP">0</span></span></div></div>
     </div>
-  </section>`);
-  root.appendChild(dpPanel);
+    </section>`);
+    root.appendChild(dpPanel);
 
-  // Qualities
-  root.appendChild(el(`
+    // Qualities
+    root.appendChild(el(`
     <section class="panel">
-      <h2 class="section-title">Qualities</h2>
-      <label>
-        <textarea rows="8" data-bind="qualities" placeholder="Write qualities and descriptions here..."></textarea>
-      </label>
+    <h2 class="section-title">Qualities</h2>
+    <label>
+    <textarea rows="8" data-bind="qualities" placeholder="Write qualities and descriptions here..."></textarea>
+    </label>
     </section>
-  `));
+    `));
 
-  // Data binding
-  root.addEventListener('input', (e)=>{
-    const path = e.target.getAttribute('data-bind');
-    if(path){
-      setByPath(data, path, coerce(e.target.value));
-      compute();
-    }
-  });
-
-  root.querySelectorAll('[data-bind]').forEach(input=>{
-    const path = input.getAttribute('data-bind');
-    const v = getByPath(data, path);
-    if(typeof v !== 'undefined' && v !== null) input.value = v;
-  });
-
-  root.querySelectorAll('select[data-bind]').forEach(sel=>{
-    sel.addEventListener('change', ()=> compute());
-  });
-
-  function miscTotal(k){
-    const b = Number(data.misc[k].bonus)||0;
-    switch(k){
-      case 'Movement': return stageValue() + 1 + b;
-      case 'Range': return derivedTotal('BIT') + 3 + b;
-      case 'MaxRange': return (derivedTotal('BIT') + 3) + (stageValue()-1) + b;
-      case 'Initiative': return derivedTotal('RAM') + b;
-      case 'Clash': return derivedTotal('RAM') + derivedTotal('CPU') + b;
-      case 'Resist': return Math.floor(derivedTotal('DOS')/2) + b;
-      default: return b;
-    }
-  }
-
-  function compute(){
-    statOrder.forEach(k=>{
-      const out = root.querySelector(`[data-out="stat:${k}"]`);
-      if(out) out.textContent = statTotal(k);
+    // Data binding
+    root.addEventListener('input', (e)=>{
+      const path = e.target.getAttribute('data-bind');
+      if(path){
+        setByPath(data, path, coerce(e.target.value));
+        compute();
+      }
     });
-    derivedOrder.forEach(k=>{
-      const out = root.querySelector(`[data-out="derived:${k}"]`);
-      if(out) out.textContent = derivedTotal(k);
-    });
-    miscOrder.forEach(k=>{
-      const elOut = root.querySelector(`[data-out="misc:${k}"]`);
-      if(elOut) elOut.textContent = miscTotal(k);
-    });
-    setOut('woundTotal', woundTotal());
-    setOut('batteryTotal', batteryTotal());
-    setOut('statDP', statDPSum());
-    setOut('spentDP', spentDP());
-    setOut('totalDP', totalAllocDP());
-  }
 
-  function setOut(attr, value){
-    const el = root.querySelector(`[data-out="${attr}"]`);
-    if(el) el.textContent = value;
-  }
-
-  compute();
-
-  root.__getData = ()=> JSON.parse(JSON.stringify(data));
-  root.__setData = (payload)=>{
-    data = Object.assign(data, payload||{});
     root.querySelectorAll('[data-bind]').forEach(input=>{
       const path = input.getAttribute('data-bind');
       const v = getByPath(data, path);
       if(typeof v !== 'undefined' && v !== null) input.value = v;
     });
-    refreshAttacks();
-    compute();
-  };
 
-  return root;
-}
+      root.querySelectorAll('select[data-bind]').forEach(sel=>{
+        sel.addEventListener('change', ()=> compute());
+      });
 
+      function miscTotal(k){
+        const b = Number(data.misc[k].bonus)||0;
+        switch(k){
+          case 'Movement': return stageValue() + 1 + b;
+          case 'Range': return derivedTotal('BIT') + 3 + b;
+          case 'MaxRange': return (derivedTotal('BIT') + 3) + (stageValue()-1) + b;
+          case 'Initiative': return derivedTotal('RAM') + b;
+          case 'Clash': return derivedTotal('RAM') + derivedTotal('CPU') + b;
+          case 'Resist': return Math.floor(derivedTotal('DOS')/2) + b;
+          default: return b;
+        }
+      }
+
+      function compute(){
+        statOrder.forEach(k=>{
+          const out = root.querySelector(`[data-out="stat:${k}"]`);
+          if(out) out.textContent = statTotal(k);
+        });
+          derivedOrder.forEach(k=>{
+            const out = root.querySelector(`[data-out="derived:${k}"]`);
+            if(out) out.textContent = derivedTotal(k);
+          });
+            miscOrder.forEach(k=>{
+              const elOut = root.querySelector(`[data-out="misc:${k}"]`);
+              if(elOut) elOut.textContent = miscTotal(k);
+            });
+              setOut('woundTotal', woundTotal());
+              setOut('batteryTotal', batteryTotal());
+              setOut('statDP', statDPSum());
+              setOut('spentDP', spentDP());
+              setOut('totalDP', totalAllocDP());
+      }
+
+      function setOut(attr, value){
+        const el = root.querySelector(`[data-out="${attr}"]`);
+        if(el) el.textContent = value;
+      }
+
+      compute();
+
+      root.__getData = ()=> JSON.parse(JSON.stringify(data));
+      root.__setData = (payload)=>{
+        data = Object.assign(data, payload||{});
+        root.querySelectorAll('[data-bind]').forEach(input=>{
+          const path = input.getAttribute('data-bind');
+          const v = getByPath(data, path);
+          if(typeof v !== 'undefined' && v !== null) input.value = v;
+        });
+          refreshAttacks();
+          compute();
+      };
+
+      return root;
+  }
 
   // -----------------------------
   // Save / Open
@@ -450,7 +713,7 @@ function renderDigimonSheet(id, data){
     const sheet = activeSheet();
     if(!sheet){ alert('No active sheet to save.'); return; }
     const tab = state.tabs.find(t=>t.id===state.active);
-    const name = prompt('Save name:', tab?.title || 'Untitled Digimon');
+    const name = prompt('Save name:', tab?.title || 'Untitled');
     if(!name) return;
     const payload = {
       id: tab.id,
@@ -468,41 +731,56 @@ function renderDigimonSheet(id, data){
 
   function openSaved(){
     openList.innerHTML = '';
-    Object.keys(localStorage)
-      .filter(k=>k.startsWith('digi2e:'))
-      .sort()
-      .forEach(key=>{
-        try{
-          const payload = JSON.parse(localStorage.getItem(key)||'null');
-          if(!payload) return;
-          const card = el(`<div class="panel">
-            <div class="row" style="justify-content:space-between; align-items:center">
-              <div>
-                <div style="font-family:Orbitron; font-weight:700">${payload.title||'(no title)'}</div>
-                <div class="tiny">${key}</div>
-              </div>
-              <div class="row">
-                <button class="btn" data-act="open">Open</button>
-                <button class="btn danger" data-act="delete">Delete</button>
-              </div>
-            </div>
-          </div>`);
+    const saves = Object.keys(localStorage)
+    .filter(k=>k.startsWith('digi2e:'))
+    .sort();
 
-          card.querySelector('[data-act="open"]').addEventListener('click', ()=>{
-            const id = addTab(payload.title||'Digimon', payload.type||'digimon', payload.data||{});
-            openModal.classList.add('hidden');
-            activateTab(id);
-          });
+    if(saves.length === 0) {
+      openList.appendChild(el('<div class="panel"><div class="help">No saved sheets found.</div></div>'));
+      openModal.classList.remove('hidden');
+      return;
+    }
 
-          card.querySelector('[data-act="delete"]').addEventListener('click', ()=>{
-            if(confirm(`Delete saved sheet "${payload.title||key}"?`)){
-              localStorage.removeItem(key); card.remove();
+    saves.forEach(key=>{
+      try{
+        const payload = JSON.parse(localStorage.getItem(key)||'null');
+        if(!payload) return;
+        const card = el(`<div class="panel">
+        <div class="row" style="justify-content:space-between; align-items:center">
+        <div>
+        <div style="font-family:Orbitron; font-weight:700">${payload.title||'(no title)'}</div>
+        <div class="tiny">Type: ${payload.type || 'unknown'}</div>
+        <div class="tiny">${key}</div>
+        </div>
+        <div class="row">
+        <button class="btn" data-act="open">Open</button>
+        <button class="btn danger" data-act="delete">Delete</button>
+        </div>
+        </div>
+        </div>`);
+
+        card.querySelector('[data-act="open"]').addEventListener('click', ()=>{
+          const id = addTab(payload.title||'New Sheet', payload.type||'digimon', payload.data||{});
+          openModal.classList.add('hidden');
+          activateTab(id);
+        });
+
+        card.querySelector('[data-act="delete"]').addEventListener('click', ()=>{
+          if(confirm(`Delete saved sheet "${payload.title||key}"?`)){
+            localStorage.removeItem(key);
+            card.remove();
+            // If this was the last save, show the "no saves" message
+            if(openList.children.length === 0) {
+              openList.appendChild(el('<div class="panel"><div class="help">No saved sheets found.</div></div>'));
             }
-          });
+          }
+        });
 
-          openList.appendChild(card);
-        } catch{}
-      });
+        openList.appendChild(card);
+      } catch(e){
+        console.error('Error loading save:', e);
+      }
+    });
     openModal.classList.remove('hidden');
   }
 
@@ -519,7 +797,7 @@ function renderDigimonSheet(id, data){
     b.addEventListener('click', ()=>{
       const type = b.getAttribute('data-newtype');
       if(type==='digimon') addTab('New Digimon','digimon');
-      else addTab('New Tamer','tamer');
+      else if(type==='tamer') addTab('New Tamer','tamer');
       newModal.classList.add('hidden');
     });
   });
