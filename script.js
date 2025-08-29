@@ -150,7 +150,7 @@ function renderDigimonSheet(id, data){
     total += sizeB[k]||0;
     return total;
   };
-  const woundTotal = ()=> (statTotal('HP')*2) - (Number(data.stats.HP.bonus)||0);
+  const woundTotal = ()=> (stageValue() - 1) + (statTotal('HP')*2) - (Number(data.stats.HP.bonus)||0);
   const batteryTotal = ()=> stageValue() + 1;
   const statDPSum = ()=> ['ACC','DOD','DAM','ARM','HP'].reduce((s,k)=> s + (Number(data.stats[k].dp)||0), 0);
   const spentDP = ()=> (Number(data.dp.quality)||0) + statDPSum();
