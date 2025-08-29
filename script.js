@@ -184,7 +184,7 @@ function renderDigimonSheet(id, data){
             <input type="number" step="1" min="0" data-bind="combat.woundBoxes" />
           </label>
           <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="woundTotal">0</div></div>
-          <div class="tiny">Formula: (HP × 2) − HP Bonus</div>
+          <div class="tiny">Formula: (Stage Value - 1) + (HP × 2) − HP Bonus</div>
         </div>
         <div>
           <label>Temp. Wound Boxes:
