@@ -144,7 +144,7 @@ function renderDigimonSheet(id, data){
   const derivedBase = { BIT:'ACC', RAM:'DOD', DOS:'DAM', CPU:'ARM' };
   const derivedTotal = (k)=> {
     const baseKey = derivedBase[k];
-    const baseWithoutBonus = stageValue() + (Number(data.stats[baseKey].dp)||0) + 1;
+    const baseWithoutBonus = stageValue() + (Number(data.stats[baseKey].dp)||0) + 3;
     let total = Math.floor(baseWithoutBonus/3) + (Number(data.derived[k].bonus)||0);
     const sizeB = SIZE_BONUS(data.meta.size);
     total += sizeB[k]||0;
@@ -168,7 +168,7 @@ function renderDigimonSheet(id, data){
         ${textField('Type','meta.type')}
         ${selectField('Attribute','meta.attribute',['Vaccine','Data','Virus'])}
         ${selectField('Stage','meta.stage',['Child','Adult','Perfect','Ultimate'])}
-        ${selectField('Size','meta.size',['Small','Medium','Large','Huge','Enormous','Gigantic'])}
+        ${selectField('Size','meta.size',['Small','Medium','Large','Huge','Gigantic','Colossal'])}
       </div>
       <div class="note mt-8">Stage value: Child=2, Adult=3, Perfect=4, Ultimate=5</div>
     </section>
