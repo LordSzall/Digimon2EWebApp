@@ -134,3 +134,108 @@ gap: 1rem;
 .mt-14 { margin:10px 0 14px; }
 .justify-end { justify-content:flex-end; }
 .align-center { align-items:center; }
+
+/* ===== Skills Section ===== */
+.skill-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.skill-tabs button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+.skill-tabs button.active {
+  background: #ddd;
+  font-weight: bold;
+}
+.skill-entry {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.skill-entry label {
+  flex: 1;
+}
+
+/* ===== Torment Track ===== */
+.torment-track {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.torment-box {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--muted);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: Orbitron, sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.torment-box.state-0 {
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.torment-box.state-1 {
+  background: var(--warn);
+  color: #000;
+  border-color: var(--warn);
+}
+
+.torment-box.state-2 {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+  box-shadow: 0 0 8px rgba(255, 59, 107, 0.4);
+}
+
+.torment-box:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Milestone Tracker ===== */
+.milestone-tracker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.milestone-item {
+  background: #0a1222;
+  border: 1px solid rgba(108, 240, 255, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.milestone-name {
+  font-family: Orbitron, sans-serif;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.milestone-input {
+  width: 60px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.milestone-input input {
+  text-align: center;
+  font-family: Orbitron, sans-serif;
+  font-weight: 600;
+}
