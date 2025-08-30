@@ -71,8 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function addTab(title, type='digimon', data=null){
     const id = uid();
 
-    const tab = el(`<div class="tab active" data-id="${id}">
-    <span>📄 ${title}</span><span class="close" title="Close">✕</span>
+    // const tab = el(`<div class="tab active" data-id="${id}">
+    // <span>📄 ${title}</span><span class="close" title="Close">✕</span>
+    // </div>`);
+    const tab = el(`<div class="tab active" data-id="${id}" data-type="${type}">
+    <img src="${type === 'digimon' ? 'digimon-icon.png' : 'tamer-icon.png'}"
+    alt="${type}" class="tab-icon">
+    <span>${title}</span>
+    <span class="close" title="Close">✕</span>
     </div>`);
     tab.querySelector('.close').addEventListener('click', (e)=>{
       e.stopPropagation();
