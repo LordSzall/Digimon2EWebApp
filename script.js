@@ -257,16 +257,23 @@ document.addEventListener("DOMContentLoaded", () => {
     skillsPanel.appendChild(skillsContainer);
     root.appendChild(skillsPanel);
 
-    function showSkills(attr) {
-      skillsContainer.innerHTML = "";
-      skillsByAttr[attr].forEach(skill => {
-        const val = data.skills[attr][skill] || 0;
-        const entry = el(`<div class="skill-entry">
+  function showSkills(attr) {
+    skillsContainer.innerHTML = "";
+    skillsByAttr[attr].forEach(skill => {
+      // Remove parentheses for the data key lookup
+      const dataKey = skill.split(' (')[0];
+      const val = data.skills[attr][skill] || data.skills[attr][dataKey] || 0;
+      const entry = el(`<div class="skill-entry">
         <label>${skill}</label>
         <input type="number" value="${val}" data-bind="skills.${attr}.${skill}" />
-        </div>`);
-        skillsContainer.appendChild(entry);
-      });
+      </div>`);
+      skillsContainer.appendChild(entry);
+    });
+
+  // highlight active tab
+  [...tabs.children].forEach(b => b.classList.remove("active"));
+  tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
+}
 
       // highlight active tab
       [...tabs.children].forEach(b => b.classList.remove("active"));
@@ -384,6 +391,24 @@ document.addEventListener("DOMContentLoaded", () => {
           updateMilestoneTracker(); // Update the milestone tracker
           computeTamer();
       };
+
+        // Special handling for skill inputs with parentheses
+      setTimeout(() => {
+        root.querySelectorAll('input[data-bind^="skills."]').forEach(input => {
+          const path = input.getAttribute('data-bind');
+          const v = getByPath(data, path);
+          if (typeof v !== 'undefined' && v !== null) {
+            input.value = v;
+          } else {
+            // Try without parentheses if not found
+            const simplePath = path.replace(/ \(.*?\)/g, '');
+            const simpleV = getByPath(data, simplePath);
+            if (typeof simpleV !== 'undefined' && simpleV !== null) {
+              input.value = simpleV;
+            }
+          }
+        });
+      }, 100);
 
       return root;
   }
