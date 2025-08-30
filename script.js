@@ -466,7 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const batteryTotal = ()=> stageValue() + 1;
     const statDPSum = ()=> ['ACC','DOD','DAM','ARM','HP'].reduce((s,k)=> s + (Number(data.stats[k].dp)||0), 0);
     const spentDP = ()=> (Number(data.dp.quality)||0) + statDPSum();
-    const totalAllocDP = ()=> (stageValue()*10) + (Number(data.dp.bonus)||0);
+    const totalAllocDP = ()=> ((stageValue()-1)*10) + (Number(data.dp.bonus)||0);
 
     const root = document.createElement('div');
 
