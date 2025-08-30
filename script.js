@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tormentPanel = el(`<section class="panel">
     <h2 class="section-title">Torments</h2>
     <div class="torment-track" id="tormentTrack"></div>
-    <label>Description:<textarea data-bind="torments.desc" placeholder="Describe torments and their effects..."></textarea></label>
+    <label>Description:<textarea rows="8" data-bind="torments.desc" placeholder="Describe torments and their effects..."></textarea></label>
     </section>`);
     root.appendChild(tormentPanel);
     const tormentTrack = tormentPanel.querySelector('#tormentTrack');
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Talents
     root.appendChild(el(`<section class="panel">
     <h2 class="section-title">Talents</h2>
-    <label><textarea data-bind="talents" placeholder="Describe your talents..."></textarea></label>
+    <label><textarea rows="16" data-bind="talents" placeholder="Describe your talents..."></textarea></label>
     </section>`));
 
     // Data binding
@@ -653,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <section class="panel">
     <h2 class="section-title">Qualities</h2>
     <label>
-    <textarea rows="8" data-bind="qualities" placeholder="Write qualities and descriptions here..."></textarea>
+    <textarea rows="16" data-bind="qualities" placeholder="Write qualities and descriptions here..."></textarea>
     </label>
     </section>
     `));
