@@ -132,11 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
     combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
     attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
     skills: {
-      AGI:{ Evade:0, Precision:0, Stealth:0 },
-      BOD:{ Athletics:0, Endurance:0, FeatsOfStrength:0 },
-      CHA:{ Manipulate:0, Perform:0, Persuasion:0 },
-      INT:{ DecipherIntent:0, Survival:0, Knowledge:0 },
-      WIL:{ Bravery:0, Fortitude:0, Awareness:0 }
+      AGI:{ "Evade (WIL)":0, "Precision (INT)":0, "Stealth (BOD)":0 },
+      BOD:{ "Athletics (AGI)":0, "Endurance (WIL)":0, "FeatsOfStrength (CHA)":0 },
+      CHA:{ "Manipulate (BOD)":0, "Perform (AGI)":0, "Persuasion (INT)":0 },
+      INT:{ "DecipherIntent (CHA)":0, "Survival (WIL)":0, Knowledge:0 },
+      WIL:{ "Bravery (BOD)":0, "Fortitude:0 (INT)", "Awareness:0 (AGI)" }
     },
     aspects: { major:{ name:'', desc:'' }, minor:{ name:'', desc:'' } },
     torments: { marks:Array(10).fill(0), desc:'' },
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:inspireTotal">0</div></div>
     </div>
     <div>
-    ${selectField('Speed','combat.speed',['Agility','Body'])}
+    ${selectField('Speed','combat.speed',['Agility','Athletics'])}
     <label>Milestones:<input type="number" data-bind="combat.milestones"/></label>
     </div>
     </div>
