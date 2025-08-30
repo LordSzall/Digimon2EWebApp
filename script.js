@@ -132,23 +132,23 @@ document.addEventListener("DOMContentLoaded", () => {
     combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
     attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
     skills: {
-      AGI:{ "Evade (WIL)":0, "Precision (INT)":0, "Stealth (BOD)":0 },
-      BOD:{ "Athletics (AGI)":0, "Endurance (WIL)":0, "FeatsOfStrength (CHA)":0 },
-      CHA:{ "Manipulate (BOD)":0, "Perform (AGI)":0, "Persuasion (INT)":0 },
-      INT:{ "DecipherIntent (CHA)":0, "Survival (WIL)":0, Knowledge:0 },
-      WIL:{ "Bravery (BOD)":0, "Fortitude:0 (INT)", "Awareness:0 (AGI)" }
+      AGI: { "Evade (WIL)":0, "Precision (INT)":0, "Stealth (BOD)":0 },
+      BOD: { "Athletics (AGI)":0, "Endurance (WIL)":0, "Feats of Strength (CHA)":0 },
+      CHA: { "Manipulate (BOD)":0, "Perform (AGI)":0, "Persuasion (INT)":0 },
+      INT: { "Decipher Intent (CHA)":0, "Survival (WIL)":0, "Knowledge":0 },
+      WIL: { "Bravery (BOD)":0, "Fortitude (INT)":0, "Awareness (AGI)":0 }
     },
     aspects: { major:{ name:'', desc:'' }, minor:{ name:'', desc:'' } },
     torments: { marks:Array(10).fill(0), desc:'' },
-                          talents: '',
-                          milestones: {
-                            Qualities: 0,
-                            ACC: 0,
-                            DOD: 0,
-                            DAM: 0,
-                            ARM: 0,
-                            HP: 0
-                          }
+    talents: '',
+    milestones: {
+      Qualities: 0,
+      ACC: 0,
+      DOD: 0,
+      DAM: 0,
+      ARM: 0,
+      HP: 0
+    }
   };
 
   function renderTamerSheet(id, data){
@@ -234,14 +234,14 @@ document.addEventListener("DOMContentLoaded", () => {
       attrGrid.appendChild(card);
     });
 
-    // ===== Skills Section =====
-    const skillsByAttr = {
-      AGI: ["Evade", "Precision", "Stealth"],
-      BOD: ["Athletics", "Endurance", "Feats of Strength"],
-      CHA: ["Manipulate", "Perform", "Persuasion"],
-      INT: ["Decipher Intent", "Survival", "Knowledge"],
-      WIL: ["Bravery", "Fortitude", "Awareness"]
-    };
+  // ===== Skills Section =====
+  const skillsByAttr = {
+    AGI: ["Evade (WIL)", "Precision (INT)", "Stealth (BOD)"],
+    BOD: ["Athletics (AGI)", "Endurance (WIL)", "Feats of Strength (CHA)"],
+    CHA: ["Manipulate (BOD)", "Perform (AGI)", "Persuasion (INT)"],
+    INT: ["Decipher Intent (CHA)", "Survival (WIL)", "Knowledge"],
+    WIL: ["Bravery (BOD)", "Fortitude (INT)", "Awareness (AGI)"]
+  };
 
     const skillsPanel = el(`<section class="panel"><h2 class="section-title">Skills</h2></section>`);
     const tabs = el(`<div class="skill-tabs"></div>`);
