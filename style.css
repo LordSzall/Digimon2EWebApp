@@ -136,29 +136,70 @@ gap: 1rem;
 .align-center { align-items:center; }
 
 /* ===== Skills Section ===== */
+
+.skill-section {
+  transition: opacity 0.3s ease;
+}
+
+.skill-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: rgba(10, 18, 34, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(108, 240, 255, 0.1);
+}
+
+.skill-entry label {
+  flex: 1;
+  margin-right: 16px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.skill-entry input {
+  width: 70px;
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+}
+
 .skill-tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
-.skill-tabs button {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #f9f9f9;
-}
-.skill-tabs button.active {
-  background: #ddd;
-  font-weight: bold;
-}
-.skill-entry {
-  margin-bottom: 0.5rem;
+.skill-tabs {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
 }
-.skill-entry label {
-  flex: 1;
+
+.skill-tabs button {
+  padding: 8px 16px;
+  border: 1px solid rgba(108, 240, 255, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  background: #0a1222;
+  color: var(--muted);
+  transition: all 0.2s ease;
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+}
+
+.skill-tabs button.active {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(0, 234, 255, 0.4);
+}
+
+.skill-tabs button:hover {
+  background: rgba(108, 240, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 /* ===== Torment Track ===== */

@@ -240,18 +240,40 @@ document.addEventListener("DOMContentLoaded", () => {
       attrGrid.appendChild(card);
     });
 
-  // ===== Skills Section =====
-  const skillsByAttr = {
-    AGI: ["Evade (WIL)", "Precision (INT)", "Stealth (BOD)"],
-    BOD: ["Athletics (AGI)", "Endurance (WIL)", "Feats of Strength (CHA)"],
-    CHA: ["Manipulate (BOD)", "Perform (AGI)", "Persuasion (INT)"],
-    INT: ["Decipher Intent (CHA)", "Survival (WIL)", "Knowledge"],
-    WIL: ["Bravery (BOD)", "Fortitude (INT)", "Awareness (AGI)"]
-  };
+    // ===== Skills Section =====
+    const skillsByAttr = {
+      AGI: ["Evade (WIL)", "Precision (INT)", "Stealth (BOD)"],
+                          BOD: ["Athletics (AGI)", "Endurance (WIL)", "Feats of Strength (CHA)"],
+                          CHA: ["Manipulate (BOD)", "Perform (AGI)", "Persuasion (INT)"],
+                          INT: ["Decipher Intent (CHA)", "Survival (WIL)", "Knowledge"],
+                          WIL: ["Bravery (BOD)", "Fortitude (INT)", "Awareness (AGI)"]
+    };
 
     const skillsPanel = el(`<section class="panel"><h2 class="section-title">Skills</h2></section>`);
     const tabs = el(`<div class="skill-tabs"></div>`);
     const skillsContainer = el(`<div id="skillsContainer"></div>`);
+
+    // Create all skill sections upfront but hide them
+    Object.keys(skillsByAttr).forEach(attr => {
+      const skillSection = document.createElement('div');
+      skillSection.className = 'skill-section';
+      skillSection.dataset.attr = attr;
+      skillSection.style.display = 'none';
+
+      skillsByAttr[attr].forEach(skill => {
+        const safeSkillName = skill.replace(/[\(\)]/g, '').replace(/\s+/g, '_');
+        const val = data.skills[attr][safeSkillName] || 0;
+
+        const entry = el(`<div class="skill-entry">
+        <label>${skill}</label>
+        <input type="number" value="${val}" data-bind="skills.${attr}.${safeSkillName}" />
+        </div>`);
+
+        skillSection.appendChild(entry);
+      });
+
+      skillsContainer.appendChild(skillSection);
+    });
 
     Object.keys(skillsByAttr).forEach(attr => {
       const btn = el(`<button data-skilltab="${attr}">${attr}</button>`);
@@ -264,23 +286,23 @@ document.addEventListener("DOMContentLoaded", () => {
     root.appendChild(skillsPanel);
 
     function showSkills(attr) {
-      skillsContainer.innerHTML = "";
-      skillsByAttr[attr].forEach(skill => {
-        const val = data.skills[attr][skill] || 0;
-        const safeSkillName = skill.replace(/[\(\)]/g, '').replace(/\s+/g, '_');
-        const entry = el(`<div class="skill-entry">
-          <label>${skill}</label>
-          <input type="number" value="${val}" data-bind="skills.${attr}.${safeSkillName}" />
-        </div>`);
-        skillsContainer.appendChild(entry);
+      // Hide all skill sections
+      skillsContainer.querySelectorAll('.skill-section').forEach(section => {
+        section.style.display = 'none';
       });
-    
-      // highlight active tab (ONCE)
+
+      // Show the selected one
+      const targetSection = skillsContainer.querySelector(`[data-attr="${attr}"]`);
+      if (targetSection) {
+        targetSection.style.display = 'block';
+      }
+
+      // highlight active tab
       [...tabs.children].forEach(b => b.classList.remove("active"));
       tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
     }
 
-    // open default tab
+    // Open default tab
     showSkills("AGI");
 
     // Aspects
