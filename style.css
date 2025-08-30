@@ -9,7 +9,7 @@
   --danger:#ff3b6b;
   --ok:#00f59d;
   --warn:#ffd166;
-  --grid:rgba(0,234,255,0.07);
+  --grid:rgba(0,255,0,0.8);
   --shadow:0 6px 18px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(108,240,255,0.05);
   --radius:18px;
 }
