@@ -1,5 +1,5 @@
 :root{
-  --bg:#070a12;
+  --bg:#071807;
   --panel:#0e1424;
   --panel-2:#111a2f;
   --ink:#c6f7ff;
@@ -16,15 +16,15 @@
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; color:var(--ink); background:radial-gradient(1200px 800px at 80% -10%, rgba(0,234,255,0.12), transparent 60%),
-  linear-gradient(180deg, #060913 0%, #0a1020 100%);
+  margin:0; color:var(--ink); background:radial-gradient(1200px 800px at 80% -10%, rgba(0,255,0,0.12), transparent 60%),
+  linear-gradient(180deg, #071807 0%, #0a2010 100%);
   font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji',sans-serif;
 }
 .grid-bg::before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:0; background:
     linear-gradient(to right, var(--grid) 1px, transparent 1px) 0 0/40px 40px,
     linear-gradient(to bottom, var(--grid) 1px, transparent 1px) 0 0/40px 40px;
-  mask: radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.8), transparent 70%);
+  mask: radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.8), transparent 90%);
 }
 header{
   position:sticky; top:0; z-index:10; backdrop-filter:saturate(1.2) blur(6px);
