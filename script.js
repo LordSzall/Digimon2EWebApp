@@ -132,11 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
     combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
     attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
     skills: {
-      AGI: { "Evade (WIL)":0, "Precision (INT)":0, "Stealth (BOD)":0 },
-      BOD: { "Athletics (AGI)":0, "Endurance (WIL)":0, "Feats of Strength (CHA)":0 },
-      CHA: { "Manipulate (BOD)":0, "Perform (AGI)":0, "Persuasion (INT)":0 },
-      INT: { "Decipher Intent (CHA)":0, "Survival (WIL)":0, "Knowledge":0 },
-      WIL: { "Bravery (BOD)":0, "Fortitude (INT)":0, "Awareness (AGI)":0 }
+      AGI: { "Evade_WIL":0, "Precision_INT":0, "Stealth_BOD":0 },
+      BOD: { "Athletics_AGI":0, "Endurance_WIL":0, "Feats_of_Strength_CHA":0 },
+      CHA: { "Manipulate_BOD":0, "Perform_AGI":0, "Persuasion_INT":0 },
+      INT: { "Decipher_Intent_CHA":0, "Survival_WIL":0, "Knowledge":0 },
+      WIL: { "Bravery_BOD":0, "Fortitude_INT":0, "Awareness_AGI":0 }
     },
     aspects: { major:{ name:'', desc:'' }, minor:{ name:'', desc:'' } },
     torments: { marks:Array(10).fill(0), desc:'' },
@@ -257,25 +257,19 @@ document.addEventListener("DOMContentLoaded", () => {
     skillsPanel.appendChild(skillsContainer);
     root.appendChild(skillsPanel);
 
-  function showSkills(attr) {
-    skillsContainer.innerHTML = "";
-    skillsByAttr[attr].forEach(skill => {
-      // Remove parentheses for the data key lookup
-      const dataKey = skill.split(' (')[0];
-      const val = data.skills[attr][skill] || data.skills[attr][dataKey] || 0;
-      const entry = el(`<div class="skill-entry">
-        <label>${skill}</label>
-        <input type="number" value="${val}" data-bind="skills.${attr}.${skill}" />
-      </div>`);
-      skillsContainer.appendChild(entry);
-    });
-
-  // highlight active tab
-  [...tabs.children].forEach(b => b.classList.remove("active"));
-  tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
-}
-
-      // highlight active tab
+    function showSkills(attr) {
+      skillsContainer.innerHTML = "";
+      skillsByAttr[attr].forEach(skill => {
+        const val = data.skills[attr][skill] || 0;
+        const safeSkillName = skill.replace(/[\(\)]/g, '').replace(/\s+/g, '_');
+        const entry = el(`<div class="skill-entry">
+          <label>${skill}</label>
+          <input type="number" value="${val}" data-bind="skills.${attr}.${safeSkillName}" />
+        </div>`);
+        skillsContainer.appendChild(entry);
+      });
+    
+      // highlight active tab (ONCE)
       [...tabs.children].forEach(b => b.classList.remove("active"));
       tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
     }
@@ -393,22 +387,15 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
         // Special handling for skill inputs with parentheses
-      setTimeout(() => {
-        root.querySelectorAll('input[data-bind^="skills."]').forEach(input => {
-          const path = input.getAttribute('data-bind');
-          const v = getByPath(data, path);
-          if (typeof v !== 'undefined' && v !== null) {
-            input.value = v;
-          } else {
-            // Try without parentheses if not found
-            const simplePath = path.replace(/ \(.*?\)/g, '');
-            const simpleV = getByPath(data, simplePath);
-            if (typeof simpleV !== 'undefined' && simpleV !== null) {
-              input.value = simpleV;
+        setTimeout(() => {
+          root.querySelectorAll('input[data-bind^="skills."]').forEach(input => {
+            const path = input.getAttribute('data-bind');
+            const v = getByPath(data, path);
+            if (typeof v !== 'undefined' && v !== null) {
+              input.value = v;
             }
-          }
-        });
-      }, 100);
+          });
+        }, 100);
 
       return root;
   }
@@ -423,6 +410,14 @@ document.addEventListener("DOMContentLoaded", () => {
       combat:{ woundBoxes:0, tempWounds:0, batteryManual:0 },
       stats:{ ACC:{dp:0, bonus:0}, DOD:{dp:0, bonus:0}, DAM:{dp:0, bonus:0}, ARM:{dp:0, bonus:0}, HP:{dp:0, bonus:0} },
       derived:{ BIT:{bonus:0}, RAM:{bonus:0}, DOS:{bonus:0}, CPU:{bonus:0} },
+      misc: {
+        Movement: { bonus: 0 },
+        Range: { bonus: 0 },
+        MaxRange: { bonus: 0 },
+        Initiative: { bonus: 0 },
+        Clash: { bonus: 0 },
+        Resist: { bonus: 0 }
+      },
       attacks:[ {name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']} ],
       dp:{ quality:0, bonus:0 },
       qualities: ''
