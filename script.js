@@ -761,19 +761,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const sheet = activeSheet();
     if(!sheet){ alert('No active sheet to save.'); return; }
     const tab = state.tabs.find(t=>t.id===state.active);
-    const name = prompt('Save name:', tab?.title || 'Untitled');
+    
+    const currentName = tab?.title || 'Untitled';
+    const name = prompt('Save name:', currentName);
     if(!name) return;
+    
     const payload = {
       id: tab.id,
       type: tab.type,
       title: name,
       data: sheet.firstElementChild.__getData?.()
     };
+    
     const key = `digi2e:${name}`;
+    
+    // Clean up any existing entries with the same name but different keys
+    const allKeys = Object.keys(localStorage).filter(k => k.startsWith('digi2e:'));
+    allKeys.forEach(existingKey => {
+      try {
+        const existingData = JSON.parse(localStorage.getItem(existingKey));
+        if (existingData && existingData.title === name && existingKey !== key) {
+          localStorage.removeItem(existingKey);
+        }
+      } catch (e) {
+        console.warn('Error parsing localStorage item:', existingKey, e);
+      }
+    });
+    
+    // Save the new data
     localStorage.setItem(key, JSON.stringify(payload));
-    const tabEl = [...tabBar.children].find(e=>e.dataset.id===tab.id);
-    if(tabEl) tabEl.firstElementChild.textContent = `📄 ${name}`;
+    
+    // Update tab title (correctly with your icon structure)
+    const tabEl = tabBar.querySelector(`.tab[data-id="${tab.id}"]`);
+    if(tabEl) {
+      // Find the text span (it should be the second child after the img)
+      const textSpan = tabEl.querySelector('span:not(.close)');
+      if (textSpan) {
+        textSpan.textContent = name;
+      }
+    }
     tab.title = name;
+    
     alert('Saved!');
   }
 
