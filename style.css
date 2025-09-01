@@ -170,34 +170,66 @@ header{
 
 /* Dramatically Enhanced Section Titles */
 h2.section-title{
-    font-family:'VT323', monospace; font-size: 2rem; letter-spacing:.08em; font-weight:700;
-    margin:2px 0 12px; color:var(--accent-2);
+    font-family:'VT323', monospace; font-size: 2rem; letter-spacing:.1em; font-weight:1000;
+    margin:2px 0 18px; color:var(--accent-2);
     position: relative;
     display: inline-block;
-    padding: 12px 20px;
+    padding: 2px 12px;
     padding-right: 48px;
     background: linear-gradient(135deg, rgba(255, 230, 102, 0.1), rgba(0, 234, 255, 0.1));
-    border-radius: 16px;
-    border: 1px solid rgba(255, 230, 102, 0.3);
+    text-transform: uppercase;
     text-shadow: 0 0 12px rgba(255, 230, 102, 0.5);
-    overflow: hidden;
+
+    /* Parallelogram shape */
+    transform: skewX(-15deg);
+
+    /* 8-bit pixelated borders */
+    border: 4px solid #000;
+    border-image: url("data:image/svg+xml,...") 4;
+
+    /* Orange glow shadow */
+    box-shadow:
+    0 0 2px #ff6b35,
+    0 0 4px #ff6b35,
+    0 0 6px #ff6b35,
+    0 8px 0 #b8860b,        /* Bottom border effect */
+    0 12px 0 #8b6914,       /* Second bottom border */
+    0 16px 20px rgba(255, 107, 53, 0.4);
+
+    /* Digital scan line effect */
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+                              rgba(0, 0, 0, 0.1) 4px
+    );
+
+    transition: all 0.1s ease;   /* Smooth animation */
+    user-select: none;           /* Prevent text selection */
+    overflow: hidden;            /* Hide overflow for effects */
 }
 
 /* Animated background shapes for section titles */
 h2.section-title::before {
-    content: "";
+    /* Creates horizontal scan lines */
+    content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background:
-    radial-gradient(circle at 30% 40%, rgba(0, 234, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(255, 230, 102, 0.08) 0%, transparent 50%);
-    animation: title-bg-flow 8s ease-in-out infinite;
-    z-index: -1;
+    repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.1) 2px,
+                              rgba(255, 255, 255, 0.1) 4px
+    );
+    pointer-events: none;
 }
-
 @keyframes title-bg-flow {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(20px, -10px) rotate(180deg); }
@@ -205,18 +237,54 @@ h2.section-title::before {
 
 /* Morphing hexagon decoration */
 h2.section-title::after {
-    content: "";
+    /* Creates diagonal scan animation */
+    content: '';
     position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background: var(--accent-2);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
-    animation: hex-morph 3s ease-in-out infinite;
-    opacity: 0.7;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, transparent 49%, #fff 49%, #fff 51%, transparent 51%);
+    background-size: 4px 4px;
+    opacity: 0.2;
+    pointer-events: none;
+    animation: scan 2s linear infinite;
 }
+
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+h2.section-title:hover:after {
+    /* Faster scan and flicker on hover */
+    animation: scan 1s linear infinite, flicker 0.1s ease-in-out infinite;
+}
+
+h2.section-title:hover {
+    /* Lighter gradient on hover */
+    background: linear-gradient(135deg, #fff59d 0%, #ffca28 50%, #ff9800 100%);
+    /* Enhanced glow and shadow */
+    box-shadow:
+    0 0 4px #ff6b35,
+    0 0 6px #ff6b35,
+    0 0 8px #ff6b35,
+    0 12px 0 #b8860b,
+    0 16px 0 #8b6914,
+    0 20px 25px rgba(255, 107, 53, 0.6);
+    transform: skewX(-15deg) translateY(-2px); /* Slight lift */
+    text-shadow:
+    1px 1px 0 #333,
+    2px 2px 0 #666,
+    3px 3px 0 #999;         /* 3D text effect */
+    color:white
+}
+
 
 @keyframes hex-morph {
     0%, 100% {
@@ -277,33 +345,6 @@ h2.section-title::after {
         border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
         transform: rotate(270deg);
     }
-}
-
-/* Geometric pattern in bottom corner */
-.panel::after {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 30px;
-    height: 30px;
-    background: var(--accent-2);
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    opacity: 0.2;
-    animation: panel-star-twinkle 4s ease-in-out infinite;
-}
-
-@keyframes panel-star-twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.1); }
-}
-
-.panel:hover {
-    transform: translateY(-2px);
-    box-shadow:
-    0 12px 30px rgba(0,0,0,0.4),
-    inset 0 0 0 1px rgba(108,240,255,0.15),
-    0 0 20px rgba(0, 234, 255, 0.1);
 }
 
 /* Form grid */
@@ -612,6 +653,7 @@ gap: 1rem;
     gap: 8px;
     margin-bottom: 16px;
     position: relative;
+    transform: skewX(-15deg);
 }
 
 /* Morphing underline for skill tabs */
