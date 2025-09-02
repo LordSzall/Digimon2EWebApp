@@ -1,4 +1,4 @@
-// main.js - Main Web App initialization and event handling
+// main.js - Main application initialization and event handling
 
 document.addEventListener("DOMContentLoaded", () => {
     // Get DOM elements

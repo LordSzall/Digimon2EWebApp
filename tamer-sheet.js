@@ -1,0 +1,293 @@
+// tamer-sheet.js - Tamer character sheet functionality
+
+window.TamerSheet = {
+    getDefaultData() {
+        return {
+            meta: { name:'', size:'Medium', age:0 },
+            combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
+            attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
+            skills: {
+                AGI: { "Evade_WIL":0, "Precision_INT":0, "Stealth_BOD":0 },
+                BOD: { "Athletics_AGI":0, "Endurance_WIL":0, "Feats_of_Strength_CHA":0 },
+                CHA: { "Manipulate_BOD":0, "Perform_AGI":0, "Persuasion_INT":0 },
+                INT: { "Decipher_Intent_CHA":0, "Survival_WIL":0, "Knowledge":0 },
+                WIL: { "Bravery_BOD":0, "Fortitude_INT":0, "Awareness_AGI":0 }
+            },
+            aspects: { major:{ name:'', desc:'' }, minor:{ name:'', desc:'' } },
+            torments: { marks:Array(10).fill(0), desc:'' },
+            talents: '',
+            milestones: {
+                Qualities: 0,
+                ACC: 0,
+                DOD: 0,
+                DAM: 0,
+                ARM: 0,
+                HP: 0
+            }
+        };
+    },
+
+    render(id, data) {
+        data = data || this.getDefaultData();
+        const root = document.createElement('div');
+
+        // Basic Info
+        root.appendChild(el(`<section class="panel">
+        <h2 class="section-title">Tamer Info</h2>
+        <div class="grid g-3">
+        ${textField('Name','meta.name')}
+        ${selectField('Size','meta.size',['Small','Medium'])}
+        ${numberField('Age','meta.age',{min:0})}
+        </div>
+        </section>`));
+
+        // Combat
+        const combatPanel = el(`<section class="panel">
+        <h2 class="section-title">Combat</h2>
+        <div class="grid g-3">
+        <div>
+        <label>Wound Boxes:<input type="number" data-bind="combat.wounds"/></label>
+        <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:woundTotal">0</div></div>
+        </div>
+        <div>
+        <label>Inspiration:<input type="number" data-bind="combat.inspiration"/></label>
+        <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:inspireTotal">0</div></div>
+        </div>
+        <div>
+        ${selectField('Speed','combat.speed',['Agility','Athletics'])}
+        <label>Milestones:<input type="number" data-bind="combat.milestones"/></label>
+        </div>
+        </div>
+        </section>`);
+        root.appendChild(combatPanel);
+
+        // Milestone Tracker
+        const milestonePanel = el(`<section class="panel">
+        <h2 class="section-title">Milestone Tracker</h2>
+        <div class="milestone-tracker" id="milestoneTracker-${id}"></div>
+        </section>`);
+        root.appendChild(milestonePanel);
+
+        const milestoneTracker = milestonePanel.querySelector(`#milestoneTracker-${id}`);
+
+        function updateMilestoneTracker() {
+            milestoneTracker.innerHTML = '';
+            const milestoneTypes = ['Qualities', 'ACC', 'DOD', 'DAM', 'ARM', 'HP'];
+
+            milestoneTypes.forEach(type => {
+                if (typeof data.milestones[type] !== 'number') {
+                    data.milestones[type] = 0;
+                }
+
+                const item = el(`<div class="milestone-item">
+                <div class="milestone-name">${type}</div>
+                <div class="milestone-input">
+                <input type="number" min="0" max="5" step="1" data-bind="milestones.${type}" value="${data.milestones[type]}" />
+                </div>
+                </div>`);
+
+                milestoneTracker.appendChild(item);
+            });
+        }
+        updateMilestoneTracker();
+
+        // Attributes
+        const attrPanel = el(`<section class="panel">
+        <h2 class="section-title">Attributes</h2>
+        <div class="grid g-5" id="attrGrid-${id}"></div>
+        </section>`);
+        root.appendChild(attrPanel);
+
+        const attrGrid = attrPanel.querySelector(`#attrGrid-${id}`);
+        Object.keys(data.attributes).forEach(k=>{
+            const card = el(`<div class="stat-card">
+            <div class="stat-total" data-out="attr:${k}">0</div>
+            <div class="stat-name">${k}</div>
+            <label>DP:<input type="number" data-bind="attributes.${k}.dp"/></label>
+            </div>`);
+            attrGrid.appendChild(card);
+        });
+
+        // Skills Section
+        const skillsByAttr = {
+            AGI: ["Evade (WIL)", "Precision (INT)", "Stealth (BOD)"],
+            BOD: ["Athletics (AGI)", "Endurance (WIL)", "Feats of Strength (CHA)"],
+            CHA: ["Manipulate (BOD)", "Perform (AGI)", "Persuasion (INT)"],
+            INT: ["Decipher Intent (CHA)", "Survival (WIL)", "Knowledge"],
+            WIL: ["Bravery (BOD)", "Fortitude (INT)", "Awareness (AGI)"]
+        };
+
+        const skillsPanel = el(`<section class="panel"><h2 class="section-title">Skills</h2></section>`);
+        const tabs = el(`<div class="skill-tabs" id="skillTabs-${id}"></div>`);
+        const skillsContainer = el(`<div id="skillsContainer-${id}"></div>`);
+
+        Object.keys(skillsByAttr).forEach(attr => {
+            const skillSection = document.createElement('div');
+            skillSection.className = 'skill-section';
+            skillSection.dataset.attr = attr;
+            skillSection.style.display = 'none';
+
+            skillsByAttr[attr].forEach(skill => {
+                const safeSkillName = skill.replace(/[\(\)]/g, '').replace(/\s+/g, '_');
+                const val = data.skills[attr][safeSkillName] || 0;
+
+                const entry = el(`<div class="skill-entry">
+                <label>${skill}</label>
+                <input type="number" value="${val}" data-bind="skills.${attr}.${safeSkillName}" />
+                </div>`);
+
+                skillSection.appendChild(entry);
+            });
+
+            skillsContainer.appendChild(skillSection);
+        });
+
+        Object.keys(skillsByAttr).forEach(attr => {
+            const btn = el(`<button data-skilltab="${attr}">${attr}</button>`);
+            btn.addEventListener("click", () => this.showSkills(attr, skillsContainer, tabs));
+            tabs.appendChild(btn);
+        });
+
+        skillsPanel.appendChild(tabs);
+        skillsPanel.appendChild(skillsContainer);
+        root.appendChild(skillsPanel);
+
+        // Open default tab
+        this.showSkills("AGI", skillsContainer, tabs);
+
+        // Aspects
+        const aspectPanel = el(`<section class="panel">
+        <h2 class="section-title">Aspects</h2>
+        <div class="grid g-2">
+        <div>
+        <h3>Major Aspect</h3>
+        ${textField('Name','aspects.major.name')}
+        <label>Description:<textarea data-bind="aspects.major.desc"></textarea></label>
+        </div>
+        <div>
+        <h3>Minor Aspect</h3>
+        ${textField('Name','aspects.minor.name')}
+        <label>Description:<textarea data-bind="aspects.minor.desc"></textarea></label>
+        </div>
+        </div>
+        </section>`);
+        root.appendChild(aspectPanel);
+
+        // Torments
+        const tormentPanel = el(`<section class="panel">
+        <h2 class="section-title">Torments</h2>
+        <div class="torment-track" id="tormentTrack-${id}"></div>
+        <label>Description:<textarea rows="8" data-bind="torments.desc" placeholder="Describe torments and their effects..."></textarea></label>
+        </section>`);
+        root.appendChild(tormentPanel);
+
+        const tormentTrack = tormentPanel.querySelector(`#tormentTrack-${id}`);
+
+        function updateTormentTrack() {
+            tormentTrack.innerHTML = '';
+
+            if (!data.torments.marks || data.torments.marks.length !== 10) {
+                data.torments.marks = Array(10).fill(0);
+            }
+
+            data.torments.marks.forEach((mark, i) => {
+                const box = el(`<div class="torment-box" data-index="${i}">${i+1}</div>`);
+                box.classList.add(`state-${mark}`);
+                box.addEventListener('click', () => {
+                    data.torments.marks[i] = (data.torments.marks[i] + 1) % 3;
+                    updateTormentTrack();
+                });
+                tormentTrack.appendChild(box);
+            });
+        }
+        updateTormentTrack();
+
+        // Talents
+        root.appendChild(el(`<section class="panel">
+        <h2 class="section-title">Talents</h2>
+        <label><textarea rows="16" data-bind="talents" placeholder="Describe your talents..."></textarea></label>
+        </section>`));
+
+        // Data binding
+        root.addEventListener('input', (e) => {
+            const path = e.target.getAttribute('data-bind');
+            if(path) {
+                setByPath(data, path, coerce(e.target.value));
+                this.computeTamer(data, root);
+            }
+        });
+
+        root.querySelectorAll('[data-bind]').forEach(input => {
+            const path = input.getAttribute('data-bind');
+            const v = getByPath(data, path);
+            if(typeof v !== 'undefined' && v !== null) input.value = v;
+        });
+
+            root.__getData = () => JSON.parse(JSON.stringify(data));
+            root.__setData = (payload) => {
+                const newData = JSON.parse(JSON.stringify(payload || {}));
+                Object.keys(newData).forEach(key => {
+                    data[key] = newData[key];
+                });
+
+                root.querySelectorAll('[data-bind]').forEach(input => {
+                    const path = input.getAttribute('data-bind');
+                    const v = getByPath(data, path);
+                    if(typeof v !== 'undefined' && v !== null) input.value = v;
+                });
+
+                    updateTormentTrack();
+                    updateMilestoneTracker();
+                    this.computeTamer(data, root);
+            };
+
+            // Special handling for skill inputs with parentheses
+            setTimeout(() => {
+                root.querySelectorAll('input[data-bind^="skills."]').forEach(input => {
+                    const path = input.getAttribute('data-bind');
+                    const v = getByPath(data, path);
+                    if (typeof v !== 'undefined' && v !== null) {
+                        input.value = v;
+                    }
+                });
+            }, 100);
+
+            this.computeTamer(data, root);
+            return root;
+    },
+
+    showSkills(attr, skillsContainer, tabs) {
+        skillsContainer.querySelectorAll('.skill-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        const targetSection = skillsContainer.querySelector(`[data-attr="${attr}"]`);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+        }
+
+        [...tabs.children].forEach(b => b.classList.remove("active"));
+        tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
+    },
+
+    computeTamer(data, root) {
+        // Calculate attribute totals
+        Object.keys(data.attributes).forEach(k => {
+            const total = 1 + (Number(data.attributes[k].dp)||0);
+            const out = root.querySelector(`[data-out="attr:${k}"]`);
+            if(out) out.textContent = total;
+        });
+
+            // Calculate derived stats
+            const bod = 1 + (Number(data.attributes.BOD.dp)||0);
+            const wil = 1 + (Number(data.attributes.WIL.dp)||0);
+
+            this.setTamerOut(root, 'combat:woundTotal', bod);
+            this.setTamerOut(root, 'combat:inspireTotal', wil + 2);
+    },
+
+    setTamerOut(root, key, val) {
+        const out = root.querySelector(`[data-out="${key}"]`);
+        if(out) out.textContent = val;
+    }
+};

@@ -1266,3 +1266,95 @@ gap: 1rem;
         justify-content: center;
     }
 }
+
+/* Health Bar Styling */
+.health-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0px;
+}
+
+.health-bar-container {
+    position: relative;
+    flex: 1;
+    height: 28px;
+    background: var(--black);
+    border: 4px solid #000;
+    border-image: url("data:image/svg+xml,...") 4;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transform: skewX(-15deg);
+
+    box-shadow:
+    0 0 2px #ff6b35,
+    0 0 4px #ff6b35,
+    0 0 6px #ff6b35,
+    0 0px 0px rgba(255, 107, 53, 0.4);
+}
+
+.health-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, red, orange, var(--accent-2));
+    transition: width 0.3s ease;
+}
+
+.health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'VT323', monospace;
+    font-size: 1.9rem;
+    font-weight: 1000;
+    color: var(--white);
+    text-shadow:
+    1px 1px 0 #333,
+    2px 2px 0 #666,
+    3px 3px 0 #999;         /* 3D text effect */
+    pointer-events: none;
+}
+
+h2.section-title{
+    font-family:'VT323', monospace; font-size: 2rem; letter-spacing:.1em; font-weight:1000;
+    margin:2px 0 18px; color:var(--accent-2);
+    position: relative;
+    display: inline-block;
+    padding: 2px 12px;
+    padding-right: 48px;
+    background: linear-gradient(135deg, rgba(255, 230, 102, 0.1), rgba(0, 234, 255, 0.1));
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(255, 230, 102, 0.5);
+
+    /* Parallelogram shape */
+    transform: skewX(-15deg);
+
+    /* 8-bit pixelated borders */
+    border: 4px solid #000;
+    border-image: url("data:image/svg+xml,...") 4;
+
+    /* Orange glow shadow */
+    box-shadow:
+    0 0 2px #ff6b35,
+    0 0 4px #ff6b35,
+    0 0 6px #ff6b35,
+    0 8px 0 #b8860b,        /* Bottom border effect */
+    0 12px 0 #8b6914,       /* Second bottom border */
+    0 16px 20px rgba(255, 107, 53, 0.4);
+
+    /* Digital scan line effect */
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+                              rgba(0, 0, 0, 0.1) 4px
+    );
+
+    transition: all 0.1s ease;   /* Smooth animation */
+    user-select: none;           /* Prevent text selection */
+    overflow: hidden;            /* Hide overflow for effects */
+}
+
