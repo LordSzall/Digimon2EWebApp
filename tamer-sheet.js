@@ -1,10 +1,10 @@
-// tamer-sheet.js - Tamer character sheet functionality
+// tamer-sheet.js - Tamer character sheet functionality with integrated health bar
 
 window.TamerSheet = {
     getDefaultData() {
         return {
             meta: { name:'', size:'Medium', age:0 },
-            combat: { wounds:0, inspiration:0, milestones:0, speed:'Agility' },
+            combat: { wounds:0, currentWounds:0, inspiration:0, milestones:0, speed:'Agility' },
             attributes: { AGI:{dp:0}, BOD:{dp:0}, CHA:{dp:0}, INT:{dp:0}, WIL:{dp:0} },
             skills: {
                 AGI: { "Evade_WIL":0, "Precision_INT":0, "Stealth_BOD":0 },
@@ -41,17 +41,27 @@ window.TamerSheet = {
         </div>
         </section>`));
 
-        // Combat
+        // Combat with integrated health bar
         const combatPanel = el(`<section class="panel">
         <h2 class="section-title">Combat</h2>
+        <div class="health-wrapper">
+        <div class="health-bar-container">
+        <div class="health-bar" id="health-bar-${id}"></div>
+        <span class="health-text" id="health-text-${id}">0 / 0</span>
+        </div>
+        </div>
         <div class="grid g-3">
         <div>
-        <label>Wound Boxes:<input type="number" data-bind="combat.wounds"/></label>
+        <label>Current Wounds:
+        <input type="number" id="current-wounds-${id}" data-bind="combat.currentWounds" value="0" min="0" />
+        </label>
         <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:woundTotal">0</div></div>
+        <div class="tiny">Formula: BOD attribute value</div>
         </div>
         <div>
         <label>Inspiration:<input type="number" data-bind="combat.inspiration"/></label>
         <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:inspireTotal">0</div></div>
+        <div class="tiny">Formula: WIL + 2</div>
         </div>
         <div>
         ${selectField('Speed','combat.speed',['Agility','Athletics'])}
@@ -215,6 +225,12 @@ window.TamerSheet = {
                 setByPath(data, path, coerce(e.target.value));
                 this.computeTamer(data, root);
             }
+
+            // Handle current wounds input for health bar
+            if(e.target.id === `current-wounds-${id}`) {
+                data.combat.currentWounds = Number(e.target.value) || 0;
+                this.updateHealthBar(id, data);
+            }
         });
 
         root.querySelectorAll('[data-bind]').forEach(input => {
@@ -270,6 +286,30 @@ window.TamerSheet = {
         tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
     },
 
+    // New method: Update health bar visualization
+    updateHealthBar(id, data) {
+        const bar = document.getElementById(`health-bar-${id}`);
+        const text = document.getElementById(`health-text-${id}`);
+
+        if (!bar || !text) return;
+
+        const current = Number(data.combat.currentWounds) || 0;
+        const max = 1 + (Number(data.attributes.BOD.dp)||0); // BOD-based wound total
+
+        const percentage = max > 0 ? Math.min(100, (current / max) * 100) : 0;
+        bar.style.width = percentage + "%";
+        text.textContent = `${current} / ${max}`;
+
+        // Color coding for health status
+        if (percentage <= 25) {
+            bar.className = 'health-bar health-good';
+        } else if (percentage <= 75) {
+            bar.className = 'health-bar health-warning';
+        } else {
+            bar.className = 'health-bar health-danger';
+        }
+    },
+
     computeTamer(data, root) {
         // Calculate attribute totals
         Object.keys(data.attributes).forEach(k => {
@@ -284,6 +324,13 @@ window.TamerSheet = {
 
             this.setTamerOut(root, 'combat:woundTotal', bod);
             this.setTamerOut(root, 'combat:inspireTotal', wil + 2);
+
+            // Update health bar whenever stats are recomputed
+            const idMatch = root.querySelector('[id*="current-wounds-"]');
+            if (idMatch) {
+                const extractedId = idMatch.id.replace('current-wounds-', '');
+                this.updateHealthBar(extractedId, data);
+            }
     },
 
     setTamerOut(root, key, val) {
