@@ -145,7 +145,7 @@ window.DigimonSheet = {
 
         // Attacks
         const attacksPanel = el(`<section class="panel">
-        <h2 class="section-title">Attacks</h2>
+        <h2 class="section-title">Attacks</h2><br>
         <div class="badge">SIGNATURE MOVE</div>
         <div id="attacks-${id}"></div>
         <div class="row mt-12">
