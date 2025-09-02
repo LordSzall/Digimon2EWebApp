@@ -79,7 +79,7 @@ window.DigimonSheet = {
         // Stats
         const statsPanel = el(`<section class="panel">
         <h2 class="section-title">Stats</h2>
-        <div class="grid g-5" id="statsGrid-${id}"></div>
+        <div class="grid g-4" id="statsGrid-${id}"></div>
         </section>`);
         root.appendChild(statsPanel);
 
@@ -107,7 +107,7 @@ window.DigimonSheet = {
         // Misc Stats
         const miscPanel = el(`<section class="panel">
         <h2 class="section-title">Misc Stats</h2>
-        <div class="grid g-6" id="miscGrid-${id}"></div>
+        <div class="grid g-4" id="miscGrid-${id}"></div>
         <div class="note mt-6">Formulas auto-calculate totals. Adjust Bonus to tweak values.</div>
         </section>`);
         root.appendChild(miscPanel);
