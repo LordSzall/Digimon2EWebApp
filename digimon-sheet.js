@@ -312,7 +312,7 @@ window.DigimonSheet = {
     },
 
     batteryTotal(data) {
-        return this.stageValue(data) + 1;
+        return this.stageValue(data);
     },
 
     statDPSum(data) {
