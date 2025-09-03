@@ -56,7 +56,7 @@ window.TamerSheet = {
         <input type="number" id="current-wounds-${id}" data-bind="combat.currentWounds" value="0" min="0" />
         </label>
         <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:woundTotal">0</div></div>
-        <div class="tiny">Formula: BOD attribute value</div>
+        <div class="tiny">Formula: 3 + Endurance skill</div>
         </div>
         <div>
         <label>Inspiration:<input type="number" data-bind="combat.inspiration"/></label>
@@ -294,7 +294,7 @@ window.TamerSheet = {
         if (!bar || !text) return;
 
         const current = Number(data.combat.currentWounds) || 0;
-        const max = 1 + (Number(data.attributes.BOD.dp)||0); // BOD-based wound total
+        const max = 3 + (Number(data.skills.BOD.Endurance_WIL)||0); // END+3 wound total
 
         const percentage = max > 0 ? Math.min(100, (current / max) * 100) : 0;
         bar.style.width = percentage + "%";
@@ -319,10 +319,10 @@ window.TamerSheet = {
         });
 
             // Calculate derived stats
-            const bod = 1 + (Number(data.attributes.BOD.dp)||0);
+            const end = 3 + (Number(data.skills.BOD.Endurance_WIL)||0);
             const wil = 1 + (Number(data.attributes.WIL.dp)||0);
 
-            this.setTamerOut(root, 'combat:woundTotal', bod);
+            this.setTamerOut(root, 'combat:woundTotal', end);
             this.setTamerOut(root, 'combat:inspireTotal', wil + 2);
 
             // Update health bar whenever stats are recomputed
