@@ -286,6 +286,7 @@ window.DigimonSheet = {
             };
 
             this.compute(data, root);
+            this.updateHealthBar(id, data);
             return root;
     },
 

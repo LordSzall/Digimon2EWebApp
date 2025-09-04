@@ -15,6 +15,8 @@
     <button class="btn" id="newBtn" title="Create new sheet">➕ New</button>
     <button class="btn" id="saveBtn" title="Save active sheet">💾 Save</button>
     <button class="btn" id="openBtn" title="Open saved sheet">📂 Open</button>
+    <button class="btn" id="exportBtn" title="Export sheet to file">📤 Export</button>
+    <button class="btn" id="importBtn" title="Import sheet from file">📥 Import</button>
   </header>
 
   <div class="container">
@@ -44,6 +46,19 @@
       <div id="openList" class="grid g-2"></div>
       <div class="row modal-footer">
         <button class="btn" id="closeOpen">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Progress Modal -->
+  <div class="modal hidden" id="importModal">
+    <div class="box">
+      <h3>Import Sheet</h3>
+      <div class="import-status">
+        <div class="help" id="importStatus">Select a .dda2e or .json file to import...</div>
+      </div>
+      <div class="row modal-footer">
+        <button class="btn" id="closeImport">Close</button>
       </div>
     </div>
   </div>

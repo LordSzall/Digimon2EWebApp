@@ -56,7 +56,7 @@ window.TamerSheet = {
         <input type="number" id="current-wounds-${id}" data-bind="combat.currentWounds" value="0" min="0" />
         </label>
         <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="combat:woundTotal">0</div></div>
-        <div class="tiny">Formula: 3 + Endurance skill</div>
+        <div class="tiny">Formula: BOD attribute value</div>
         </div>
         <div>
         <label>Inspiration:<input type="number" data-bind="combat.inspiration"/></label>
@@ -222,13 +222,38 @@ window.TamerSheet = {
         root.addEventListener('input', (e) => {
             const path = e.target.getAttribute('data-bind');
             if(path) {
-                setByPath(data, path, coerce(e.target.value));
-                this.computeTamer(data, root);
+                try {
+                    const value = coerce(e.target.value);
+
+                    // Additional validation based on field type
+                    if(e.target.type === 'number') {
+                        const min = e.target.min ? Number(e.target.min) : -Infinity;
+                        const max = e.target.max ? Number(e.target.max) : Infinity;
+                        const validatedValue = Math.max(min, Math.min(max, value));
+                        setByPath(data, path, validatedValue);
+
+                        // Update the input field with validated value
+                        if(value !== validatedValue) {
+                            e.target.value = validatedValue;
+                        }
+                    } else {
+                        setByPath(data, path, value);
+                    }
+
+                    this.compute(data, root);
+                } catch (error) {
+                    console.error('Error processing input:', error);
+                    // Optional: Show user feedback
+                    e.target.style.borderColor = 'var(--danger)';
+                    setTimeout(() => e.target.style.borderColor = '', 1000);
+                }
             }
 
             // Handle current wounds input for health bar
             if(e.target.id === `current-wounds-${id}`) {
-                data.combat.currentWounds = Number(e.target.value) || 0;
+                const wounds = Math.max(0, Number(e.target.value) || 0);
+                data.combat.currentWounds = wounds;
+                e.target.value = wounds; // Ensure valid value
                 this.updateHealthBar(id, data);
             }
         });
@@ -241,20 +266,39 @@ window.TamerSheet = {
 
             root.__getData = () => JSON.parse(JSON.stringify(data));
             root.__setData = (payload) => {
-                const newData = JSON.parse(JSON.stringify(payload || {}));
-                Object.keys(newData).forEach(key => {
-                    data[key] = newData[key];
-                });
+                try {
+                    // Deep merge instead of Object.assign to preserve structure
+                    const mergeDeep = (target, source) => {
+                        for (const key in source) {
+                            if (source[key] instanceof Object && key in target) {
+                                mergeDeep(target[key], source[key]);
+                            } else {
+                                target[key] = source[key];
+                            }
+                        }
+                        return target;
+                    };
 
-                root.querySelectorAll('[data-bind]').forEach(input => {
-                    const path = input.getAttribute('data-bind');
-                    const v = getByPath(data, path);
-                    if(typeof v !== 'undefined' && v !== null) input.value = v;
-                });
+                    mergeDeep(data, payload || {});
 
-                    updateTormentTrack();
-                    updateMilestoneTracker();
-                    this.computeTamer(data, root);
+                    // Ensure required structures exist
+                    data.skills = data.skills || this.getDefaultData().skills;
+                    data.torments = data.torments || { marks: Array(10).fill(0), desc: '' };
+
+                    root.querySelectorAll('[data-bind]').forEach(input => {
+                        const path = input.getAttribute('data-bind');
+                        const v = getByPath(data, path);
+                        if(typeof v !== 'undefined' && v !== null) input.value = v;
+                    });
+
+                        updateTormentTrack();  // ✅ This exists
+                        updateMilestoneTracker();  // ✅ This exists
+                        this.computeTamer(data, root);  // ✅ Correct method name
+
+                } catch (error) {
+                    console.error('Error setting data:', error);
+                    alert('Error loading data. The sheet may be corrupted.');
+                }
             };
 
             // Special handling for skill inputs with parentheses
@@ -269,6 +313,7 @@ window.TamerSheet = {
             }, 100);
 
             this.computeTamer(data, root);
+            this.updateHealthBar(id, data);
             return root;
     },
 
@@ -294,7 +339,7 @@ window.TamerSheet = {
         if (!bar || !text) return;
 
         const current = Number(data.combat.currentWounds) || 0;
-        const max = 3 + (Number(data.skills.BOD.Endurance_WIL)||0); // END+3 wound total
+        const max = 1 + (Number(data.attributes.BOD.dp)||0); // BOD-based wound total
 
         const percentage = max > 0 ? Math.min(100, (current / max) * 100) : 0;
         bar.style.width = percentage + "%";
@@ -319,10 +364,10 @@ window.TamerSheet = {
         });
 
             // Calculate derived stats
-            const end = 3 + (Number(data.skills.BOD.Endurance_WIL)||0);
+            const bod = 1 + (Number(data.attributes.BOD.dp)||0);
             const wil = 1 + (Number(data.attributes.WIL.dp)||0);
 
-            this.setTamerOut(root, 'combat:woundTotal', end);
+            this.setTamerOut(root, 'combat:woundTotal', bod);
             this.setTamerOut(root, 'combat:inspireTotal', wil + 2);
 
             // Update health bar whenever stats are recomputed

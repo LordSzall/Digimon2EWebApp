@@ -235,7 +235,7 @@ h2.section-title::before {
     50% { transform: translate(20px, -10px) rotate(180deg); }
 }
 
-/* Morphing hexagon decoration */
+/* Digital Skew Section Decoration */
 h2.section-title::after {
     /* Creates diagonal scan animation */
     content: '';
@@ -1316,7 +1316,24 @@ gap: 1rem;
     pointer-events: none;
 }
 
-h2.section-title{
+/* Additional styles for Export/Import buttons */
+
+/* Enhanced button hover effects for export/import */
+#exportBtn {
+border-color: rgba(0, 245, 157, 0.35);
+position: relative;
+overflow: hidden;
+}
+
+#exportBtn::before {
+content: "";
+position: absolute;
+top: 0;
+left: -100%;
+width:
+}
+
+button.empty-button{
     font-family:'VT323', monospace; font-size: 2rem; letter-spacing:.1em; font-weight:1000;
     margin:2px 0 18px; color:var(--accent-2);
     position: relative;
@@ -1358,3 +1375,78 @@ h2.section-title{
     overflow: hidden;            /* Hide overflow for effects */
 }
 
+/* Animated background shapes for section titles */
+button.empty-button::before {
+    /* Creates horizontal scan lines */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+    repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.1) 2px,
+                              rgba(255, 255, 255, 0.1) 4px
+    );
+    pointer-events: none;
+}
+@keyframes title-bg-flow {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(20px, -10px) rotate(180deg); }
+}
+
+/* Digital Skew Section Decoration */
+button.empty-button::after {
+    /* Creates diagonal scan animation */
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, transparent 49%, #fff 49%, #fff 51%, transparent 51%);
+    background-size: 4px 4px;
+    opacity: 0.2;
+    pointer-events: none;
+    animation: scan 2s linear infinite;
+}
+
+button.empty-button:hover:after {
+    /* Faster scan and flicker on hover */
+    animation: scan 1s linear infinite, flicker 0.1s ease-in-out infinite;
+}
+
+button.empty-button:hover {
+    /* Lighter gradient on hover */
+    background: linear-gradient(135deg, #fff59d 0%, #ffca28 50%, #ff9800 100%);
+    /* Enhanced glow and shadow */
+    box-shadow:
+    0 0 4px #ff6b35,
+    0 0 6px #ff6b35,
+    0 0 8px #ff6b35,
+    0 12px 0 #b8860b,
+    0 16px 0 #8b6914,
+    0 20px 25px rgba(255, 107, 53, 0.6);
+    transform: skewX(-15deg) translateY(-2px); /* Slight lift */
+    text-shadow:
+    1px 1px 0 #333,
+    2px 2px 0 #666,
+    3px 3px 0 #999;         /* 3D text effect */
+    color:white
+}
+
+
+@keyframes hex-morph {
+    0%, 100% {
+        clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+        transform: translateY(-50%) rotate(0deg);
+    }
+    50% {
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        transform: translateY(-50%) rotate(180deg);
+    }
+}
