@@ -240,7 +240,8 @@ window.TamerSheet = {
                         setByPath(data, path, value);
                     }
 
-                    this.compute(data, root);
+                    // Recompute everything including health bar
+                    this.computeTamer(data, root, id);
                 } catch (error) {
                     console.error('Error processing input:', error);
                     // Optional: Show user feedback
@@ -291,9 +292,9 @@ window.TamerSheet = {
                         if(typeof v !== 'undefined' && v !== null) input.value = v;
                     });
 
-                        updateTormentTrack();  // ✅ This exists
-                        updateMilestoneTracker();  // ✅ This exists
-                        this.computeTamer(data, root);  // ✅ Correct method name
+                        updateTormentTrack();
+                        updateMilestoneTracker();
+                        this.computeTamer(data, root, id); // Pass id for health bar updates
 
                 } catch (error) {
                     console.error('Error setting data:', error);
@@ -312,8 +313,12 @@ window.TamerSheet = {
                 });
             }, 100);
 
-            this.computeTamer(data, root);
-            this.updateHealthBar(id, data);
+            // Initial computation and health bar update
+            // Use setTimeout to ensure DOM is fully rendered
+            setTimeout(() => {
+                this.computeTamer(data, root, id);
+            }, 50);
+
             return root;
     },
 
@@ -331,7 +336,7 @@ window.TamerSheet = {
         tabs.querySelector(`[data-skilltab="${attr}"]`).classList.add("active");
     },
 
-    // New method: Update health bar visualization
+    // Update health bar visualization
     updateHealthBar(id, data) {
         const bar = document.getElementById(`health-bar-${id}`);
         const text = document.getElementById(`health-text-${id}`);
@@ -355,7 +360,7 @@ window.TamerSheet = {
         }
     },
 
-    computeTamer(data, root) {
+    computeTamer(data, root, id) {
         // Calculate attribute totals
         Object.keys(data.attributes).forEach(k => {
             const total = 1 + (Number(data.attributes[k].dp)||0);
@@ -364,17 +369,23 @@ window.TamerSheet = {
         });
 
             // Calculate derived stats
-            const bod = 1 + (Number(data.attributes.BOD.dp)||0);
             const wil = 1 + (Number(data.attributes.WIL.dp)||0);
+            const enduranceSkill = Number(data.skills.BOD.Endurance_WIL) || 0;
+            const woundTotal = 3 + enduranceSkill;
 
-            this.setTamerOut(root, 'combat:woundTotal', bod);
+            this.setTamerOut(root, 'combat:woundTotal', woundTotal);
             this.setTamerOut(root, 'combat:inspireTotal', wil + 2);
 
             // Update health bar whenever stats are recomputed
-            const idMatch = root.querySelector('[id*="current-wounds-"]');
-            if (idMatch) {
-                const extractedId = idMatch.id.replace('current-wounds-', '');
-                this.updateHealthBar(extractedId, data);
+            if (id) {
+                this.updateHealthBar(id, data);
+            } else {
+                // Fallback: try to extract ID from DOM
+                const idMatch = root.querySelector('[id*="current-wounds-"]');
+                if (idMatch) {
+                    const extractedId = idMatch.id.replace('current-wounds-', '');
+                    this.updateHealthBar(extractedId, data);
+                }
             }
     },
 
