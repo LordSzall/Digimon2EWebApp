@@ -165,19 +165,24 @@ window.SaveLoad = {
             alert('Error importing sheet: ' + error.message);
         }
     },
-
+    
     open(openListElement, openModalElement) {
-        try {
-            openListElement.innerHTML = '';
-            const saves = Object.keys(localStorage)
-            .filter(k => k.startsWith('digi2e:'))
-            .sort();
-
-            if(saves.length === 0) {
-                openListElement.appendChild(el('<div class="panel"><div class="help">No saved sheets found.</div></div>'));
-                openModalElement.classList.remove('hidden');
-                return;
-            }
+            try {
+                openListElement.innerHTML = '';
+                // Add scrollbar styling to the container
+                openListElement.style.maxHeight = '60vh';
+                openListElement.style.overflowY = 'auto';
+                openListElement.style.paddingRight = '8px';
+                
+                const saves = Object.keys(localStorage)
+                .filter(k => k.startsWith('digi2e:'))
+                .sort();
+    
+                if(saves.length === 0) {
+                    openListElement.appendChild(el('<div class="panel"><div class="help">No saved sheets found.</div></div>'));
+                    openModalElement.classList.remove('hidden');
+                    return;
+                }
 
             saves.forEach(key => {
                 try {
