@@ -344,7 +344,7 @@ window.TamerSheet = {
         if (!bar || !text) return;
 
         const current = Number(data.combat.currentWounds) || 0;
-        const max = 1 + (Number(data.attributes.BOD.dp)||0); // BOD-based wound total
+        const max = 3 + (Number(data.skills.BOD.Endurance_WIL)||0); // BOD-based wound total
 
         const percentage = max > 0 ? Math.min(100, (current / max) * 100) : 0;
         bar.style.width = percentage + "%";
