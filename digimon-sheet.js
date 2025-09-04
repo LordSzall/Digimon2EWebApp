@@ -1,4 +1,4 @@
-// digimon-sheet.js - Digimon character sheet functionality with integrated health bar
+// digimon-sheet.js - Enhanced Digimon character sheet functionality with Quality system
 
 window.DigimonSheet = {
     getDefaultData() {
@@ -16,13 +16,25 @@ window.DigimonSheet = {
                 Resist: { bonus: 0 }
             },
             attacks:[ {name:'', range:'Melee', type:'Damage', acc:0, dmg:0, tags:['','','']} ],
-            dp:{ quality:0, bonus:0 },
-            qualities: ''
+            dp:{ bonus:0 },
+            qualities: {
+                list: [],
+                notes: ''
+            }
         };
     },
 
     render(id, data) {
         data = data || this.getDefaultData();
+
+        // Ensure qualities structure exists
+        if (!data.qualities) {
+            data.qualities = { list: [], notes: '' };
+        }
+        if (!Array.isArray(data.qualities.list)) {
+            data.qualities.list = [];
+        }
+
         const root = document.createElement('div');
 
         // Basic Info
@@ -145,12 +157,13 @@ window.DigimonSheet = {
 
         // Attacks
         const attacksPanel = el(`<section class="panel">
-        <h2 class="section-title">Attacks</h2><br>
+        <h2 class="section-title">Attacks</h2>
+        <div class="row mt-12" style="float:right">
+        <button class="empty-button" id="addAttack-${id}">➕ Add Attack</button>
+        </div>
+        <br>
         <div class="badge">SIGNATURE MOVE</div>
         <div id="attacks-${id}"></div>
-        <div class="row mt-12">
-        <button class="btn" id="addAttack-${id}">➕ Add Attack</button>
-        </div>
         </section>`);
         root.appendChild(attacksPanel);
 
@@ -223,11 +236,28 @@ window.DigimonSheet = {
             refreshAttacks();
         });
 
+        // Enhanced Qualities Section
+        const qualitiesPanel = el(`
+        <section class="panel">
+        <h2 class="section-title">Qualities</h2>
+        <div class="row mb-16" style="float:right;">
+        <button class="empty-button" id="addQuality-${id}">
+        <span>➕ Add Quality</span>
+        </button>
+        </div>
+        <div class="quality-grid" id="qualityGrid-${id}"></div>
+        <label>
+        <textarea rows="8" data-bind="qualities.notes" placeholder="Additional quality notes and descriptions..."></textarea>
+        </label>
+        </section>
+        `);
+        root.appendChild(qualitiesPanel);
+
         // DP Allocation
         const dpPanel = el(`<section class="panel">
         <h2 class="section-title">DP Allocation</h2>
         <div class="grid g-3">
-        <div><label>Quality DP:<input type="number" step="1" min="0" data-bind="dp.quality" /></label></div>
+        <div><div class="muted">Quality DP:</div><div class="kpi"><div class="value" data-out="qualityDP">0</div></div></div>
         <div><div class="muted">Stat DP:</div><div class="kpi"><div class="value" data-out="statDP">0</div></div></div>
         <div><label>Bonus DP:<input type="number" step="1" data-bind="dp.bonus" /></label></div>
         </div>
@@ -238,15 +268,78 @@ window.DigimonSheet = {
         </section>`);
         root.appendChild(dpPanel);
 
-        // Qualities
-        root.appendChild(el(`
-        <section class="panel">
-        <h2 class="section-title">Qualities</h2>
-        <label>
-        <textarea rows="16" data-bind="qualities" placeholder="Write qualities and descriptions here..."></textarea>
-        </label>
-        </section>
-        `));
+        // Quality management functions
+        function renderQualityGrid() {
+            const grid = qualitiesPanel.querySelector(`#qualityGrid-${id}`);
+            grid.innerHTML = '';
+
+            data.qualities.list.forEach((quality, index) => {
+                const qualityBtn = el(`
+                <div class="quality-btn ${quality.type.toLowerCase()}" data-quality-index="${index}">
+                <span class="quality-name">${quality.name || 'Unnamed Quality'}</span>
+                <span class="quality-remove" title="Remove Quality">✕</span>
+                </div>
+                `);
+
+                // Click to view quality details
+                qualityBtn.querySelector('.quality-name').addEventListener('click', () => {
+                    showQualityDetail(quality);
+                });
+
+                // Click to remove quality
+                qualityBtn.querySelector('.quality-remove').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (confirm(`Remove quality "${quality.name}"?`)) {
+                        data.qualities.list.splice(index, 1);
+                        renderQualityGrid();
+                        this.compute(data, root);
+                    }
+                });
+
+                grid.appendChild(qualityBtn);
+            });
+        }
+
+        function showQualityDetail(quality) {
+            const modal = document.getElementById('qualityDetailModal');
+            const title = document.getElementById('qualityDetailTitle');
+            const type = document.getElementById('qualityDetailType');
+            const dpCost = document.getElementById('qualityDetailDP');
+            const description = document.getElementById('qualityDetailDescription');
+
+            title.textContent = quality.name || 'Unnamed Quality';
+            type.textContent = quality.type || 'Static';
+            type.className = `quality-type-badge ${(quality.type || 'Static').toLowerCase()}`;
+            dpCost.textContent = `Cost: ${quality.dpCost || 0} DP`;
+            description.textContent = quality.description || 'No description provided.';
+
+            modal.classList.remove('hidden');
+        }
+
+        // Add Quality button event
+        qualitiesPanel.querySelector(`#addQuality-${id}`).addEventListener('click', () => {
+            showQualityModal();
+        });
+
+        function showQualityModal() {
+            const modal = document.getElementById('qualityModal');
+            const nameInput = document.getElementById('qualityName');
+            const dpInput = document.getElementById('qualityDP');
+            const typeSelect = document.getElementById('qualityType');
+            const descInput = document.getElementById('qualityDescription');
+
+            // Clear inputs
+            nameInput.value = '';
+            dpInput.value = '1';
+            typeSelect.value = 'Static';
+            descInput.value = '';
+
+            modal.classList.remove('hidden');
+            nameInput.focus();
+        }
+
+        // Initial quality grid render
+        renderQualityGrid();
 
         // Data binding
         root.addEventListener('input', (e) => {
@@ -276,13 +369,32 @@ window.DigimonSheet = {
             root.__getData = () => JSON.parse(JSON.stringify(data));
             root.__setData = (payload) => {
                 data = Object.assign(data, payload||{});
+
+                // Ensure qualities structure
+                if (!data.qualities) {
+                    data.qualities = { list: [], notes: '' };
+                }
+                if (!Array.isArray(data.qualities.list)) {
+                    data.qualities.list = [];
+                }
+
                 root.querySelectorAll('[data-bind]').forEach(input => {
                     const path = input.getAttribute('data-bind');
                     const v = getByPath(data, path);
                     if(typeof v !== 'undefined' && v !== null) input.value = v;
                 });
                     refreshAttacks();
+                    renderQualityGrid();
                     this.compute(data, root);
+            };
+
+            // Store reference to quality functions for modal access
+            root._qualityFunctions = {
+                addQuality: (qualityData) => {
+                    data.qualities.list.push(qualityData);
+                    renderQualityGrid();
+                    this.compute(data, root);
+                }
             };
 
             this.compute(data, root);
@@ -320,8 +432,13 @@ window.DigimonSheet = {
         return ['ACC','DOD','DAM','ARM','HP'].reduce((s,k) => s + (Number(data.stats[k].dp)||0), 0);
     },
 
+    qualityDPSum(data) {
+        if (!data.qualities || !Array.isArray(data.qualities.list)) return 0;
+        return data.qualities.list.reduce((sum, quality) => sum + (Number(quality.dpCost) || 0), 0);
+    },
+
     spentDP(data) {
-        return (Number(data.dp.quality)||0) + this.statDPSum(data);
+        return this.qualityDPSum(data) + this.statDPSum(data);
     },
 
     totalAllocDP(data) {
@@ -341,7 +458,7 @@ window.DigimonSheet = {
         }
     },
 
-    // New method: Update health bar visualization
+    // Update health bar visualization
     updateHealthBar(id, data) {
         const bar = document.getElementById(`health-bar-${id}`);
         const text = document.getElementById(`health-text-${id}`);
@@ -387,6 +504,7 @@ window.DigimonSheet = {
 
                     this.setOut(root, 'woundTotal', this.woundTotal(data));
                     this.setOut(root, 'batteryTotal', this.batteryTotal(data));
+                    this.setOut(root, 'qualityDP', this.qualityDPSum(data));
                     this.setOut(root, 'statDP', this.statDPSum(data));
                     this.setOut(root, 'spentDP', this.spentDP(data));
                     this.setOut(root, 'totalDP', this.totalAllocDP(data));

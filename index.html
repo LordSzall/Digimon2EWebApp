@@ -43,7 +43,7 @@
   <div class="modal hidden" id="openModal">
     <div class="box">
       <h3>Open Saved Sheets</h3>
-      <div id="openList" class="grid g-6"></div>
+      <div id="openList" class="grid g-2"></div>
       <div class="row modal-footer">
         <button class="btn" id="closeOpen">Close</button>
       </div>
@@ -59,6 +59,53 @@
       </div>
       <div class="row modal-footer">
         <button class="btn" id="closeImport">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Quality Modal -->
+  <div class="modal hidden" id="qualityModal">
+    <div class="box">
+      <h3>Add Quality</h3>
+      <div class="grid g-2">
+        <label>Name
+          <input type="text" id="qualityName" placeholder="Quality name..." />
+        </label>
+        <label>DP Cost
+          <input type="number" id="qualityDP" min="0" value="1" />
+        </label>
+      </div>
+      <div class="grid g-2">
+        <label>Type
+          <select id="qualityType">
+            <option value="Static">Static</option>
+            <option value="Attack">Attack</option>
+            <option value="Trigger">Trigger</option>
+          </select>
+        </label>
+      </div>
+      <label>Description
+        <textarea id="qualityDescription" rows="4" placeholder="Describe the quality's effects..."></textarea>
+      </label>
+      <div class="row modal-footer">
+        <button class="btn" id="cancelQuality">Cancel</button>
+        <button class="btn primary" id="confirmQuality">Add Quality</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quality Detail Modal -->
+  <div class="modal hidden" id="qualityDetailModal">
+    <div class="box">
+      <h3 id="qualityDetailTitle">Quality Name</h3>
+      <div class="quality-type-badge" id="qualityDetailType">Static</div>
+      <div class="quality-dp-cost" id="qualityDetailDP">Cost: 1 DP</div>
+      <div class="hr"></div>
+      <div class="quality-description-container">
+        <div id="qualityDetailDescription">Quality description will appear here...</div>
+      </div>
+      <div class="row modal-footer">
+        <button class="btn" id="closeQualityDetail">Close</button>
       </div>
     </div>
   </div>
