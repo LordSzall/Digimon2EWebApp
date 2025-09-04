@@ -1,5 +1,11 @@
 # Dr. Digitama's Character Sheet Manager (2nd Edition)
-*Current version: Beta 1.2.0*
+*Current version: Beta 1.2.1*
+
+## UPDATED FEATURES:
+- **Health Bar Fix**: All Health Bars for Wound Boxes initialize when a sheet is created.
+- **Export/Import**: Sheet Data can now be exported/imported as .json files.
+- **Empty Tab Buttons**: When no tabs are loaded, buttons will appear for you to create a new Digimon/Tamer sheet.
+- **Updated Prompts**: New prompt windows for saving and error handling.
 
 A web-based character sheet application for the **Digimon Digital Adventures 2nd Edition** tabletop roleplaying game.  
 This tool allows players to create and manage **Tamer** and **Digimon** sheets in a modern, digital style.
