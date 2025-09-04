@@ -255,7 +255,7 @@ window.TamerSheet = {
                 const wounds = Math.max(0, Number(e.target.value) || 0);
                 data.combat.currentWounds = wounds;
                 e.target.value = wounds; // Ensure valid value
-                this.updateHealthBar(id, data);
+                // Health bar will be updated by computeTamer call above
             }
         });
 
