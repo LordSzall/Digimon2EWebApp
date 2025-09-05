@@ -37,6 +37,9 @@ window.DigimonSheet = {
 
         const root = document.createElement('div');
 
+        // Store reference to 'this' for use in nested functions
+        const self = this;
+
         // Basic Info
         root.appendChild(el(`
         <section class="panel">
@@ -286,13 +289,13 @@ window.DigimonSheet = {
                     showQualityDetail(quality);
                 });
 
-                // Click to remove quality
+                // Click to remove quality - FIXED: Use 'self' instead of 'this'
                 qualityBtn.querySelector('.quality-remove').addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (confirm(`Remove quality "${quality.name}"?`)) {
                         data.qualities.list.splice(index, 1);
                         renderQualityGrid();
-                        this.compute(data, root);
+                        self.compute(data, root);
                     }
                 });
 
@@ -346,13 +349,13 @@ window.DigimonSheet = {
             const path = e.target.getAttribute('data-bind');
             if(path) {
                 setByPath(data, path, coerce(e.target.value));
-                this.compute(data, root);
+                self.compute(data, root);
             }
 
             // Handle current wounds input for health bar
             if(e.target.id === `current-wounds-${id}`) {
                 data.combat.currentWounds = Number(e.target.value) || 0;
-                this.updateHealthBar(id, data);
+                self.updateHealthBar(id, data);
             }
         });
 
@@ -363,7 +366,7 @@ window.DigimonSheet = {
         });
 
             root.querySelectorAll('select[data-bind]').forEach(sel => {
-                sel.addEventListener('change', () => this.compute(data, root));
+                sel.addEventListener('change', () => self.compute(data, root));
             });
 
             root.__getData = () => JSON.parse(JSON.stringify(data));
@@ -385,7 +388,7 @@ window.DigimonSheet = {
                 });
                     refreshAttacks();
                     renderQualityGrid();
-                    this.compute(data, root);
+                    self.compute(data, root);
             };
 
             // Store reference to quality functions for modal access
@@ -393,12 +396,12 @@ window.DigimonSheet = {
                 addQuality: (qualityData) => {
                     data.qualities.list.push(qualityData);
                     renderQualityGrid();
-                    this.compute(data, root);
+                    self.compute(data, root);
                 }
             };
 
-            this.compute(data, root);
-            this.updateHealthBar(id, data);
+            self.compute(data, root);
+            self.updateHealthBar(id, data);
             return root;
     },
 
