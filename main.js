@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Quality modal elements
     const qualityModal = document.getElementById('qualityModal');
     const qualityDetailModal = document.getElementById('qualityDetailModal');
-    const cancelQuality = document.getElementById('cancelQuality');
+    const qualityModalTitle = document.getElementById('qualityModalTitle');
     const confirmQuality = document.getElementById('confirmQuality');
+    const cancelQuality = document.getElementById('cancelQuality');
     const closeQualityDetail = document.getElementById('closeQualityDetail');
 
     // Initialize TabManager
@@ -36,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Quality modal event listeners
     cancelQuality.addEventListener('click', () => {
         qualityModal.classList.add('hidden');
+        // Clear the editing reference
+        qualityModal._editingQuality = null;
     });
 
     confirmQuality.addEventListener('click', () => {
@@ -62,25 +65,54 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Get the active sheet and add the quality
+        // Get the active sheet
         const activeSheet = window.TabManager.getActiveSheet();
-        if (activeSheet && activeSheet.firstElementChild._qualityFunctions) {
-            const qualityData = {
-                name: name,
-                dpCost: dpCost,
-                type: type,
-                description: description
-            };
-
-            activeSheet.firstElementChild._qualityFunctions.addQuality(qualityData);
-            qualityModal.classList.add('hidden');
-        } else {
+        if (!activeSheet || !activeSheet.firstElementChild._qualityFunctions) {
             alert('No active sheet found or quality system not available.');
+            return;
         }
+
+        const qualityData = {
+            name: name,
+            dpCost: dpCost,
+            type: type,
+            description: description
+        };
+
+        // Check if we're editing an existing quality
+        const editingQualityIndex = qualityModal._editingQuality;
+        if (editingQualityIndex !== undefined && editingQualityIndex !== null) {
+            // Edit mode - pass the index and new data
+            activeSheet.firstElementChild._qualityFunctions.editQuality(editingQualityIndex, qualityData);
+            // Clear the editing reference
+            qualityModal._editingQuality = null;
+            // Update button text back to default (handled by observer)
+        } else {
+            // Add mode
+            activeSheet.firstElementChild._qualityFunctions.addQuality(qualityData);
+        }
+
+        qualityModal.classList.add('hidden');
+        // Clear the editing reference
+        qualityModal._editingQuality = null;
     });
 
     closeQualityDetail.addEventListener('click', () => {
         qualityDetailModal.classList.add('hidden');
+    });
+
+    document.getElementById('editQuality').addEventListener('click', () => {
+        const qualityDetailModal = document.getElementById('qualityDetailModal');
+        const qualityIndex = parseInt(qualityDetailModal.dataset.qualityIndex);
+
+        if (!isNaN(qualityIndex)) {
+            const activeSheet = window.TabManager.getActiveSheet();
+            if (activeSheet && activeSheet.firstElementChild._qualityFunctions) {
+                // Close detail modal and open edit modal
+                qualityDetailModal.classList.add('hidden');
+                activeSheet.firstElementChild._qualityFunctions.openEditModal(qualityIndex);
+            }
+        }
     });
 
     // Save and Load functionality
@@ -167,6 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
             [newModal, openModal, importModal, qualityModal, qualityDetailModal].forEach(modal => {
                 modal.classList.add('hidden');
             });
+            // Clear editing reference when closing with ESC
+            qualityModal._editingQuality = null;
         }
     });
 
@@ -175,6 +209,13 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.add('hidden');
+                // Clear editing reference when closing quality modal
+                if (modal === qualityModal) {
+                    qualityModal._editingQuality = null;
+                    // Reset modal title and button text
+                    qualityModalTitle.textContent = 'Add Quality';
+                    confirmQuality.textContent = 'Add Quality';
+                }
             }
         });
     });
@@ -187,9 +228,34 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (e.key === 'Escape') {
             e.preventDefault();
             qualityModal.classList.add('hidden');
+            qualityModal._editingQuality = null;
+            // Reset modal title and button text
+            qualityModalTitle.textContent = 'Add Quality';
+            confirmQuality.textContent = 'Add Quality';
         }
     });
 
+    // Listen for when quality modal is opened in edit mode to update UI
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                const target = mutation.target;
+                if (target.id === 'qualityModal' && !target.classList.contains('hidden')) {
+                    // Modal just opened - check if we're in edit mode
+                    if (qualityModal._editingQuality) {
+                        qualityModalTitle.textContent = 'Edit Quality';
+                        confirmQuality.textContent = 'Save Changes';
+                    } else {
+                        qualityModalTitle.textContent = 'Add Quality';
+                        confirmQuality.textContent = 'Add Quality';
+                    }
+                }
+            }
+        });
+    });
+
+    observer.observe(qualityModal, { attributes: true });
+
     // Start with a fresh Digimon sheet
     window.TabManager.addTab('New Digimon','digimon');
- });
+});

@@ -286,7 +286,7 @@ window.DigimonSheet = {
 
                 // Click to view quality details
                 qualityBtn.querySelector('.quality-name').addEventListener('click', () => {
-                    showQualityDetail(quality);
+                    showQualityDetail(quality, index);
                 });
 
                 // Click to remove quality - FIXED: Use 'self' instead of 'this'
@@ -303,7 +303,7 @@ window.DigimonSheet = {
             });
         }
 
-        function showQualityDetail(quality) {
+        function showQualityDetail(quality, index) {
             const modal = document.getElementById('qualityDetailModal');
             const title = document.getElementById('qualityDetailTitle');
             const type = document.getElementById('qualityDetailType');
@@ -316,13 +316,11 @@ window.DigimonSheet = {
             dpCost.textContent = `Cost: ${quality.dpCost || 0} DP`;
             description.textContent = quality.description || 'No description provided.';
 
+            // Store the quality index for editing
+            modal.dataset.qualityIndex = index;
+
             modal.classList.remove('hidden');
         }
-
-        // Add Quality button event
-        qualitiesPanel.querySelector(`#addQuality-${id}`).addEventListener('click', () => {
-            showQualityModal();
-        });
 
         function showQualityModal() {
             const modal = document.getElementById('qualityModal');
@@ -340,6 +338,11 @@ window.DigimonSheet = {
             modal.classList.remove('hidden');
             nameInput.focus();
         }
+
+        // Add Quality button event
+        qualitiesPanel.querySelector(`#addQuality-${id}`).addEventListener('click', () => {
+            showQualityModal();
+        });
 
         // Initial quality grid render
         renderQualityGrid();
@@ -397,13 +400,36 @@ window.DigimonSheet = {
                     data.qualities.list.push(qualityData);
                     renderQualityGrid();
                     self.compute(data, root);
+                },
+                editQuality: (qualityIndex, newQualityData) => {
+                    if (qualityIndex >= 0 && qualityIndex < data.qualities.list.length) {
+                        data.qualities.list[qualityIndex] = newQualityData;
+                        renderQualityGrid();
+                        self.compute(data, root);
+                    }
+                },
+                // Add this function to open modal in edit mode
+                openEditModal: (qualityIndex) => {
+                    const quality = data.qualities.list[qualityIndex];
+                    const modal = document.getElementById('qualityModal');
+
+                    // Fill the form with existing data
+                    document.getElementById('qualityName').value = quality.name || '';
+                    document.getElementById('qualityDP').value = quality.dpCost || 1;
+                    document.getElementById('qualityType').value = quality.type || 'Static';
+                    document.getElementById('qualityDescription').value = quality.description || '';
+
+                    // Set editing reference
+                    modal._editingQuality = qualityIndex;
+
+                    modal.classList.remove('hidden');
                 }
             };
 
             self.compute(data, root);
             self.updateHealthBar(id, data);
             return root;
-    },
+    }, // <-- This closes the render function
 
     stageValue(data) {
         return STAGE_MAP[String(data.meta.stage)]||1;
