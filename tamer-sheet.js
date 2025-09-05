@@ -92,7 +92,7 @@ window.TamerSheet = {
                 const item = el(`<div class="milestone-item">
                 <div class="milestone-name">${type}</div>
                 <div class="milestone-input">
-                <input type="number" min="0" max="5" step="1" data-bind="milestones.${type}" value="${data.milestones[type]}" />
+                <input type="number" min="0" max="99" step="1" data-bind="milestones.${type}" value="${data.milestones[type]}" />
                 </div>
                 </div>`);
 
