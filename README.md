@@ -1,5 +1,15 @@
 # Dr. Digitama's Character Sheet Manager (2nd Edition)
-*Current version: Beta 1.2.1*
+*Current version: Beta 1.2.2*
+
+## UPDATED FEATURES:
+- **Qualities Section UI**: Qualities can now be added separately, with their descriptions accessible upon tapping. 
+- **Create/Edit Qualities**: Added framework for creating/adding Qualities.
+- **DP Allocation Update**: Quality DP is now tracked via the Qualities section, totalling each Qualities' DP.
+- **Special Orders Section**: Tamers can now view their Special Orders separately from Tamer Talents.
+- **Automatic Order-Handling**: Special Orders are added automatically, appearing as soon as the Tamer's Attribute is increased.
+- **Button Styling Updated**: Some button designs have been updated.
+
+*Patch Notes: Beta 1.2.1*
 
 ## UPDATED FEATURES:
 - **Health Bar Fix**: All Health Bars for Wound Boxes initialize when a sheet is created.
@@ -38,6 +48,8 @@ This tool allows players to create and manage **Tamer** and **Digimon** sheets i
 - Export to PDF.
 - Talent/Quality Libraries.
 - Improved Mobile UI Handling.
+- Improved Attack Section Handling
+- Active Effects Handling
 
 ## How to Run Locally
 1. Clone the repository:
