@@ -1,4 +1,4 @@
-// tamer-sheet.js - Tamer character sheet functionality with integrated health bar
+// tamer-sheet.js - Tamer character sheet functionality with integrated health bar and Special Orders
 
 window.TamerSheet = {
     getDefaultData() {
@@ -23,6 +23,9 @@ window.TamerSheet = {
                 DAM: 0,
                 ARM: 0,
                 HP: 0
+            },
+            specialOrders: {
+                available: []
             }
         };
     },
@@ -30,6 +33,11 @@ window.TamerSheet = {
     render(id, data) {
         data = data || this.getDefaultData();
         const root = document.createElement('div');
+
+        // Ensure special orders structure exists
+        if (!data.specialOrders) {
+            data.specialOrders = { available: [] };
+        }
 
         // Basic Info
         root.appendChild(el(`<section class="panel">
@@ -70,6 +78,13 @@ window.TamerSheet = {
         </div>
         </section>`);
         root.appendChild(combatPanel);
+
+        // Special Orders Section
+        const specialOrdersPanel = el(`<section class="panel">
+        <h2 class="section-title">Special Orders</h2>
+        <div class="special-orders-grid" id="specialOrdersGrid-${id}"></div>
+        </section>`);
+        root.appendChild(specialOrdersPanel);
 
         // Milestone Tracker
         const milestonePanel = el(`<section class="panel">
@@ -218,6 +233,131 @@ window.TamerSheet = {
         <label><textarea rows="16" data-bind="talents" placeholder="Describe your talents..."></textarea></label>
         </section>`));
 
+        // Special Orders Management Functions
+        function updateSpecialOrdersDisplay() {
+            const grid = specialOrdersPanel.querySelector(`#specialOrdersGrid-${id}`);
+            grid.innerHTML = '';
+
+            // Check if SpecialOrders is available
+            if (typeof window.SpecialOrders === 'undefined') {
+                grid.appendChild(el(`<div class="note">Special Orders system not loaded. Please include special-orders.js script.</div>`));
+                return;
+            }
+
+            // Calculate available special orders based on current attribute levels
+            const currentOrders = getAvailableSpecialOrders(data);
+
+            if (currentOrders.length === 0) {
+                grid.appendChild(el(`<div class="note">No Special Orders Unlocked.</div>`));
+                return;
+            }
+
+            currentOrders.forEach(order => {
+                const color = window.SpecialOrders.getAttributeColor(order.attribute);
+                const orderBtn = el(`
+                <div class="special-order-btn" style="border-color: ${color}; box-shadow: 0 0 8px ${color}33;" data-order="${order.attribute}-${order.level}">
+                <div class="special-order-name">${order.name}</div>
+                <div class="special-order-type">${order.type}</div>
+                <div class="special-order-attr">${order.attribute} ${order.level}</div>
+                </div>
+                `);
+
+                // Click to view special order details
+                orderBtn.addEventListener('click', () => {
+                    showSpecialOrderDetail(order);
+                });
+
+                grid.appendChild(orderBtn);
+            });
+        }
+
+        function showSpecialOrderDetail(order) {
+            const modal = document.getElementById('specialOrderDetailModal') || createSpecialOrderDetailModal();
+            const title = modal.querySelector('#specialOrderDetailTitle');
+            const attribute = modal.querySelector('#specialOrderDetailAttribute');
+            const type = modal.querySelector('#specialOrderDetailType');
+            const level = modal.querySelector('#specialOrderDetailLevel');
+            const description = modal.querySelector('#specialOrderDetailDescription');
+
+            title.textContent = order.name;
+            attribute.textContent = order.attribute;
+            attribute.style.color = window.SpecialOrders.getAttributeColor(order.attribute);
+            type.textContent = order.type;
+            level.textContent = `Level ${order.level}`;
+            description.textContent = order.description;
+
+            modal.classList.remove('hidden');
+        }
+
+        function createSpecialOrderDetailModal() {
+            // Create modal if it doesn't exist
+            const modal = el(`
+            <div class="modal hidden" id="specialOrderDetailModal">
+            <div class="box">
+            <h3 id="specialOrderDetailTitle">Special Order</h3>
+            <div class="special-order-meta">
+            <span class="special-order-badge" id="specialOrderDetailAttribute">AGI</span>
+            <span class="special-order-badge" id="specialOrderDetailType">1/Round</span>
+            <span class="special-order-badge" id="specialOrderDetailLevel">Level 5</span>
+            </div>
+            <div class="hr"></div>
+            <div class="special-order-description-container">
+            <div id="specialOrderDetailDescription">Special Order description will appear here...</div>
+            </div>
+            <div class="row modal-footer">
+            <button class="btn" id="closeSpecialOrderDetail">Close</button>
+            </div>
+            </div>
+            </div>
+            `);
+
+            document.body.appendChild(modal);
+
+            // Add close event
+            modal.querySelector('#closeSpecialOrderDetail').addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+
+            return modal;
+        }
+
+        // Get available special orders based on current attribute levels
+        function getAvailableSpecialOrders(data) {
+            const orders = [];
+            const attributes = ['AGI', 'BOD', 'CHA', 'INT', 'WIL'];
+
+            if (typeof window.SpecialOrders === 'undefined') {
+                return orders;
+            }
+
+            attributes.forEach(attr => {
+                const attrTotal = getAttributeTotal(data, attr);
+                for (let level = 5; level <= Math.min(attrTotal, 7); level++) {
+                    const order = window.SpecialOrders.getSpecialOrder(attr, level);
+                    if (order) {
+                        orders.push(order);
+                    }
+                }
+            });
+
+            return orders;
+        }
+
+        // Get attribute total (base 1 + DP)
+        function getAttributeTotal(data, attr) {
+            return 1 + (Number(data.attributes[attr].dp) || 0);
+        }
+
+        // Initial special orders display
+        updateSpecialOrdersDisplay();
+
         // Data binding
         root.addEventListener('input', (e) => {
             const path = e.target.getAttribute('data-bind');
@@ -242,6 +382,11 @@ window.TamerSheet = {
 
                     // Recompute everything including health bar
                     this.computeTamer(data, root, id);
+
+                    // Update special orders if attributes changed
+                    if(path.startsWith('attributes.')) {
+                        updateSpecialOrdersDisplay();
+                    }
                 } catch (error) {
                     console.error('Error processing input:', error);
                     // Optional: Show user feedback
@@ -285,6 +430,7 @@ window.TamerSheet = {
                     // Ensure required structures exist
                     data.skills = data.skills || this.getDefaultData().skills;
                     data.torments = data.torments || { marks: Array(10).fill(0), desc: '' };
+                    data.specialOrders = data.specialOrders || { available: [] };
 
                     root.querySelectorAll('[data-bind]').forEach(input => {
                         const path = input.getAttribute('data-bind');
@@ -294,6 +440,7 @@ window.TamerSheet = {
 
                         updateTormentTrack();
                         updateMilestoneTracker();
+                        updateSpecialOrdersDisplay();
                         this.computeTamer(data, root, id); // Pass id for health bar updates
 
                 } catch (error) {
@@ -317,6 +464,7 @@ window.TamerSheet = {
             // Use setTimeout to ensure DOM is fully rendered
             setTimeout(() => {
                 this.computeTamer(data, root, id);
+                updateSpecialOrdersDisplay();
             }, 50);
 
             return root;
