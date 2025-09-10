@@ -187,6 +187,22 @@
       "count": 26,
       "types": ["Static", "Trigger", "Attack"],
       "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "experimental_qualities.json",
+      "name": "Experimental Qualities",
+      "description": "All Experimental Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "lifeforce_qualities.json",
+      "name": "Lifeforce Qualities",
+      "description": "All Lifeforce Qualities",
+      "count": 26,
+      "types": ["Trigger"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
     }
   ]
 }
