@@ -1,21 +1,23 @@
 # Dr. Digitama's Character Sheet Manager (2nd Edition)
-*Current version: Beta 1.2.2*
+*Current Version: Beta 1.2.3*
+
+# QUALITIES ARE HERE!
+*In the interest of providing a user-friendly experience as soon as possible, the Quality library has been pushed forward. There may be minor errors in regards to information displayed.*
 
 ## UPDATED FEATURES:
+- **Quality Export**: Export Button added to Quality Viewer *(Dev Functionality)*
+- **Quality Library**: Added an "Import Quality" Button that loads 200+ Qualities
+- **Quality Search Functions**: Current Quality Library Modal has filters for Stage, Type and a Searchbar Entry.
+
+*Patch Notes: Beta 1.2.2*
+
+## ADDED FEATURES:
 - **Qualities Section UI**: Qualities can now be added separately, with their descriptions accessible upon tapping. 
 - **Create/Edit Qualities**: Added framework for creating/adding Qualities.
 - **DP Allocation Update**: Quality DP is now tracked via the Qualities section, totalling each Qualities' DP.
 - **Special Orders Section**: Tamers can now view their Special Orders separately from Tamer Talents.
 - **Automatic Order-Handling**: Special Orders are added automatically, appearing as soon as the Tamer's Attribute is increased.
 - **Button Styling Updated**: Some button designs have been updated.
-
-*Patch Notes: Beta 1.2.1*
-
-## UPDATED FEATURES:
-- **Health Bar Fix**: All Health Bars for Wound Boxes initialize when a sheet is created.
-- **Export/Import**: Sheet Data can now be exported/imported as .json files.
-- **Empty Tab Buttons**: When no tabs are loaded, buttons will appear for you to create a new Digimon/Tamer sheet.
-- **Updated Prompts**: New prompt windows for saving and error handling.
 
 A web-based character sheet application for the **Digimon Digital Adventures 2nd Edition** tabletop roleplaying game.  
 This tool allows players to create and manage **Tamer** and **Digimon** sheets in a modern, digital style.
