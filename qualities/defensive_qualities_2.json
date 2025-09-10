@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Defensive Qualities 2",
+  "description": "Advanced defensive qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "BRACE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "Requirement: **STAGE 2**\nWhen the Digimon takes **Damage** from an **Attack**, it can use an **Interrupt Action** to make a **CPU (Endurance) Check**. The **TN** equals 10 + the **Damage** taken after being reduced by **Armor**.\n\n**Success**: The **Damage** is further reduced by half (after **Armor**).\n**Critical Success**: In addition, if this would reduce the **Damage** taken to 1, it instead takes 0 **Damage**.\n\nThis does not affect **Unalterable Damage**. Each time the Quality is used, the **TN** increases by 3 for any further use until the end of Combat.",
+      "tags": ["damage-reduction", "interrupt", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SAVAGERY",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Requirement: **STAGE 2, COMBAT MONSTER**\n**Once per round** when the Digimon would declare an **Attack**, they can choose to declare **SAVAGERY**. The Digimon makes a **CPU (Endurance) Check**. The **TN** equals 15 - the Digimon's **DOS**.\n\n**Failure**: The Digimon takes **Unalterable Damage** equal to its **Stage**, which counts towards **Resolve**.\n**Success**: The Digimon still takes the **Damage** but also gains **Temporary Wound Boxes** equal to the amount of **Damage** taken, which last until the end of Combat.\n**Critical Success**: The Digimon gains twice as many **Temporary Wound Boxes**.\n\nThe **Unalterable Damage** from this Quality bypasses **Temporary Wound Boxes**.",
+      "tags": ["temporary-health", "resolve", "stage-2-requirement", "requires-combat-monster"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ASSURED DESTRUCTION",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Requirement: **STAGE 2, COMBAT MONSTER**\nWhen the Digimon makes an **Attack** against an Enemy, it can choose to convert any amount of **Resolve** into additional dice in its **Accuracy Pool** instead of converting it into additional **Damage**. This bonus is only applied to that one **Attack**.",
+      "tags": ["accuracy-bonus", "resolve", "stage-2-requirement", "requires-combat-monster"]
+    }
+  ]
+}

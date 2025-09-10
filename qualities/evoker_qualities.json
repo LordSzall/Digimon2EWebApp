@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Evoker Qualities",
+  "description": "Summoning and conjuration qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "CONJURER",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Incompatible: **SUMMONER**\n\nUpon taking this Quality, the Digimon gains a new resource, known as **Creation Limit**. Its total **Creation Limit** is equal to its **BIT** + **Stage**. It uses this **Creation Limit** when conjuring objects.\n\nThe Digimon can take the **Conjure Objects Action**, which is 2 **Actions**. The **Conjure Objects Action** allows the user to conjure objects to any **Space** within the Digimon's **Range**, taking up 1 cubic **Space**. The total cubic **Spaces** of objects you can conjure cannot bypass your **Creation Limit**.\n\nConjured Objects can serve as cover that blocks terrain or block pathways. Objects are destroyed when hit with an **Attack** that deals **Damage**. If any Objects are destroyed, the cost of creating them is removed from your **Creation Limit**.\n\nThe user cannot take the **Conjure Objects Action** for 1 **Round** after it's been used.",
+      "tags": ["conjuration", "creation-limit", "stage-2-requirement", "incompatible-summoner"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SUMMONER: INFANTRY",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Incompatible: **CONJURER**\n\nUpon taking this Quality, the Digimon gains a new resource, known as **Creation Limit**. Its total **Creation Limit** is equal to its **BIT** + **Stage**. It uses this **Creation Limit** when summoning Minions.\n\nThe Digimon can take the **Summon Minions Action**, which is 2 **Actions**.\n\n**Infantry Minions** have a **Creation Cost** of 4, can take 2 damaging **Attacks** before destruction, are **Medium Size**, and have **Movement** gains a bonus equal to the Summoner's **Stage**.\n\n**Unique Benefit**: The Minions can be controlled as 1 **Action**, but only **once per turn**.",
+      "tags": ["summoning", "minion", "infantry", "creation-limit", "stage-2-requirement", "incompatible-conjurer"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SUMMONER: PROTECTOR",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Incompatible: **CONJURER**\n\nUpon taking this Quality, the Digimon gains a new resource, known as **Creation Limit**. Its total **Creation Limit** is equal to its **BIT** + **Stage**. It uses this **Creation Limit** when summoning Minions.\n\nThe Digimon can take the **Summon Minions Action**, which is 2 **Actions**.\n\n**Protector Minions** have a **Creation Cost** of 4, can take 3 damaging **Attacks** before destruction, are **Large Size**, and have **Movement** gains a bonus equal to the Summoner's **Stage**.\n\n**Unique Benefit**: A Minion can now **Intercede**, using the Summoner's **Actions**.",
+      "tags": ["summoning", "minion", "protector", "creation-limit", "stage-2-requirement", "incompatible-conjurer"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SUMMONER: RECON",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Incompatible: **CONJURER**\n\nUpon taking this Quality, the Digimon gains a new resource, known as **Creation Limit**. Its total **Creation Limit** is equal to its **BIT** + **Stage**. It uses this **Creation Limit** when summoning Minions.\n\nThe Digimon can take the **Summon Minions Action**, which is 2 **Actions**.\n\n**Recon Minions** have a **Creation Cost** of 2, can take 1 damaging **Attack** before destruction, are **Small Size**, and have **ACC** gains a bonus equal to the Summoner's **Stage**.\n\n**Unique Benefit**: The Minions can now make **[RANGE]** Attacks, using the Summoner's **Range** and **Effective Limit**.",
+      "tags": ["summoning", "minion", "recon", "creation-limit", "stage-2-requirement", "incompatible-conjurer"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SUMMONER: VOLATILE",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Incompatible: **CONJURER**\n\nUpon taking this Quality, the Digimon gains a new resource, known as **Creation Limit**. Its total **Creation Limit** is equal to its **BIT** + **Stage**. It uses this **Creation Limit** when summoning Minions.\n\nThe Digimon can take the **Summon Minions Action**, which is 2 **Actions**.\n\n**Volatile Minions** have a **Creation Cost** of 1, can take 1 damaging **Attack** before destruction, are **Small Size**, and have **DAM** gains a bonus equal to the Summoner's **Stage**.\n\n**Unique Benefit**: A Minion now explodes when it is destroyed, making a **[MELEE] [DAMAGE] [T:BURST]** Attack against every Target within the Area.",
+      "tags": ["summoning", "minion", "volatile", "creation-limit", "stage-2-requirement", "incompatible-conjurer"]
+    },
+    {
+      "stage": "Adult",
+      "name": "EVOKER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: CONJURER OR SUMMONER**\n\nThe Digimon is now capable of taking both **Summoner** and **Conjurer**, and can now take the **Conjure Objects** and **Summon Minions Action** as the same 2 **Actions**.\n\nHowever, the Digimon's **Creation Limit** is shared between Summoned Minions and Conjured Objects.",
+      "tags": ["summoning", "conjuration", "requires-conjurer-or-summoner"]
+    }
+  ]
+}

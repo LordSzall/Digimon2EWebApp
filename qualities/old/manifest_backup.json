@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-01-07",
+  "basePath": "qualities/",
+  "description": "DDA2E Quality Library Manifest - Edit this file to add new quality collections",
+  "qualities": [
+    {
+      "filename": "naturewalk.json",
+      "name": "Naturewalk",
+      "description": "All Naturewalk Qualities",
+      "count": 2,
+      "types": ["Attack"],
+      "tags": ["core", "element", "trigger"]
+    },
+    {
+      "filename": "weapon_instinct.json",
+      "name": "Defensive Abilities",
+      "description": "Protective and defensive static qualities",
+      "count": 8,
+      "types": ["Static"],
+      "tags": ["core", "ranks", "basic"]
+    },
+    {
+      "filename": "data_optimization.json",
+      "name": "Trigger Effects",
+      "description": "Conditional trigger-based abilities",
+      "count": 12,
+      "types": ["Trigger"],
+      "tags": ["core", "opt", "basic"]
+    },
+    {
+      "filename": "extra_movement.json",
+      "name": "Extra Movement",
+      "description": "Unique signature abilities and special attacks",
+      "count": 5,
+      "types": ["Attack", "Trigger"],
+      "tags": ["signature", "unique", "special"]
+    },
+    {
+      "filename": "acc_prodigious.json",
+      "name": "Utility Qualities",
+      "description": "Non-combat utility and support abilities",
+      "count": 2,
+      "types": ["Static", "Trigger"],
+      "tags": ["utility", "support", "non-combat"]
+    },
+    {
+      "filename": "offensive_qualities.json",
+      "name": "Advanced Techniques",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 10,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "area_attacks.json",
+      "name": "Area Attacks",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 8,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "selective_target.json",
+      "name": "Selective Targeting",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "defensive_qualities.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "preserv_qualities.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "utility_qualities.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "clash_qualities.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "basic_effects.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    },
+    {
+      "filename": "advanced_effects.json",
+      "name": "Defensive Qualities",
+      "description": "High-level abilities for experienced Digimon",
+      "count": 2,
+      "types": ["Attack", "Static", "Trigger"],
+      "tags": ["advanced", "high-level", "complex"]
+    }
+  ]
+}

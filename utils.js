@@ -46,6 +46,84 @@ const setByPath = (obj, path, val) => {
     });
 };
 
+// Enhanced quality-formatter.js - Better handling of line breaks and paragraphs
+
+window.QualityFormatter = {
+    // Convert markdown-like text to HTML with enhanced line break handling
+    formatDescription(text) {
+        if (!text || typeof text !== 'string') return '';
+
+        // Escape HTML first to prevent XSS
+        let formatted = this.escapeHtml(text);
+
+        // Convert **bold** to <strong>
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // Handle paragraph breaks (double newlines) - convert to paragraph tags
+        formatted = formatted.replace(/\n\s*\n/g, '</p><p>');
+
+        // If we have paragraph breaks, wrap the whole thing in <p> tags
+        if (formatted.includes('</p><p>')) {
+            formatted = '<p>' + formatted + '</p>';
+            // Clean up any empty paragraphs
+            formatted = formatted.replace(/<p>\s*<\/p>/g, '');
+        } else {
+            // For single line breaks, just use <br>
+            formatted = formatted.replace(/\n/g, '<br>');
+        }
+
+        return formatted;
+    },
+
+    // Convert HTML back to markdown-like text for editing
+    unformatDescription(html) {
+        if (!html || typeof html !== 'string') return '';
+
+        // Convert <p> tags back to double line breaks
+        let text = html.replace(/<\/p>\s*<p>/g, '\n\n');
+        text = text.replace(/<\/?p>/g, '');
+
+        // Convert <strong> back to **bold**
+        text = text.replace(/<strong>(.*?)<\/strong>/g, '**$1**');
+
+        // Convert <br> back to line breaks
+        text = text.replace(/<br\s*\/?>/g, '\n');
+
+        return text;
+    },
+
+    // Basic HTML escaping
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    },
+
+    // Get a preview/summary of description for library display
+    getPreview(text, maxLength = 200) {
+        if (!text || typeof text !== 'string') return '';
+
+        // Strip formatting for preview
+        let preview = text.replace(/\*\*(.*?)\*\*/g, '$1'); // Remove bold markers
+        preview = preview.replace(/\n+/g, ' '); // Convert line breaks to spaces
+        preview = preview.trim();
+
+        if (preview.length <= maxLength) {
+            return preview;
+        }
+
+        // Truncate at word boundary
+        const truncated = preview.substring(0, maxLength);
+        const lastSpace = truncated.lastIndexOf(' ');
+
+        if (lastSpace > maxLength * 0.8) {
+            return truncated.substring(0, lastSpace) + '...';
+        }
+
+        return truncated + '...';
+    }
+};
+
 // Form field helpers
 function textField(label, path, placeholder=''){
     return `<label>${label}<input type="text" data-bind="${path}" placeholder="${placeholder}" /></label>`;

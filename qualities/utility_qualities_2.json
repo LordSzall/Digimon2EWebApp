@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Utility Qualities 2",
+  "description": "Advanced utility qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "ELEMENT MASTER",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "Requirement: **NATUREWALK**\n\nThe Digimon gains the ability to manipulate an aspect of nature of their associated Element that was taken with **NATUREWALK**. The Digimon may freely manipulate natural sources of the element, as well as produce unique effects based on the element in question.\n\nWithin a number of **Spaces** equal to the Digimon's **DOS**, the Digimon may also change **Difficult Terrain** associated with the chosen element into **Basic Terrain** as 1 **Action**, or vice-versa. They may also change the positioning of the terrain to create structures and trails out of it, moving a number of cubic **Spaces** of said Element equal to double their **BIT** value.\n\nThe Digimon also completely negates any **ELEMENTAL FORCE** Attacks for any Element it has with **NATUREWALK**.",
+      "tags": ["elemental", "terrain-control", "stage-2-requirement", "requires-naturewalk"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ELEMENTAL MYRIAD",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **ELEMENT MASTER**\n**INCOMPATIBLE: DOMAIN CONTROL**\n\nFor each **Rank** in this Quality, the Digimon can purchase 2 additional **Ranks** of **NATUREWALK**. However, the Digimon can only use **NATUREWALK** to gain a max of +3 to any individual stat. **NATUREWALK** must still be purchased to obtain new **Ranks**.",
+      "tags": ["limited", "up-to-4-ranks", "elemental", "requires-element-master", "incompatible-domain-control"]
+    },
+    {
+      "stage": "Adult",
+      "name": "DOMAIN CONTROL",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Requirement: **ELEMENT MASTER**\n**INCOMPATIBLE: ELEMENTAL MYRIAD**\n\nThe **ELEMENT MASTER** is now capable of imbuing the area around it with an additional effect, known as a **Domain**. Creating a **Domain** requires 2 **Actions**, and a source of the Element in question to exist.\n\nThe **Domain** has a lasting duration of the user's **Stage** + 1, and the affected scope is limited to a radius equal to the same amount, which follows the Digimon as it moves.\n\nEach **Domain** lists an Effect that occurs when it is present. These Effects are not affected by Qualities like **Resistant**, but a Digimon with a **NATUREWALK** element shared with the **DOMAIN CONTROL** Element can choose to ignore it.",
+      "tags": ["elemental", "aoe", "requires-element-master", "incompatible-elemental-myriad"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADAPTIVE ELEMENT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **ELEMENT MASTER**\n**INCOMPATIBLE: ELEMENTAL MYRIAD**\n\nWhen the Digimon takes the **DOMAIN CONTROL** Quality, instead of picking a single **Domain**, it may choose a single Element. It can now use either **Domain** when it activates **DOMAIN CONTROL** in Combat. Only one **Domain** may be active at a time.",
+      "tags": ["elemental", "versatile", "requires-element-master", "incompatible-elemental-myriad"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ALTERED ELEMENT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **ELEMENT MASTER**\n**INCOMPATIBLE: ELEMENTAL MYRIAD**\n\nWhen you take the **DOMAIN CONTROL** Quality, you can choose any option instead of being limited to the Element of your **NATUREWALK**. Despite the new choice, it is still considered your Element.",
+      "tags": ["elemental", "versatile", "requires-element-master", "incompatible-elemental-myriad"]
+    },
+    {
+      "stage": "Adult",
+      "name": "OVERDRIVE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "As a **Free Action once per round**, the Digimon can attempt to put it into overdrive during its turn. The Digimon may make a **CPU (Athletics) Check**.\n\n**Success**: the Digimon benefits from **[HASTE]** for that turn. At the end of the turn the Digimon suffers a -2 Penalty to **DOD** for one **Round**.\n**Critical Success**: The Digimon ignores the penalty to **DOD**.\n\nAfter this Quality has been used once, the **TN** increases by 6 for consecutive use until the end of Combat.",
+      "tags": ["action-economy", "haste", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "DATA SCAN",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Requirement: **TECHNICIAN**\nAs 1 **Action**, the Digimon can target one Enemy it can see and make a **BIT (Knowledge) Check**.\n\n**Success**: The Digimon learns one of the following about the Target: Current/max **Wound Boxes**, **Core Stats**, **Derived Stats**, **Movement**/**Range**/**Effective Limit**, or one **Attack** and all its **Tags**.\n**Critical Success**: The Digimon learns an additional option for each of the following Qualities it has: **TECHNICIAN**, **FIREWALL**, **TROJAN**.",
+      "tags": ["information", "scouting", "stage-2-requirement", "requires-technician"]
+    }
+  ]
+}

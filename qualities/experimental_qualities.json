@@ -1,0 +1,202 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Experimental Qualities",
+  "description": "A diverse collection of advanced and specialized qualities for Digimon.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Any",
+      "name": "ZONER: FRIENDLY FIRE",
+      "type": "Trigger, Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: 1 RANK OF AREA ATTACK**\n**INCOMPATIBLE: DATA SPECIALIZATION: STATUS WARLORD**\n\nWhenever the Digimon makes a [SUPPORT] Attack with an Area Attack Tag and a Positive Effect Tag, it can change the Tags of the Attack in the following ways.\n- The Attack is treated as [DAMAGE] for Enemies and [SUPPORT] for Allies.\n- The Effect does not affect Enemies.\n\nThis can be used to turn a [SUPPORT][SHARPEN][T:BLAST] Attack meant for Allies into a [DAMAGE][T:BLAST] Attack for Enemies while still providing the same benefits to Allies.",
+      "tags": ["zoner", "area-attack", "support", "damage-conversion", "requires-area-attack", "incompatible-status-warlord"]
+    },
+    {
+      "stage": "Any",
+      "name": "ZONER: DAMAGE FLOOR",
+      "type": "Trigger, Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: 1 RANK OF AREA ATTACK**\n\nThe Digimon can choose to Target everything (Allies & Enemies) within the zone of a [DAMAGE] Attack with an Area Attack Tag, and if it does, the Damage of the Attack cannot be reduced lower than the Derived Stat used to calculate that Area Attack, or the Total Damage after Armor (whichever is lower).\n\nFor example, if a Digimon with 4 CPU used a [DAMAGE][T:LINE] Attack, and dealt 5 Damage after Armor, it would only be reduced to 4 (its CPU) instead of 3 (half of 5 rounded up). Alternatively, if the Attack only deals 3 Damage after Armor, it wouldn’t be reduced at all.",
+      "tags": ["zoner", "area-attack", "damage", "damage-floor", "requires-area-attack"]
+    },
+    {
+      "stage": "Any",
+      "name": "ZONER: FIREWALL BYPASS",
+      "type": "Trigger, Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: 1 RANK OF AREA ATTACK**\n\nThe Digimon can choose to Target everything (Allies & Enemies) within the zone of a [SUPPORT] Attack with an Area Attack Tag, and if it does, the Potency and Duration of Attack Effects is no longer reduced.",
+      "tags": ["zoner", "area-attack", "support", "effect-potency", "requires-area-attack"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CUSTOM SPECIFICATION V1",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nWhen the Digimon purchases this Quality, it may choose from one of the following: BIT, RAM, CPU or DOS. Whenever the Digimon uses an Attack Effect that requires a Derived Stat from the Caster, it can make the Attack using 1 extra Action to use the chosen Derived Stat instead of the one listed as part of that Effect (this has no effect on Attack Effects that rely on Target's Derived Stats instead of the Caster's, like [CONFUSION]).",
+      "tags": ["custom-spec", "stat-substitution", "stage-3-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CUSTOM SPECIFICATION V2",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n**INCOMPATIBLE: SYSTEM BOOST**\n\nWhen the Digimon purchases this Quality, it may choose from one of the following: BIT, RAM, CPU or DOS. Whenever the Digimon uses an Attack Effect that requires a Derived Stat from the Caster, it can use the chosen Derived Stat instead of the one listed as part of that Effect (this has no effect on Attack Effects that rely on Target's Derived Stats instead of the Caster's, like [CONFUSION]).",
+      "tags": ["custom-spec", "stat-substitution", "stage-3-requirement", "incompatible-system-boost"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CODE ASSAULT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+**\n**INCOMPATIBLE: ABSOLUTE EVASION, UNCATCHABLE TARGET**\n\nWhen the Digimon is Attacked, it gains a +1 bonus to its Dodge Pool for each Negative Effect the Attacker is suffering from.",
+      "tags": ["dodge-bonus", "debuff-synergy", "stage-3-requirement", "incompatible-absolute-evasion", "incompatible-uncatchable-target"]
+    },
+    {
+      "stage": "Any",
+      "name": "PROTECTING SHIELD",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**UP TO 3 RANKS**\n\nThe Digimon may apply the [SHIELD] Tag to one [SUPPORT] Attack.\n\nAn Attack with the [SHIELD] Tag provides Temporary Wound Boxes equal to the Caster's BIT + Stage. This is treated and applied as a Positive Effect with a Duration, but the Duration ends early if the Target loses all Temporary Wound Boxes granted by the Effect. You cannot have the [SHIELD] Tag and another Effect Tag on the same Attack, and you cannot take it as part of the Overclock Quality.\n\nThe Digimon can only use an Attack with the [SHIELD] Tag a limited number of times per Combat equal to its Ranks in this Quality. A Digimon may not have [SHIELD] and an Area Attack Tag on the same Attack unless they apply both Tags to a Signature Move with [SUPPORT]. The Digimon requires 2 Battery to trigger the Area Attack this way.\n\nA Digimon with this Quality cannot benefit from [SHIELD].",
+      "tags": ["shield", "support", "temporary-health", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Champion",
+      "name": "ELEMENT MASTER I",
+      "type": "Trigger, Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2+, 1 RANK OF NATUREWALK**\n**REQUIRED FOR: ELEMENT MASTER II**\n\nThe Digimon gains the ability to manipulate an aspect of nature of their associated Element that was taken with Naturewalk. If Naturewalk was taken multiple times, this Quality can affect any Elements chosen, but only one at a time. The Digimon may interact with natural sources of the Element and produce unique effects. These effects usually have no bearing on Combat. Whenever the Digimon would encounter difficulty in manipulating an Element, like producing a complex effect or manipulating a non-natural source, the GM ultimately determines if any use of this Quality is something to allow, possibly even requiring a DOS (Fortitude) Skill Check for something that should be achievable, but difficult.\n\nThe Digimon also completely negates any Elemental Force Attacks used against it for any Element it has with Naturewalk, and only takes 1 Unalterable Damage for Dangerous Terrain of the same Elements instead of 2 Unalterable Damage.",
+      "tags": ["element-master", "naturewalk", "elemental-resistance", "stage-2-requirement", "requires-naturewalk"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "ELEMENT MASTER II",
+      "type": "Trigger, Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+, ELEMENT MASTER I**\n**REQUIRED FOR: ELEMENT MASTER III**\n\nThe Digimon gains the Terraform Action, which costs 1 Action. It can use this Action to change Difficult Terrain associated with any of their Elements into Basic Terrain, or vice-versa. It can only do this with one Element at a time, and can affect any Space within its Range.\n\nKeep in mind, Terrain associated with a chosen Element does not mean the primordial elements that make it up. In that case, Earth would be the best Element Master option. Instead, refer again to the areas depicted in the Naturewalk Quality. A Fire Element Master should be able to manipulate any Terrain in Volcanos, Deserts, Crags, even if it is not conventionally a material made of fire, while a Steel Element Master may not be able to affect terrain denoted in another Element, such as Wind. It’s less about manipulating the Element itself when it comes to the terrain, and more about manipulating nature soaked in that Element.",
+      "tags": ["element-master", "terraform", "terrain-manipulation", "stage-3-requirement", "requires-element-master-i"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "ELEMENT MASTER III",
+      "type": "Trigger, Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 4+, ELEMENT MASTER II**\n**INCOMPATIBLE: COMBAT MONSTER, POSITIVE REINFORCEMENT, SHOWSTOPPER**\n\nThe Digimon no longer requires sources of an Element to activate and use Qualities, such as Domain Control.\n\nThe Digimon gains a new resource called Mastery. Its total Mastery is equal to its BIT + Stage. If it already has Mastery, its maximum Mastery increases by 1.\n\nThe Digimon can use the Terraform Action to infuse the Terrain with their Element of choice, allowing them to turn Earth Element Basic Terrain into Fire Element Difficult Terrain. This can affect a maximum number of Spaces equal to their maximum Mastery, which is expended for each Space affected. This cannot affect Terrain within a domain of another Domain Controller.\n\nThe altered Terrain changes back if one of the following occurs:\n- The Digimon takes the Terraform Action again, though the Digimon regains any Mastery spent on the previous Terraform Action and can change the same terrain using this Action (even if it’s occupied).\n- The Digimon is brought to 0 Wound Boxes or no longer has access to this Quality such as evolving to a new Stage.",
+      "tags": ["element-master", "mastery", "terraform", "stage-4-requirement", "requires-element-master-ii", "incompatible-combat-monster", "incompatible-positive-reinforcement", "incompatible-showstopper"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "OMNEVOKER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: TWO OF: 3 RANKS OF ELEMENT MASTER, 1 RANK OF CONJURER, 1 RANK OF SUMMONER**\n\nThe Digimon can use the Terraform, Conjure and Summon Action using the same Actions.\n\nFor example, a Digimon could use 1 Action to take both the Conjure Action and Terraform Action, instead of using 2 separate Actions, but still limited to only using half of the Digimon’s Mastery. Using 2 Actions, the Digimon could take all 3 Actions at once, benefitting from the bonus using 2 Actions on Conjure and Summon give.",
+      "tags": ["omnivoker", "terraform", "conjure", "summon", "action-economy"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "OMNSUMMONER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: 3 RANKS OF SUMMONER**\n\nThe Digimon can now Summon any type of Minion that it fulfills the requirements for, instead of the one it chose when it first took the Quality. However, any Minion that wasn’t chosen costs 1 additional Mastery to Summon.",
+      "tags": ["omnisummoner", "summoner", "minion", "mastery-cost"]
+    },
+    {
+      "stage": "Champion",
+      "name": "SHOWSTOPPER",
+      "type": "Trigger, Static",
+      "dpCost": 2,
+      "description": "**REQUIRED FOR: STAR OF THE SHOW, ENCORE**\n**INCOMPATIBLE: COMBAT MONSTER, CONJURER, SUMMONER**\n\nThe Digimon enjoys the spotlight. **During Combat**, the Digimon generates a special resource called **Hype**. The Digimon can have a maximum of 3 **Hype** at a time, and it gains Hype in any of the following ways:\n- Once on its turns, the Digimon can use **1 Action** to make a Performance Check. The TN equals 10 + the number of Ally and Enemy Digimon participating in Combat. On a Success, the Digimon gains 1 Hype and **it does not lose Hype at the start of its next turn**. On a Critical Success, the Digimon also regains the Action it spent using this Quality.\n- The Digimon successfully hits an Enemy with a minimum number of Accuracy Success equal to the Enemy’s Stage over the Enemy’s Dodge Successes.\n\nThe Digimon loses 1 **Hype** at the start of its turns, and loses all Hype at the end of Combat, as well as if it’d lose this Quality or be Defeated. It gains benefits depending on the amount of Hype it has:\n\n1 **Hype**: The Digimon adds its current Hype to Accuracy.\n2 **Hype**: The Digimon adds its current Hype to Accuracy and Skill Checks.\n3 **Hype**: The Digimon adds its current Hype to Accuracy, Damage and Skill Checks.",
+      "tags": ["showstopper", "hype", "performance", "incompatible-combat-monster", "incompatible-conjurer", "incompatible-summoner"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "STAR OF THE SHOW",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: SHOWSTOPPER**\n\nThe Digimon enjoys putting on a star performance. When the Digimon declares its Signature Move, it immediately gains 1 Hype (which it benefits from before it rolls Accuracy for the Attack).",
+      "tags": ["star-of-the-show", "signature-move", "hype", "requires-showstopper"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "ENCORE",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: SHOWSTOPPER**\n\nIf the Digimon would drop to 0 Wound Boxes with at least 1 Hype, the Digimon may make a Performance Check as a Free Action immediately. The TN equals 15 - the Digimon’s CPU. On a Success, the Digimon loses all current Hype and gains Wound Boxes equal to the amount lost. On a Critical Success, it also gains 1 Hype afterwards.\n\nThis Quality can be used Once per Combat.",
+      "tags": ["encore", "healing", "hype", "requires-showstopper"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "BOASTING HEEL",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: SHOWSTOPPER**\n\nAt the end of the Digimon’s turn, it can choose to **Boast** as a Free Action, turning the attention on it and daring others to strike them. Until the start of its next turn, whenever the Digimon is attacked and all of the following occur, the Digimon gains 1 Hype.\n- The Attack misses.\n- The Attack has at least 1 Accuracy Success.\n\nIf any of the above requirements are not met, no Hype points are gained. If the Digimon is hit at any point after it **Boasts**, it loses the benefits of this Quality until its next turn.",
+      "tags": ["boasting-heel", "taunt", "hype", "requires-showstopper"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "PUPPET MASTER",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+, TROJAN**\n\nWhen an Enemy Digimon’s turn begins while within the Digimon’s Range, the Digimon can attempt to take minor control of that Digimon using an **Interrupt Action** to make a Manipulate Check. The TN equals 10 + the Target’s DOS.\n\nOn a Failure, nothing happens. On a Success, the Target suffers [CHARM] until the end of the Digimon’s turn. On a Critical Success, the Target suffers from [CHARM] until the start of its next turn.\n\nIf a Target has been hit by and affected by this Quality this Combat, the TN increases by 6 for all further attempts to [CHARM] it from any Digimon. This does not include uses where the Manipulate Check is a Failure.\n\n[CHARM] is a Negative Effect that allows the Caster to control the Target’s Actions, and the Target treats the Caster as an Ally for the purpose of Qualities. A Target suffering from [CHARM] can even Intercede for the Caster.\n\n[CHARM] can be negated by Overwrite, treating it as a 3 DP Attack Effect. In addition, if the Target has a Tamer, the Tamer can make a Charisma or Willpower Skill Check as 2 Actions to contest the Charm, with a TN equal to 10 + the Caster’s BIT. On a Success, the [CHARM] immediately ends.",
+      "tags": ["puppet-master", "charm", "control", "stage-3-requirement", "requires-trojan"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "SURVIVAL CUNNING",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nThe Digimon knows special tricks to ensure its prolonged survival. When the Digimon is suffering from a Negative Effect, such as [WEAK], it can make a Survival Check as 1 Action. The TN equals 15 - the Digimon's CPU.\n\nOn a Failure, nothing happens. On a Success, the Digimon ignores all Negative Effects it is suffering from until the start of its next turn. On a Critical Success, the Digimon regains the Action it used on this Quality.\n\nThe TN increases by 3 each time the Digimon uses this Quality in the same Combat, resetting once Combat is complete.\n\nThis Quality only allows the Digimon to ignore the Effects of Negative Effects, they are still considered to have them for the purpose of Qualities like Code Assault.",
+      "tags": ["survival", "debuff-ignore", "stage-3-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "INSTANT RESISTANCE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nAs **1 Action** while it is affected by one or more Negative Effects, the Digimon can make a BIT (Survival) Check. The TN equals 15 - the Digimon’s CPU. On a Failure, nothing happens. On a Success, the Digimon is affected by a [CLEANSE] only affecting Negative Effects with automatic Successes equal to its BIT. On a Critical Success, the Digimon also regains the Action it spent using this Quality.\n\nAfter this Quality has been used once, the TN increases by 6 for consecutive use until the end of Combat.",
+      "tags": ["cleanse", "debuff-removal", "stage-3-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "UNDAUNTED",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nAs **1 Action**, the Digimon can make a DOS (Bravery) Check. The TN equals 15 - the Digimon’s CPU. On a Failure, nothing happens. On a Success, the Digimon is affected by their choice of the following:\n- [DENY] with a Duration equal to its DOS.\n- [IMMUNE] that lasts until the start of the Digimon’s next turn.\n\nRegardless of choice, the Digimon also automatically ends any [FEAR] affecting it. On a Critical Success, the Digimon also regains the Action it spent using this Quality.\n\nAfter this Quality has been used once, the TN increases by 5 for consecutive use until the end of Combat.",
+      "tags": ["deny", "immune", "fear-removal", "stage-3-requirement"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "KING’S AID",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nAs **1 Action**, the Digimon can Target any number of Allies besides itself within its Range. It must then make a BIT (Persuasion) Check, with a TN of 10 + the number of Allies Targeted. On a Failure, the Digimon provides the benefits of the Aid Action to one Ally it Targeted. On a Success, it provides the benefits of the Aid Action to all Allies Targeted. On a Critical Success, the previous benefit now also extends to both the Ally’s next Accuracy and Dodge Check, not just one.\n\nThe Digimon cannot take the Aid Action the turn it uses this Quality. After this Quality has been used once, the TN increases by 3 for consecutive use until the end of Combat.",
+      "tags": ["aid", "support", "multi-target", "stage-3-requirement"]
+    },
+    {
+      "stage": "Champion",
+      "name": "SELECTIVE TARGET",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 2+**\n\nWhen you roll to Control a Clash and succeed, you can choose to Trigger this Quality until your next attempt to Control a Clash. You cannot take the Pin Action this turn, but your Opponent only reduces the incoming Damage from outside Attacks by half their CPU, instead of half your combined CPUs.",
+      "tags": ["clash", "damage-reduction", "stage-2-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DISTANT FORCE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nAs **1 Action**, the Digimon may target a Digimon within its Range. If the Target is unwilling, the Digimon and the Target can make a contested Skill Check. The Digimon adds its BIT + DOS to the Check, and the Target adds its CPU + RAM. This Check is counted as a Clash Check for the purpose of Qualities such as Data Optimization: Brawler or Slippery.\n\nIf the Target succeeds, nothing happens. If the Digimon succeeds or the Target is willing, the Digimon may apply [PUSH] or [PULL] to the Target, using either its BIT or DOS, plus Stage to determine Potency.",
+      "tags": ["push", "pull", "force", "stage-3-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "POWER THROW",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+, FASTBALL**\n\nWhenever the Digimon throws a Target (Enemy or Ally), the distance equals triple the Digimon’s CPU instead of double.\n\nThrowing an Enemy also adds the Digimon’s CPU to the Damage the thrown Digimon takes on impact.\n\nThrowing an Ally no longer causes them to potentially take any Crash Damage from the Throw.",
+      "tags": ["throw", "distance", "damage", "stage-3-requirement", "requires-fastball"]
+    }
+  ]
+}

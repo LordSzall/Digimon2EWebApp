@@ -1,0 +1,59 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Data Optimization",
+"description": "Specialized optimization qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Data Optimization: Close Combat",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains a +1 bonus to its Accuracy Pool when using a [MELEE] tagged Attack. This bonus increases to +5 if the Target has been Attacked since the end of its last turn.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Ranged Striker",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains a +1 bonus to its Accuracy when using a [RANGE] Tagged Attack. The Digimon gains +2 to its Range and Effective Limit.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Warden",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains a +1 bonus to Armor. The Digimon can take an Interrupt Action spending 1 less Action (potentially a Free Action) once per Combat.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Brawler",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains a +1 bonus to all Skill Checks made to initiate or during Clashes. The Digimon gains a +1 bonus to Damage when Attacking a Digimon it’s Clashing with.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Speedster",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains a +1 bonus to its Movement. The Digimon ignores the first penalty to its Dodge from being Attacked after its turn.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Effect Warrior",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon gains +1 Potency to all Attack Effect Tags that use a Derived Stat from the Caster.",
+"tags": ["core-discount", "data-optimization"]
+},
+{
+"name": "Data Optimization: Variable",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon can reroll a Skill Check or Pool Check it has made once per Round (which resets at the end of the Digimon’s turns) during Combat. It must take the new result.",
+"tags": ["core-discount", "data-optimization"]
+}
+]
+}

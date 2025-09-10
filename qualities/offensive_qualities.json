@@ -1,0 +1,218 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Offensive Qualities",
+  "description": "Advanced combat qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "ARMOR PIERCING",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "On first purchase, apply the **[PIERCING]** Tag to one **[DAMAGE]** Attack. The Tag is applicable to only that attack.\n\nAn Attack with the **[PIERCING]** Tag deals extra **Unalterable Damage** on a hit **for each Accuracy Success over the Target's Dodge Successes**. The **Maximum Unalterable Damage** equals the Digimon's **Ranks** in this Quality.\n\nA Digimon may not have **[PIERCING]** and **[CERTAIN]** on the same Attack, unless they apply both tags to its **Signature Move**.",
+      "tags": ["offensive", "limited", "up-to-3-ranks", "damage-requirement"]
+    },
+    {
+      "stage": "Child",
+      "name": "CERTAIN STRIKE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "On first purchase, apply the **[CERTAIN]** Tag to one **[DAMAGE]** Attack. The Tag is applicable to only that attack.\n\nAn attack with the **[CERTAIN]** Tag gains **Automatic Successes** equal to the **Ranks** in this Quality.\n\nA Digimon may not have **[PIERCING]** and **[CERTAIN]** on the same Attack, unless they apply both tags to its **Signature Move**.",
+      "tags": ["offensive", "limited", "up-to-3-ranks", "accuracy-requirement"]
+    },
+    {
+      "stage": "Child",
+      "name": "CHARGE ATTACK",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The Digimon may apply the **[CHARGE]** Tag to one **[MELEE]** Attack.\n\nThe **[CHARGE]** Tag allows the Digimon to both use the Tagged Attack and **Move** with **1 Action** either before or after the Attack.\n\n**The Move granted by this attack must be made in a straight line.**",
+      "tags": ["offensive", "melee", "movement"]
+    },
+    {
+      "stage": "Child",
+      "name": "AMMO",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The Digimon may apply the **[AMMO]** Tag to one Attack.\n\nAn Attack with the **[AMMO]** Tag ignores the one Attack per Round rule. The Digimon can only use this Attack **Once per Combat**.\n\n**This cannot apply to a Signature Move**.",
+      "tags": ["offensive", "limited-use", "action-economy"]
+    },
+    {
+      "stage": "Adult",
+      "name": "RELOAD",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: AMMO**\n\nThe Digimon may apply the **[AMMO]** Tag to one Attack.\n\nAn Attack with the **[AMMO]** Tag ignores the one Attack per Round rule. The Digimon can only use this Attack **Once per Combat**.\n\n**This cannot apply to a Signature Move**.",
+      "tags": ["offensive", "limited-use", "action-economy"]
+    },
+    {
+      "stage": "Child",
+      "name": "HEAVY RECOIL",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The Digimon may apply the **[RECOIL]** Tag to one **[RANGE]** Attack. The Attack's **Range** and **Effective Limit** is halved.\n\nWhen the Attack is made, the Digimon is pushed away from its target a number of **Spaces** equal to its **Stage**. If a **[DAMAGE]** Attack Tagged with **[RECOIL]** gets at least 1 **Accuracy Success** over the Target's **Dodge Successes**, the Target is affected with **[PUSH]** with the same **Potency**.\n\nYou cannot use an Attack with this Tag in **Sentry Stance**.",
+      "tags": ["offensive", "ranged", "movement", "push"]
+    },
+    {
+      "stage": "Child",
+      "name": "HUGE POWER I",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**Once per round**, the Digimon may reroll any 1's that appear when making an **Accuracy Check**.\n\n**This Quality does not affect Bonus Dice granted from Tamer Actions.**",
+      "tags": ["offensive", "up-to-2-ranks", "reroll", "accuracy"]
+    },
+    {
+      "stage": "Adult",
+      "name": "HUGE POWER II",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**Once per round**, the Digimon may reroll any 1's and 2's that appear when making an **Accuracy Check**.\n\n**This Quality does not affect Bonus Dice granted from Tamer Actions.**",
+      "tags": ["offensive", "up-to-2-ranks", "reroll", "accuracy"]
+    },
+    {
+      "stage": "Child",
+      "name": "AGGRESSIVE FLANK",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**INCOMPATIBLE: HORDE DUELIST**\n\nThe Digimon gains a bonus to its **Accuracy Check** equal to its **Stage** or its **RAM**, whichever is higher, whenever the Digimon is adjacent to an **Ally** and both are adjacent to the same Enemy.\n\nThis only applies to the Digimon with **AGGRESSIVE FLANK**.",
+      "tags": ["offensive", "flanking", "accuracy-bonus", "incompatible-horde-duelist"]
+    },
+    {
+      "stage": "Child",
+      "name": "COUNTERATTACK",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "If an Enemy misses with an **Attack** against you, you may take an **Interrupt Action** to make an **Attack** with the Attacker as the Target. The Target suffers a Penalty to **DOD** equal to the Digimon's **Stage**.\n\nThis can only be used a number of times per Combat equal to the **Ranks** in this Quality.",
+      "tags": ["offensive", "reaction", "interrupt", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "HORDE DUELIST",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**INCOMPATIBLE: AGGRESSIVE FLANK**\n\nWhen the Digimon is only adjacent to Enemies, it can use **1 Action** to make a **BIT (Survival) Check**.\n\n**Success**: grants a bonus to **ACC** equal to its **BIT** on **Attacks** made against adjacent Enemies with no **Allies** adjacent to the Target until the start of its next turn.\n**Critical Success**: also regains the **Action** spent.",
+      "tags": ["offensive", "outnumbered", "accuracy-bonus", "incompatible-aggressive-flank"]
+    },
+    {
+      "stage": "Child",
+      "name": "HIDE IN PLAIN SIGHT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon can make a **Stealth Check** as 1 **Action**, rather than 2 **Actions** to vanish from sight. This can only be done **Once per Turn**.\n\nOnce the Digimon does anything to interfere with another participant in combat, such as make an **Attack** against them, they are no longer hidden.",
+      "tags": ["offensive", "stealth", "action-economy"]
+    },
+    {
+      "stage": "Child",
+      "name": "SHADE CLOAK",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "When the Digimon makes a **Stealth Check**, it can use 1 extra **Action** to cause any **Allies** of its choice within a number of **Spaces** equal to the Digimon's **RAM** to be treated as if they have the same result and benefit.\n\nIf any **Ally** benefitting from this Quality would interfere with another Digimon, the benefit ends for all Digimon.",
+      "tags": ["offensive", "stealth", "aoe", "support"]
+    },
+    {
+      "stage": "Child",
+      "name": "SNEAK ATTACK",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The Digimon may apply the **[SNEAK]** Tag to one **Attack**. If the Digimon is making an **Attack** with the **[SNEAK]** Tag against a Target it is currently hidden from, it gains a bonus to **ACC** equal to its **RAM** for that **Attack**.",
+      "tags": ["offensive", "stealth", "accuracy-bonus"]
+    },
+    {
+      "stage": "Child",
+      "name": "SIMPLIFIED STRIKE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "The Digimon may apply the **[SIMPLE]** Tag to one **Attack**. Whenever the Digimon would make that **Attack**, it takes 1 less **Action**, to a minimum of 1 **Action**.\n\nThis cannot be used to reduce the **Action** cost of **Attack Effects**.",
+      "tags": ["offensive", "action-economy"]
+    },
+    {
+      "stage": "Child",
+      "name": "BATTLE CRY",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "The Digimon can make a **Battle Cry** as 1 **Action**, rolling a **DOS (Bravery) Check**.\n\nThe Digimon and each **Ally** within a number of **Spaces** equal to the Digimon's **DOS** gain the effect of **[BASTION]** until the start of the Digimon's next turn.\n\nAfter this Quality has been used once, the **TN** increases by 6 for consecutive use until the end of Combat.",
+      "tags": ["offensive", "aoe", "buff", "bravery"]
+    },
+    {
+      "stage": "Child",
+      "name": "BOMBARDMENT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The **Damage** dealt by the Digimon's **Area Attacks** cannot be reduced (after **Armor**) by an amount higher than the Target's **Stage**.",
+      "tags": ["offensive", "area-attack", "damage", "incompatible-selective-targeting"]
+    },
+    {
+      "stage": "Child",
+      "name": "FIREWALL BYPASS",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "When you make an **Area Attack** with the **[SUPPORT]** Tag, the **Potency** and **Duration** of **Attack Effects** is no longer reduced.",
+      "tags": ["offensive", "area-attack", "support", "incompatible-selective-targeting"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:BLAST",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** creates a circular zone that originates somewhere within the User’s **Effective Limit**. It has a Base Radius of 1 **Space**, but the Attacker may add half its **BIT** to the Radius.\n\nThis **Area Attack** can only be applied to **[RANGE]** Attacks.",
+      "tags": ["offensive", "area", "ranged-only"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:BURST",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** affects a number of **Spaces** around the Attacker. It has a Base Range of 1 **Space**, but the Attacker may add half its **DOS** to the Radius.\n\nThis **Attack** goes outward from the Attacker, and thus the Attacker is not considered a Target for the purposes of **Damage** or **Effects**.",
+      "tags": ["offensive", "area", "melee-or-range"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:CONE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** creates a 90 degree cone which originates adjacent to the user. The shape has a Base Length of 2 **Spaces**, but the Attacker may add its **BIT** to the length.",
+      "tags": ["offensive", "area", "melee-or-range"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:LINE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** creates a pillar adjacent to the User, with a Base Length of 3 **Spaces**. The Attacker may add its **CPU** to the range.\n\nIf the pillar would hit a solid wall, it may ‘bounce’ off of the wall, and potentially hit additional targets (but a Target can only be hit once). The pillar’s width is 1 **Space** as a minimum, but the user may increase the width by 1 **Space** for each **Size** it is larger than **Large**.",
+      "tags": ["offensive", "area", "melee-or-range"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:PASS",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** allows the user to charge in a straight line in a given direction, hitting every Target along the way. When declaring an **Area Attack**, the user **Moves** a Base Distance equal to their **RAM** in a straight line, and cannot change their direction.\n\nA **[T:PASS]** Attack requires the Attacker to **Move** to use; so if the user has a Pass Attack they must use 2 **Actions** to use it. However, if the Attack also has the **[CHARGE]** Tag, it may be used as 1 **Action** instead, and the Digimon may also add to the distance travelled up to its **Movement**.\n\nThis **Area Attack** can only be applied to **[MELEE]** Attacks.",
+      "tags": ["offensive", "area", "melee-only", "movement"]
+    },
+    {
+      "stage": "Child",
+      "name": "AREA ATTACK: T:WAVE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "The **Attack** creates a circular zone that can be placed anywhere adjacent to the Attacker. The zone itself has a Base Radius of 2 **Spaces**, but the Attacker may add half its **DOS** to the Radius.",
+      "tags": ["offensive", "area", "melee-or-range"]
+    },
+    {
+      "stage": "Child",
+      "name": "SELECTIVE TARGETING I",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**INCOMPATIBLE: BOMBARDMENT, FIREWALL BYPASS**\n\nThe Digimon's **Area Attack** tagged Attacks will no longer be able to **Damage Allies** or place negative **Effects** on them. Enemies the Digimon attacks will not be able to gain benefits from positive **Effects**.\n\nWhen the Digimon targets a specific Digimon with an **Attack** that is locked in a **Clash** with someone else, the Target Digimon only benefits from their own **CPU** for **Armor**.\n\nIf the Digimon makes a **[CLEANSE]** Tagged Attack, it can choose to only reduce the **duration** of Positive **Effects** or Negative **Effects**.",
+      "tags": ["offensive", "area-attack", "selective", "incompatible-bombardment", "incompatible-firewall-bypass"]
+    },
+    {
+      "stage": "Child",
+      "name": "SELECTIVE TARGETING II",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**INCOMPATIBLE: BOMBARDMENT, FIREWALL BYPASS, DATA SPECIALIZATION: STATUS WARLORD**\n\nWhenever the Digimon makes an **Attack** with an **Area Attack Tag** and an **Effect Tag**, it can change the **Tags** of the Attack: The **Attack** is treated as **[DAMAGE]** for Enemies and **[SUPPORT]** for **Allies**, or the **Effect** does not affect Enemies.\n\nThis can be used to turn a **[SUPPORT]** Attack meant for **Allies** into a **[DAMAGE]** Attack for Enemies while still providing benefits to allies.",
+      "tags": ["offensive", "area-attack", "selective", "incompatible-bombardment", "incompatible-firewall-bypass", "incompatible-data-specialization-status-warlord"]
+    }
+  ]
+}

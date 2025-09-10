@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Offensive Qualities 2",
+  "description": "Advanced offensive qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "ELEMENTAL FORCE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2, NATUREWALK**\n\nWhen taking a **Rank** in this Quality, choose a **NATUREWALK** Element the Digimon has purchased. The Digimon gains an **Attack Tag** with the same name as that Element, and may apply it to one **[DAMAGE]** Tagged Attack.\n\nWhenever a Digimon uses an **Attack** with the Element Tag, it gains a bonus to **DAM** equal to the Digimon's **Stage**. However, the **Attack** deals no bonus **Damage** to a Digimon that shares the same **NATUREWALK** as the chosen Element. The **Attack** is completely ineffective against Digimon with the above requirement and the **ELEMENT MASTER** Quality.",
+      "tags": ["elemental", "damage-bonus", "stage-2-requirement", "requires-naturewalk"]
+    },
+    {
+      "stage": "Adult",
+      "name": "MIGHTY BLOW",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 2**\n\nThe Digimon may apply the **[T:MIGHTY]** Tag to one **[MELEE]** Attack. If an attack Tagged with **[MELEE]** deals at least 2 **Damage** after **Armor**, the attacker can choose to make a **CPU (Feats of Strength) Check**.\n\n**Success**: The primary target is inflicted with **[STUN]**.\n**Critical Success**: The **Attack** also deals 2 extra **Damage**.\n\n**Unalterable Damage** doesn't count towards the total **Damage** required to activate this Quality.",
+      "tags": ["melee", "stun", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "PRECISE FOCUS",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2**\n\nThe Digimon may apply the **[FOCUS]** Tag to one **[RANGE]** Attack. An **Attack** with the **[FOCUS]** Tag requires 1 extra **Action** to use.\n\nWhen the **Attack** is declared, roll a **BIT (Precision) Check**.\n\n**Success**: The Digimon gains +5 to the **Attack**'s **Accuracy pool**.\n**Critical Success**: The bonus increases to +4.\n\nFor every point of **Damage** an **Attack** with the **[FOCUS]** Tag does, the target loses two **Temporary Wound Boxes** instead of one.",
+      "tags": ["ranged", "accuracy", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "FEINT ATTACK",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 2**\n\nThe Digimon may apply the **[T:FEINT]** Tag to one **[MELEE]** Attack. When a Digimon declares an **Attack** with the **[T:FEINT]** Tag, they can choose to activate this Quality. The **Attack** takes a penalty to **DAM** equal to the Digimon's **Stage**, and the Digimon makes a **BIT (Manipulate) Check**.\n\n**Success**: The Target can only roll half its normal **Dodge Pool** in response to the attack.\n**Critical Success**: The **Attack** doesn't suffer a **Damage** penalty.\n\nA Digimon may not have **[PIERCING]** and **[T:FEINT]** on the same **Attack**.",
+      "tags": ["melee", "dodge-reduction", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "PUNISHING STRIKE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2, COMBAT AWARENESS**\n\nThe Digimon may apply the **[PUNISH]** Tag to one **[MELEE]** Attack. When a Digimon would willingly move out of the reach of your melee attacks, you can make an **Attack** with this Tag against that Digimon outside your turn as an **Interrupt Action**.\n\nYou can use this Quality an amount of times per battle equal to the **ranks** you have in **COMBAT AWARENESS**.\n\nIf a Digimon **Intercedes** against this **Attack**, their **Armor** is halved against the **Damage** it deals.",
+      "tags": ["melee", "interrupt", "stage-2-requirement", "requires-combat-awareness"]
+    },
+    {
+      "stage": "Adult",
+      "name": "THERE IS NO ESCAPE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: PUNISHING STRIKE**\n\nWhen you deal 2 or more **damage** using an **Attack** with the **[PUNISH]** Tag, you halve the target's **Movement** until the end of the current turn.\n\nIf the **Attack** with the **[PUNISH]** Tag also has the **[ROOT]** tag, the target's current **Movement** is reduced to 0 instead for that turn.\n\nYou can now also use **PUNISHING STRIKE** if the target would willingly **Teleport** out of reach.",
+      "tags": ["movement-control", "requires-punishing-strike"]
+    },
+    {
+      "stage": "Adult",
+      "name": "COUNTERBLOW",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2, COUNTERATTACK**\n**INCOMPATIBLE: CROSS COUNTER**\n\nThe Digimon may apply the **[COUNTER]** Tag to one **[MELEE]** Attack. The Digimon can only use the **[COUNTER]** Tagged Attack when using **Counterattack**.\n\nAdditionally, when the Digimon activates the **Counterattack** Quality, instead of the normal penalty the Digimon must choose between three options: The Digimon may halve the Target's **Dodge Pool**; The Digimon may halve the Target's **Armor** for the **Attack**; or The Digimon may expend two uses of **Counterattack** to activate both of the above effects at once.",
+      "tags": ["counter", "melee", "stage-2-requirement", "requires-counterattack", "incompatible-cross-counter"]
+    },
+    {
+      "stage": "Adult",
+      "name": "CROSS COUNTER",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 2, COUNTERATTACK**\n**INCOMPATIBLE: COUNTERBLOW, INSTANT COUNTER**\n\nThe Digimon may apply the **[COUNTER]** Tag to one **[MELEE]** Attack. The Digimon can only use the **[COUNTER]** Tagged Attack when using **Counterattack**.\n\nIn addition, if an Enemy lands a successful **[MELEE]** Attack against the Digimon and it suffers minimum **Damage** equal to its **Stage** + 1 (after **Armor**), you may choose to trigger **Counterattack**.\n\nIf **Counterattack** is triggered during an **Intercede**, the Digimon may retaliate, but the Target does not halve its **Dodge** against the **Attack**.",
+      "tags": ["counter", "melee", "stage-2-requirement", "requires-counterattack", "incompatible-counterblow"]
+    },
+    {
+      "stage": "Adult",
+      "name": "RETURN FIRE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 2, COUNTERATTACK**\n**INCOMPATIBLE: COUNTERBLOW**\n\nThe Digimon may apply the **[COUNTER]** Tag to one **[RANGE]** Attack. The Digimon can only use the **[COUNTER]** Tagged Attack when using **Counterattack**.\n\nIf the **Counterattack** Quality is triggered due to a **[RANGE]** Attack, the Digimon ignores any penalties to **ACC** caused by Attacking within its **Effective Limit**.",
+      "tags": ["counter", "ranged", "stage-2-requirement", "requires-counterattack", "incompatible-counterblow"]
+    },
+    {
+      "stage": "Adult",
+      "name": "INSTANT COUNTER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2, COUNTERATTACK**\n**INCOMPATIBLE: CROSS COUNTER**\n\nThe Digimon may use the **Counterattack Interrupt Action** as a **Free Action Once per Combat**.",
+      "tags": ["counter", "free-action", "stage-2-requirement", "requires-counterattack", "incompatible-cross-counter"]
+    },
+    {
+      "stage": "Adult",
+      "name": "LIFESTEAL",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 2**\n\nThe Digimon may apply the **[T:DRAIN]** Tag to one **Attack**. This **Attack** heals a number of the Digimon's **Wound Boxes** equal to the **Damage** dealt, to a maximum of the Digimon's **DOS**.\n\nHowever, the Digimon can spend 1 extra **Action** when making the **Attack** in order to increase the maximum by the Digimon's **Stage**.\n\nIf used with an **Area Attack** Tag, the overall **Damage** is used to determine healing instead of **Damage** to individual Targets.\n\nThe **[T:DRAIN]** Tag cannot be applied to an **Attack** with an **Attack Effect Tag**.",
+      "tags": ["healing", "drain", "stage-2-requirement"]
+    }
+  ]
+}

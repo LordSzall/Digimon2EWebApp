@@ -1,0 +1,24 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Core Qualities",
+"description": "Core combat qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Instinct",
+"type": "Static",
+"dpCost": 1,
+"description": "Your Digimon possesses a driving force behind its movements, derived from the energy of its own being. The Digimon gains a +1 bonus to its Dodge, Health and Movement. This doubles consecutively for each Rank in Instinct, shown on the Table. The number of ranks a Digimon can take is equal to its Stage, to a maximum of 5, indicated by the table.",
+"tags": ["core", "ranks", "basic"]
+},
+{
+"name": "Weapon",
+"type": "Attack",
+"dpCost": 1,
+"description": "Your Digimon has a Weapon, or some type of fighting style it prefers. Attacks which use said Weapon or fighting style may gain a [WEAPON] Tag. A Digimon may only have a number of [WEAPON] Tagged Attacks equal to the ranks it has in this Quality. Whenever a Digimon uses a [WEAPON] Tagged Attack, it gains a bonus to Accuracy and Damage equal to the ranks in this Quality. The number of ranks a Digimon can take is equal to its Stage, to a maximum of 5, indicated by the table.",
+"tags": ["core", "ranks", "basic"]
+}
+]
+}

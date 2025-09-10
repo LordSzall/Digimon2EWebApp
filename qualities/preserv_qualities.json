@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Preservation Qualities",
+  "description": "Preservation and recovery qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "SECOND WIND",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "When **Initiative** is rolled, the Digimon gains uses of this Quality equal to its **Ranks**.\n\nThe Digimon can make a **Recovery Check** as 1 **Action**, but only **once per turn** and it cannot **Attack** the same turn it uses this Quality.\n\nIt loses all unexpended uses when Combat ends, but regains extra **Wound Boxes** when making a **Recovery Check** at the end of Combat for each unexpended use.",
+      "tags": ["limited", "up-to-3-ranks", "recovery"]
+    },
+    {
+      "stage": "Child",
+      "name": "VITAL ENERGY RANK 1",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**Once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1's that appear when making a **Health Check**.",
+      "tags": ["health", "reroll", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "VITAL ENERGY RANK 2",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**Once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1's and 2's that appear when making a **Health Check**.",
+      "tags": ["health", "reroll", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "PACK MASTER",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "If the Digimon would be targeted by an **Attack**, an adjacent **Ally** may **Intercede** as a **Free Action once per Round**.",
+      "tags": ["intercede", "free-action", "support"]
+    },
+    {
+      "stage": "Child",
+      "name": "TUMBLER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains bonus **Damage** reduction equal to its **RAM** when taking **Crash Damage**.\n\nIf the Digimon also possesses the **EXTRA MOVE: JUMPER** Quality, it negates all **Crash Damage** from falling.",
+      "tags": ["damage-reduction", "crash-damage"]
+    }
+  ]
+}

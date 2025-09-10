@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Offensive Qualities 3",
+  "description": "Advanced offensive and weapon qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "COORDINATED ASSAULT",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3, AGGRESSIVE FLANK**\n\nThe Digimon may now attempt to mark a single target as 1 **Action**. The Digimon must make a **BIT (Precision) Check**.\n\n**Success**: The Target becomes **Marked**.\n**Critical Success**: The Target also immediately suffers a -1 **DOD** penalty.\n\nA Target who is **Marked** gains a **DOD** Penalty equal to the Digimon's **Stage** instead of the normal -1 Penalty for each **Attack** which targets it past the first one in each **Round** of Combat. This affects **DATA SPECIALIZATION: UNCATCHABLE TARGET** and **ABSOLUTE EVASION**, but not **SPEEDSTER**.",
+      "tags": ["marking", "dodge-penalty", "stage-3-requirement", "requires-aggressive-flank"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CHROME DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +2 **ACC** and +1 **DAM**.",
+      "tags": ["weapon", "accuracy", "damage", "stage-3-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "CURSED DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +2 **ACC** and +1 **DAM**.\n\nWhen at Maximum **Wound Boxes**, the Digimon takes a -1 **DAM** penalty to **[WEAPON]** Tagged Attacks.\n\nWhen the Digimon is at half its maximum **Wound Boxes** or fewer, it gains +2 **DAM** to **[WEAPON]** Tagged Attacks.",
+      "tags": ["weapon", "accuracy", "damage", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "ADAPTIVE DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nAt the start of the **Round**, the Digimon gains 5 points which it can use to grant its **[WEAPON]** Tagged Attacks a bonus to either **ACC** or **DAM**. It can split these points up as it sees fit.\n\nIf a Digimon has this Quality alongside **ADAPTIVE DIGIZOID ARMOR**, it is immune to **[DISARM]**.",
+      "tags": ["weapon", "adaptive", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "SHARP DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +4 **ACC**.\n\nThe Digimon's **[DAMAGE] [WEAPON]** Tagged Attacks deal 1 **Unalterable Damage** on a hit.",
+      "tags": ["weapon", "accuracy", "unalterable-damage", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "HEAVY DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +5 **DAM**.\n\nThe Digimon suffers a -1 penalty to its **Movement**, but gains +1 to **DOS**.",
+      "tags": ["weapon", "damage", "movement-penalty", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "FLEXIBLE DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon gains +1 **BIT** and +3 **DOD**, and its **[WEAPON]** Tagged Attacks are treated as if they are benefiting from 1 **Rank** of **Reach**.\n\nIf the Digimon already has **Reach**, its benefits stack with this Quality.",
+      "tags": ["weapon", "dodge", "reach", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "LIGHT DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +3 **ACC** and +3 **DAM**.\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain a single Automatic **ACC** success on every **Accuracy Check** it makes. This stacks with **CERTAIN STRIKE**.",
+      "tags": ["weapon", "accuracy", "damage", "auto-success", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "SHINING DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON**\n**INCOMPATIBLE: ALGORITHM QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain +5 **ACC** and +1 **DAM**.\n\nThe Digimon **[WEAPON]** Tagged Attacks gain an additional bonus:\n\n**[MELEE]**: The **Attack** deals a minimum **Damage** of 2 after **Armor** if it has the **[DAMAGE]** Tag or gains +1 **Duration** on a successful hit if it has the **[SUPPORT]** Tag.\n**[RANGE]**: The **Attack** gains +3 to **Range** and **Effective Limit**.",
+      "tags": ["weapon", "accuracy", "damage", "melee-bonus", "range-bonus", "stage-4-requirement", "requires-weapon", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "PURE DIGIZOID WEAPONRY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4, WEAPON, ALGORITHM**\n**INCOMPATIBLE: OTHER DIGIZOID WEAPONRY QUALITIES**\n\nThe Digimon's **[WEAPON]** Tagged Attacks gain a +2 to **DAM** and **ACC**.\n\nThe Digimon gains the **[OFFHAND]** Tag independent from the **[WEAPON]** Tags it already has, which is treated as if it is **Rank 2 [WEAPON]** Tag.\n\nBoth **Weapon Tags** may be applied to the same **Attack** if it is a **Signature Move**, but the bonus to the **Attack** due to **[WEAPON]** cannot exceed 4 + the Digimon's current **Battery**.\n\nWhen this Digimon would suffer **[DISARM]**, the one applying the Effect must target either the **[WEAPON]** or **[OFFHAND]** Tag, and cannot remove both at once.",
+      "tags": ["weapon", "offhand", "accuracy", "damage", "stage-4-requirement", "requires-weapon", "requires-algorithm", "incompatible-other-digizoid"]
+    }
+  ]
+}

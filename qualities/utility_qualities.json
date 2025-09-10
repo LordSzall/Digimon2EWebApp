@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Utility Qualities",
+  "description": "Utility and specialized qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "SYSTEM BOOST",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "When the Digimon purchases a **Rank** in this Quality, it chooses one of its **Derived Stats** (**RAM**, **CPU**, **BIT**, **DOS**). It gains +1 to its choice. A Digimon cannot choose the same **Derived Stat** twice.\n\nThe number of **Ranks** in this Quality a Digimon can purchase is equal to its **Stage**, to a maximum of 4.",
+      "tags": ["limited", "up-to-4-ranks", "discount-available", "stat-increase"]
+    },
+    {
+      "stage": "Child",
+      "name": "TELEPORT",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "The Digimon is capable of instantly teleporting a number of **Spaces** equal to its **Stage** + 2. It requires line of sight.\n\nThe Digimon also adds its **Ranks** in **INSTINCT** to the distance, as well as an additional +1 if it has **DATA OPT: SPEEDSTER**.\n\nIt may use this Quality to teleport away as an **Interrupt Action** to an Enemy's **Attack Once per Combat**, causing the **Attack** to miss. Alternatively, this **Once per Combat** use can be used as a **Clash Action** to automatically escape the **Clash**.",
+      "tags": ["movement", "interrupt", "once-per-combat", "clash-escape"]
+    },
+    {
+      "stage": "Child",
+      "name": "GLAMOR",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **ILLUSIONARY OVERLAY**\nThe Digimon is capable of applying a Glamor to their allies, allowing them to have a different appearance. This can affect any number of targets within a number of **Spaces** equal to half the Digimon's **BIT**, performed as 2 **Actions**.\n\nThe illusion remains until specific conditions are met.",
+      "tags": ["illusion", "appearance", "incompatible-illusionary-overlay"]
+    },
+    {
+      "stage": "Child",
+      "name": "ILLUSIONARY OVERLAY",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "Incompatible: **GLAMOR**\nRequirement: **NATUREWALK QUALITY**\n\nThe Digimon is capable of overlaying illusions in reality using their elemental abilities, manipulating the environment's appearance within a radius of its **BIT**, performed as 2 **Actions**.\n\nThe Digimon must choose one effect: Illusionary Shroud or Illusionary Barriers.\n\nThe illusion remains until specific conditions are met.",
+      "tags": ["illusion", "environment", "naturewalk-requirement", "incompatible-glamor"]
+    },
+    {
+      "stage": "Child",
+      "name": "TECHNICIAN",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon is skilled at repairing code and technology, and can read and comprehend Digicode for its Tamer.\n\nIt gains a +3 bonus to **Skill Checks** involving repairing/deciphering code and machinery, understanding environments, and rebuilding things in the Digital World.",
+      "tags": ["technical", "code", "repair"]
+    },
+    {
+      "stage": "Child",
+      "name": "FIREWALL",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **TECHNICIAN**\nThe Digimon increases the bonus provided by **TECHNICIAN** by +3, and can now also add their **TECHNICIAN** bonus to routing out intruders, protecting/reinforcing code, maintaining **Domain Control**, and resisting code manipulation effects.",
+      "tags": ["technical", "defense", "technician-requirement"]
+    },
+    {
+      "stage": "Child",
+      "name": "TROJAN",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **TECHNICIAN**\nThe Digimon increases the bonus provided by **TECHNICIAN** by +3, and can now also add their **TECHNICIAN** bonus to manipulating code to access protected areas, and damaging/corrupting code and machinery.",
+      "tags": ["technical", "offense", "technician-requirement"]
+    }
+  ]
+}

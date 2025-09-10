@@ -1,0 +1,154 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Master Effects",
+  "description": "Advanced Attack Effect Tags for Stage 3+ Digimon.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "BLIND",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[BLIND]** Tag to one Attack. The Target is considered blinded for the Duration.",
+      "tags": ["negative", "effect", "duration", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DOT",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[DOT]** Tag to one **[DAMAGE]** Attack. The Target turns into a pixelated sprite, and all of its Attacks are replaced with one [MELEE] [DAMAGE] and one [RANGE] [DAMAGE], but gains a bonus to Dodge equal to its RAM for the Duration. In addition, while transformed this way it **cannot gain Battery.** A Target can only be afflicted with [DOT] once per Combat.",
+      "tags": ["negative", "effect", "duration", "damage", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "EXPLOIT",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[EXPLOIT]** Tag to one Attack. The Target’s Dodge and Armor are reduced by the Caster’s BIT for the Duration.",
+      "tags": ["negative", "effect", "duration", "bit-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "PACIFY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[PACIFY]** Tag to one Attack. The Target’s Accuracy and Damage are reduced by the Caster’s BIT for the Duration.",
+      "tags": ["negative", "effect", "duration", "bit-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "PARALYZE",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[PARALYZE]** Tag to one Attack. Requires 1 extra Action. The Target’s Dodge is reduced by the Caster’s CPU for the Duration. In addition, the Digimon treats all terrain as Difficult Terrain.",
+      "tags": ["negative", "effect", "duration", "cpu-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "RATTLED",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[RATTLED]** Tag to one Attack. The Target’s Damage and Dodge are reduced by the Caster’s CPU for the Duration.",
+      "tags": ["negative", "effect", "duration", "cpu-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "RUIN",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[RUIN]** Tag to one Attack. At the start of the Target’s turns, the Target takes Damage equal to the Caster’s BIT (to a minimum of 1) for the Duration. This Damage is reduced by Armor, and can be completely reduced to 0 unlike most Damage. This does not stack with [BURN], [FREEZE] and [POISON] and should a Target be afflicted with more than one, the most recent of them overrides the previous effect. [RUIN] has a max Duration of 3 turns.",
+      "tags": ["negative", "effect", "duration", "bit-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "SHAKEN",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[SHAKEN]** Tag to one Attack. The Target’s Accuracy and Armor are reduced by the Caster’s DOS for the duration.",
+      "tags": ["negative", "effect", "duration", "dos-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "STUN",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[STUN]** Tag to one Attack. Requires 1 extra Action. The Target loses 1 Action, and gains this Effect until the end of its next turn. If it had no Actions, this Effect does not activate until the end of the Target’s next turn. If the Target was Clashing, the Clash ends. The Target can regain the lost Action if this Effect is removed before the Duration ends. A Digimon may not have [STUN] and an Area Attack Tag on the same Attack unless they apply both Tags to a Signature Move with [SUPPORT]. The Digimon requires 2 Battery to trigger the Area Attack this way.",
+      "tags": ["negative", "effect", "action-economy", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "WEAK",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[WEAK]** Tag to one Attack. Requires 1 extra Action. The Target’s Damage and Armor are reduced by the Caster’s DOS for the Duration.",
+      "tags": ["negative", "effect", "duration", "dos-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DENY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[DENY]** Tag to one Attack. The next Effect against the Target is negated, and this Effect’s duration immediately ends. This Target decides if this is treated as a Positive or Negative Effect upon receiving it for the purpose of Qualities, such as Decisive Defenses.",
+      "tags": ["neutral", "effect", "negation", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DARING",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[DARING]** Tag to one Attack. The Target’s Accuracy and Armor are increased by the Caster’s BIT for the Duration.",
+      "tags": ["positive", "effect", "duration", "bit-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "FURY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[FURY]** Tag to one Attack. The Target’s Accuracy and Damage are increased by the Caster’s DOS for the Duration.",
+      "tags": ["positive", "effect", "duration", "dos-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "REGEN",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[REGEN]** Tag to one Attack. The Target regains Wound Boxes equal to the Caster’s BIT at the start of its turns for the duration. If the Digimon would drop to 0 Wound Boxes while it has this Effect, it drops to 1 Wound Box instead and this Effect immediately ends. A Digimon can only benefit from this once per Combat (it can still benefit from the healing [REGEN] normally provides).",
+      "tags": ["positive", "effect", "duration", "bit-scaling", "healing", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "STEADY",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[STEADY]** Tag to one Attack. The Target’s Damage and Dodge are increased by the Caster’s CPU for the Duration.",
+      "tags": ["positive", "effect", "duration", "cpu-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "STRENGTH",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[STRENGTH]** Tag to one Attack. Requires 1 extra Action. The Target’s Damage and Armor are increased by the Caster’s DOS for the Duration.",
+      "tags": ["positive", "effect", "duration", "dos-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "VIGIL",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[VIGIL]** Tag to one Attack. The Target’s Dodge and Armor are increased by the Caster’s BIT for the duration.",
+      "tags": ["positive", "effect", "duration", "bit-scaling", "master-effect"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "VIGOR",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Apply the **[VIGOR]** Tag to one Attack. The Target’s Dodge and Movement are increased by the Caster’s RAM for the duration.",
+      "tags": ["positive", "effect", "duration", "ram-scaling", "master-effect"]
+    }
+  ]
+}

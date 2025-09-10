@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Core Qualities 2",
+  "description": "All Core Qualities for Stage 2 Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: FLIGHT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: FLIGHT**\nThe Digimon is not slowed down by even the harshest of winds while it's in the air and it loses its Flying Speed while it is at a quarter of its Maximum **Wound Boxes** or below instead of half.",
+      "tags": ["flight", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: DIGGER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: DIGGER**\nThe Digimon is now capable of digging through the majority of surfaces without being slowed down. It can dig through harder materials such as stone, ice or even some softer metals but this is now treated as **Difficult Terrain**.\n\nWhen the Digimon digs through such hard materials, it leaves a tunnel behind equal to its **Size** that other Digimon can pass through.\n\nThe Digimon's tremor-based sight now increases to its full **Range** while underground, and can even feel them while above ground up to a number of **Spaces** equal to half its **Range**.",
+      "tags": ["digging", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: SWIMMER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: SWIMMER**\nThe Digimon is capable of swimming without being slowed down by harsh currents. The Digimon can also use this type of **Movement** to move through liquids other than water, with restrictions from the GM.\n\nThe Digimon ignores any penalties to see other creatures underwater while it is also underwater. It can now **Hold its Breath** an unlimited amount of times per Combat. Outside of Combat, the Digimon can hold its breath for a number of minutes equal to its **CPU**.\n\nIf the Digimon has the **NATUREWALK: WATER** Quality, the Digimon ignores all **Difficult Terrain** underwater.",
+      "tags": ["swimming", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: WALLCLIMBER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: WALLCLIMBER**\nThe Digimon is now capable of walking on ceilings, and cannot be slowed or slip off any normal wall surfaces.\n\nThe Digimon also becomes immune to the Effects of **[ROOT]**.",
+      "tags": ["climbing", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: JUMPER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: JUMPER**\nThe Digimon no longer has to Jump in a straight line, able to curve itself in the air.\n\nThe Digimon also gains bonus **Damage** reduction equal to its **RAM** when taking damage from falling or being thrown. If the Digimon also possesses the **TUMBLER** Quality, it negates all **Damage** from falling.\n\nThe Digimon can use its Jump **Movement** to move in and out of **Difficult Terrain** as a **Move Action** rather than **Difficult Move** as long as it is not at half its Maximum **Wound Boxes** or fewer.",
+      "tags": ["jumping", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SPRINT",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "The Digimon adds its **RAM** to its **Movement**.",
+      "tags": ["movement", "core-discount", "stage-2-requirement"]
+    }
+  ]
+}

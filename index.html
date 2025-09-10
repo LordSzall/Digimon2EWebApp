@@ -76,6 +76,15 @@
         </label>
       </div>
       <div class="grid g-2">
+        <label>Stage
+          <select id="qualityStage">
+            <option value="Any">Any Stage</option>
+            <option value="Child">Child</option>
+            <option value="Adult">Adult</option>
+            <option value="Perfect">Perfect</option>
+            <option value="Ultimate">Ultimate</option>
+          </select>
+        </label>
         <label>Type
           <select id="qualityType">
             <option value="Static">Static</option>
@@ -85,8 +94,19 @@
         </label>
       </div>
       <label>Description
-        <textarea id="qualityDescription" rows="4" placeholder="Describe the quality's effects..."></textarea>
+        <textarea id="qualityDescription" rows="6" placeholder="Describe the quality's effects...
+
+  Formatting tips:
+  - Use **text** for bold
+  - Press Enter for line breaks"></textarea>
       </label>
+      <!-- NEW: Live preview -->
+      <div class="quality-preview">
+        <div class="quality-preview-label">Preview:</div>
+        <div id="qualityDescriptionPreview" class="quality-preview-content">
+          Type in the description above to see a preview...
+        </div>
+      </div>
       <div class="row modal-footer">
         <button class="btn" id="cancelQuality">Cancel</button>
         <button class="btn primary" id="confirmQuality">Add Quality</button>
@@ -98,6 +118,7 @@
   <div class="modal hidden" id="qualityDetailModal">
     <div class="box">
       <h3 id="qualityDetailTitle">Quality Name</h3>
+      <div class="quality-stage-badge" id="qualityDetailStage">Any Stage</div>
       <div class="quality-type-badge" id="qualityDetailType">Static</div>
       <div class="quality-dp-cost" id="qualityDetailDP">Cost: 1 DP</div>
       <div class="hr"></div>
@@ -105,8 +126,59 @@
         <div id="qualityDetailDescription">Quality description will appear here...</div>
       </div>
       <div class="row modal-footer">
+        <button class="btn" id="exportQuality">📤 Export</button>
         <button class="btn" id="editQuality">Edit</button>
         <button class="btn" id="closeQualityDetail">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: Quality Import Modal -->
+  <div class="modal hidden" id="qualityImportModal">
+    <div class="box quality-import-box">
+      <h3>Import Quality from Library</h3>
+
+      <!-- Search and Filter Controls -->
+      <div class="quality-import-controls">
+        <div class="grid g-3">
+          <label>Search
+            <input type="text" id="qualitySearchInput" placeholder="Search qualities..." />
+          </label>
+            <label>Filter by Stage
+                <select id="qualityFilterStage">
+                    <option value="">All Stages</option>
+                    <option value="Child">Child</option>
+                    <option value="Adult">Adult</option>
+                    <option value="Perfect">Perfect</option>
+                    <option value="Ultimate">Ultimate</option>
+                    <option value="Any">Any Stage</option>
+                </select>
+            </label>
+          </label>
+          <label>Filter by Type
+            <select id="qualityFilterType">
+              <option value="">All Types</option>
+              <option value="Attack">Attack</option>
+              <option value="Static">Static</option>
+              <option value="Trigger">Trigger</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Quality Library Grid -->
+      <div class="quality-library-container">
+        <div id="qualityLibraryGrid" class="quality-library-grid"></div>
+      </div>
+
+      <!-- Status -->
+      <div class="quality-import-status">
+        <div class="help" id="qualityImportStatus">Loading quality library...</div>
+      </div>
+
+      <!-- Footer -->
+      <div class="row modal-footer">
+        <button class="btn" id="closeQualityImport">Close</button>
       </div>
     </div>
   </div>
@@ -116,7 +188,30 @@
   <script src="special-orders.js"></script>
   <script src="tamer-sheet.js"></script>
   <script src="digimon-sheet.js"></script>
+  <script src="quality-library.js"></script>
   <script src="save-load.js"></script>
   <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const descInput = document.getElementById('qualityDescription');
+      const preview = document.getElementById('qualityDescriptionPreview');
+
+      if (descInput && preview) {
+        // Update preview on input
+        descInput.addEventListener('input', () => {
+          const text = descInput.value;
+          if (!text.trim()) {
+            preview.innerHTML = 'Type in the description above to see a preview...';
+            preview.style.opacity = '0.6';
+          } else {
+            preview.innerHTML = window.QualityFormatter ?
+              window.QualityFormatter.formatDescription(text) :
+              text.replace(/\n/g, '<br>');
+            preview.style.opacity = '1';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

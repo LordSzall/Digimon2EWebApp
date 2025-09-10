@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Clash Qualities",
+  "description": "Clash-related combat qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "MONSTER STRENGTH",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon can control a **Clash** normally against any **Size**.\n\nWhen the Digimon takes the **Move Clash Action**, if the Opponent in the **Clash** is the same **Size** or smaller, the Digimon can force its Opponent to move with it. The Digimon must make a **CPU (Feats of Strength) Check**, with a **TN** equal to 10 + the Opponent's **CPU**.\n\n**Failure**: The Opponent isn't moved.\n**Success**: The opponent is moved with the Digimon, but the Digimon can only move half as many **Spaces**.\n**Critical Success**: The Digimon has no movement penalty.",
+      "tags": ["clash", "movement", "size-independent"]
+    },
+    {
+      "stage": "Child",
+      "name": "POINT BLANK",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "While in a **Clash**, the Digimon is allowed to use both **[MELEE]** and **[RANGE]** Attacks against their Opponent.\n\nIf they use a **[RANGE]** Attack, they suffer no penalty for any Enemies within 1 **Space**. If the Attack has **[RECOIL]**, the Attack immediately ends the **Clash** and applies normal effects.\n\nThe Digimon can also make a **Weak Attack** with **[RANGE]** instead of **[MELEE]**.",
+      "tags": ["clash", "ranged", "melee", "versatile"]
+    },
+    {
+      "stage": "Child",
+      "name": "SLIPPERY",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "When an Enemy attempts to initiate a **Clash** with the Digimon, or the Digimon attempts to use the **Escape the Clash Action**, it can make a **RAMx2 Check** instead of a **CPU+RAM Check**.\n\nIf the Digimon's result is higher than the initiator's **CPU+RAM Check**, it instead immediately ends the attempted **Clash** and the one who initiated the **Clash** cannot attempt to **Clash** with the Digimon again until the next **Round**.\n\nIf the Digimon's result is lower, the initiator immediately controls the **Clash**.",
+      "tags": ["clash", "evasion", "escape"]
+    },
+    {
+      "stage": "Child",
+      "name": "FASTBALL",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "You may throw a willing **Ally** that is at least one **Size** smaller than you within your **Clash** reach as 1 **Action**. The **Ally** takes **Damage** as per normal throwing rules, unless they have **TUMBLER**.\n\nIf the **Ally** has an **Attack** with the **[CHARGE]** Tag and is being thrown at an Enemy, they may take an **Interrupt Action** to make a **[CHARGE]** Attack on the same Enemy.\n\nThe Digimon can choose to use **FASTBALL** as 2 **Actions** to supply the Thrown **Ally** with an additional 1 **Action** for the purpose of the **Attack**.",
+      "tags": ["throw", "ally", "charge", "action-economy"]
+    },
+    {
+      "stage": "Child",
+      "name": "GIANT HIJACKER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "As 1 **Action** while adjacent to a Target at least one **Size** larger, the Digimon can make a **CPU (Athletics) Check** against a **TN** equal to 10 + the Target's **RAM** - the Target's **CPU**.\n\n**Success**: The Digimon is considered to share the same space as the Digimon, and moves with them whenever they move.\n**Critical Success**: The larger Digimon's **TN** to remove the smaller Digimon increases by +5.\n\nThe larger Digimon must use 1 **Action** to make a **CPU Check** against a **TN** equal to 10 + the smaller Digimon's **RAM** to shake them off. This does not count as a **Clash**.",
+      "tags": ["mount", "large-target", "movement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "TITAN POWER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **MONSTER STRENGTH**\nThe Digimon can now attempt to move Digimon of any **Size** while Clashing using **MONSTER STRENGTH** or by making a **[CHARGE]** Tagged Attack.",
+      "tags": ["mount", "large-target", "movement"]
+    }
+  ]
+}

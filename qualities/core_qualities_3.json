@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Core Qualities 3",
+  "description": "Advanced core specialization qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: FISTFUL OF FORCE",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: CLOSE COMBAT**\n\nThe Digimon gains 1 free **Rank** in **Area Attack**. The Digimon's **[MELEE]** **Area Attacks** now scale as if they were **[RANGE]** Attacks, and any targets within the base size of the area does not halve the **Damage** after **Armor** reduction.",
+      "tags": ["melee", "area-attack", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPECIALIZATION: FLURRY",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: CLOSE COMBAT**\n\nThe Digimon may make an additional **[MELEE] [DAMAGE]** Attack **once per Round** as 1 **Action** on its turn, ignoring the **One Attack Per Round** rule and not counting towards it. This **Attack** can have no extra **Tags**.",
+      "tags": ["melee", "extra-attack", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: MOBILE ARTILLERY",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: RANGED STRIKER**\n\nThe Digimon gains 1 free **Rank** in **Area Attack**. The Digimon's **Range** and **Effective Limit** increase by 3, and the Digimon can use the **Called Shot Action** an unlimited number of times per Combat, but only for the **Sharpshooter** option. When it takes this **Action**, the penalty it takes to **ACC** is halved.\n\nAny targets within the base size of the area of the Digimon's **[RANGE]** **Area Attacks** do not halve the **Damage** after **Armor** reduction.\n\nYou can choose to make such an **Attack** using 1 extra **Action** if you have at least one **Rank** in **NATUREWALK**; if you do so, the Area covered by the **Attack** becomes **Difficult Terrain** associated with **NATUREWALK** Elements of your choice.",
+      "tags": ["ranged", "area-attack", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: TRUE GUARDIAN",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: WARDEN**\n\nThe Digimon gains 1 free **Rank** in **Counterattack**. The Digimon gains +3 **Health**.\n\nWhenever the Digimon would make an **Attack** outside of its turn using an **Interrupt Action**, it ignores the **One Attack per Round** rule.\n\nWhenever the Digimon **Intercedes**, it gains a bonus to **Armor** equal to the distance traveled to **Intercede**. Additionally, if the **Attack** had an **Area Attack** Tag, any **Allies** behind the Digimon have the **Damage** taken reduced by the Digimon's **CPU** value, and any **Effect tags** they would take are negated.\n\nIf the Digimon spent 2 **Actions** to **Intercede** before the start of its turn, it gains 1 **Action** for that turn.",
+      "tags": ["defensive", "intercede", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: POWER THROW",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: WARDEN**\n\nThe Digimon gains the **FASTBALL** Quality for free. The Digimon may replace any **Skill Check** made at the start or during a **Clash** with a **BIT (Performance) Check**.\n\nWhenever the Digimon throws a target, it can choose to benefit from: doubled distance, add **CPU** to **ACC** if throwing at an Enemy, or add half **CPU** to **DAM** if not throwing at an Enemy. When Throwing an **Ally**, the **Ally** no longer takes any **Damage** from the Throw.\n\nAdditionally, any time the Digimon deals **Damage** while in a **Clash** they can roll a **CPU (Feats of Strength)** OR **BIT (Performance) Check** to deal additional **Damage** equal to the Digimon's **Stage** on success, or highest **Derived stat** on critical success. The Digimon can also use the **Finisher Clash Action**.",
+      "tags": ["clash", "throw", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: HIT AND RUN",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: SPEEDSTER**\n**The Digimon gains the Charge Attack OR Heavy Recoil Quality for Free.**\n\nIf the Digimon uses a **[CHARGE]** or **[RECOIL]** Tagged Attack, you are no longer restricted to move in a straight line, also it gains the following:\n**[CHARGE]**: If **[CHARGE]** was used to Move before attacking a **Target**, it can be used again to Move after the attack as well.\n**[RECOIL]**: The Digimon may move before attacking a target as part of the same **Action**, but must move closer to the **Target**.\n\nIf the Digimon moves as a part of their **Attack**, before rolling, they gain bonus **Damage** equal to the number of Spaces moved in the same **Action**, and cannot be **Targeted** with **PUNISHING STRIKE**.",
+      "tags": ["movement", "charge", "recoil", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: UNCATCHABLE TARGET",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPTIMIZATION QUALITY**\n**INCOMPATIBLE: ABSOLUTE EVASION**\n\nThe Digimon gains +3 **DOD** and does not suffer a stacking **Dodge** penalty if it is attacked multiple times in a **Round**. **COORDINATED ASSAULT and DATA SPEC: SNIPER ignore this bonus.**",
+      "tags": ["dodge", "evasion", "stage-3-requirement", "requires-data-optimization", "core-discount", "incompatible-absolute-evasion"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: STATUS WARLORD",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPTIMIZATION QUALITY**\nThe maximum **Duration** for all **Effects** the Digimon creates increases by 1 **Round**.\n\nThe Digimon can use the **Called Shot Action** an unlimited number of times per Combat, but only for the **Focused** option with halved **ACC** penalty.\n\nThe Digimon can ignore the requirement to need the **[DAMAGE]** Tag on **Attacks** with certain **Effects**, such as **[BURN]**.\n\nThe Digimon gains a one time 1 **DP Discount** on an **Attack Effect**.\n\nWhen the Digimon makes an **Attack** with the **[DAMAGE]** Tag and no **Effect Tag** on its turn, it can make another **Attack** ignoring the **Once Per Round** rule with the **[SUPPORT]** Tag, and vice versa.",
+      "tags": ["effects", "duration", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: WRESTLEMANIA",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: BRAWLER**\n**The Digimon gains 1 Rank of PRODIGIOUS SKILL for Free**\n\nThe Digimon Clash roll **all Clash Checks**, using either a **CPU (Feats of Strength)** Check or a **BIT (Performance)** Check.\n\nAdditionally, when the Digimon deals **Damage** during a clash, they can roll **either Skill Check** to deal additional damage. (TN = 12 + Target's CPU or RAM, whichever is higher).\n**Failure**: deals no bonus **Damage**.\n**Success**: deals +3 bonus **Damage**\n**Critical Success**: deals bonus **Damage** equal to your **Stage** or your highest Derived Stat (whichever is higher).\nFinally, the Digimon can also use the **FINISHER Clash** Action (see the Clash Section for rules)",
+      "tags": ["effects", "duration", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: WRANGLER",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: BRAWLER**\nThe Digimon can take the **Clash** Action as a **Free Action** during it's turn **Once per Round**.\n\nIf the Digimon chooses to **End a Clash**, it can reinitiate a **Clash** with the same **Target** in the same Turn **(this doesn't work for Escaping a Clash)**.\n\n**If the Target used Clash Comeback or Contest Pin, their bonus is applied to when the Clash is reinitiated.",
+      "tags": ["effects", "duration", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: TACTICAL ADAPTATION",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: VARIABLE**\nThe Digimon gains a one time 1 **DP Discount** on a **Stance Quality**, or it can take 1 **Rank** of **Mode Change** for Free.\n\nWhen **Initiative** is rolled, the Digimon can immediately take the **Change Stance Action** as a **Free Action**.\n\nAdditionally, the Digimon can take the **Stance Change Action** as a **Free Action** on its turn.\n\nIf the Digimon has the **Mode Change** Quality, it can **Mode Change** instead of **Change Stance** with this Quality.",
+      "tags": ["versatile", "stance", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DATA SPEC: SUPREME CODE",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "Requirement: **DATA OPT: VARIABLE**\nThe Digimon gains a +1 bonus to its **ACC**, **DAM**, **DOD**, **ARM** and **Health**. It also gains +1 to one **Derived Stat** of its choice.",
+      "tags": ["stat-bonus", "versatile", "stage-3-requirement", "requires-data-optimization", "core-discount"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "HYBRID DRIVE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **DATA OPTIMIZATION**\nWhen taking **HYBRID DRIVE**, the Digimon may now purchase any **DATA SPECIALIZATION** once, regardless of the Digimon's **DATA OPTIMIZATION**.",
+      "tags": ["versatile", "stage-4-requirement", "requires-data-optimization", "core-discount"]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Basic Effect Qualities",
+  "description": "Basic attack effect qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Any",
+      "name": "FEAR",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[FEAR]** Tag to one **Attack**. The Target's **ACC** is reduced by the Caster's **DOS** on **Attacks** against the Caster for the duration. The Target also cannot **Clash** with the Caster.\n\nIf the Target is afflicted by multiple uses of **[FEAR]**, it will only be affected by the most recent Caster.",
+      "tags": ["negative", "effect", "duration", "dos-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "ROOT",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[ROOT]** Tag to one **Attack**. When the Target willingly moves towards the Caster, the full distance it can **Move** is reduced by 1. The Target cannot initiate or control a **Clash** against the Caster.",
+      "tags": ["negative", "effect", "duration", "bit-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "SLOW",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[SLOW]** Tag to one **Attack**. The Target's **Movement** is reduced by the Caster's **BIT** for the duration, to a minimum of 0.",
+      "tags": ["negative", "effect", "duration", "cpu-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "TAUNT",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[TAUNT]** Tag to one **Attack**. The Target's **ACC** is reduced by the Caster's **CPU** on **Attacks** against anyone but the Caster for the duration.\n\nIf the Target is afflicted by multiple uses of **[TAUNT]**, it will only be affected by the most recent Caster. If the Attacker uses an **Area Attack** which has the Caster as a Target, the **ACC** is reduced by half the Caster's **CPU** instead.\n\nWhen the Target willingly moves away from the Caster, the full distance it can **Move** is reduced by 1.",
+      "tags": ["negative", "effect", "duration", "cpu-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "PULL",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[PULL]** Tag to one **Attack**. The Target is moved towards the Caster an amount of **Spaces** equal to the Caster's **DOS** + **Stage**.",
+      "tags": ["movement", "effect", "dos-scaling", "stage-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "PUSH",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[PUSH]** Tag to one **Attack**. The Target is moved away from the Caster an amount of **Spaces** equal to the Caster's **CPU** + **Stage**.",
+      "tags": ["movement", "effect", "cpu-scaling", "stage-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "SWIFT",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[SWIFT]** Tag to one **Attack**. The Target's **DOD** is increased by the Caster's **RAM** for the duration.",
+      "tags": ["positive", "effect", "duration", "ram-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "KEEN",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[KEEN]** Tag to one **Attack**. The Target's **ACC** is increased by the Caster's **BIT** for the duration.",
+      "tags": ["positive", "effect", "duration", "bit-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "TAILWIND",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Apply the **[TAILWIND]** Tag to one **Attack**. The Target's **Movement** is increased by the Caster's **RAM** for the duration.",
+      "tags": ["positive", "effect", "duration", "ram-scaling"]
+    }
+  ]
+}

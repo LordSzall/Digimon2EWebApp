@@ -92,6 +92,9 @@ class TabManager {
             }
         }
         const sheet = this.sheets.querySelector(`.sheet[data-id="${id}"]`);
+        if (sheet && sheet.cleanup) {
+            sheet.cleanup(); // Call custom cleanup method if exists
+        }
         const tab = this.tabBar.querySelector(`.tab[data-id="${id}"]`);
 
         sheet?.remove();

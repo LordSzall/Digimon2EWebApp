@@ -1,4 +1,4 @@
-// digimon-sheet.js - Enhanced Digimon character sheet functionality with Quality system
+// digimon-sheet.js - Enhanced Digimon character sheet functionality with Quality system and Import
 
 window.DigimonSheet = {
     getDefaultData() {
@@ -43,7 +43,7 @@ window.DigimonSheet = {
         // Basic Info
         root.appendChild(el(`
         <section class="panel">
-        <h2 class="section-title">Basic Info</h2>
+        <h2 class="section-title">Digimon Info</h2>
         <div class="grid g-3">
         ${textField('Name','meta.name')}
         ${textField('Digimon','meta.digimon')}
@@ -239,11 +239,14 @@ window.DigimonSheet = {
             refreshAttacks();
         });
 
-        // Enhanced Qualities Section
+        // Enhanced Qualities Section with Import Button
         const qualitiesPanel = el(`
         <section class="panel">
         <h2 class="section-title">Qualities</h2>
-        <div class="row mb-16" style="float:right;">
+        <div class="row mb-16" style="float:right; gap: 8px;">
+        <button class="empty-button" id="importQuality-${id}">
+        <span>📥 Import Quality</span>
+        </button>
         <button class="empty-button" id="addQuality-${id}">
         <span>➕ Add Quality</span>
         </button>
@@ -289,7 +292,7 @@ window.DigimonSheet = {
                     showQualityDetail(quality, index);
                 });
 
-                // Click to remove quality - FIXED: Use 'self' instead of 'this'
+                // Click to remove quality
                 qualityBtn.querySelector('.quality-remove').addEventListener('click', (e) => {
                     e.stopPropagation();
                     if (confirm(`Remove quality "${quality.name}"?`)) {
@@ -314,10 +317,39 @@ window.DigimonSheet = {
             type.textContent = quality.type || 'Static';
             type.className = `quality-type-badge ${(quality.type || 'Static').toLowerCase()}`;
             dpCost.textContent = `Cost: ${quality.dpCost || 0} DP`;
-            description.textContent = quality.description || 'No description provided.';
+
+            // NEW: Use formatted description
+            description.innerHTML = window.QualityFormatter ?
+            window.QualityFormatter.formatDescription(quality.description) :
+            (quality.description || 'No description provided.').replace(/\n/g, '<br>');
 
             // Store the quality index for editing
             modal.dataset.qualityIndex = index;
+            modal.classList.remove('hidden');
+        }
+
+        // Also update the openEditModal function in the _qualityFunctions object
+        openEditModal: (qualityIndex) => {
+            const quality = data.qualities.list[qualityIndex];
+            const modal = document.getElementById('qualityModal');
+
+            // Fill the form with existing data
+            document.getElementById('qualityName').value = quality.name || '';
+            document.getElementById('qualityDP').value = quality.dpCost || 1;
+            document.getElementById('qualityType').value = quality.type || 'Static';
+            document.getElementById('qualityDescription').value = quality.description || '';
+
+            // Update preview immediately
+            const preview = document.getElementById('qualityDescriptionPreview');
+            if (preview && quality.description) {
+                preview.innerHTML = window.QualityFormatter ?
+                window.QualityFormatter.formatDescription(quality.description) :
+                quality.description.replace(/\n/g, '<br>');
+                preview.style.opacity = '1';
+            }
+
+            // Set editing reference
+            modal._editingQuality = qualityIndex;
 
             modal.classList.remove('hidden');
         }
@@ -342,6 +374,15 @@ window.DigimonSheet = {
         // Add Quality button event
         qualitiesPanel.querySelector(`#addQuality-${id}`).addEventListener('click', () => {
             showQualityModal();
+        });
+
+        // NEW: Import Quality button event
+        qualitiesPanel.querySelector(`#importQuality-${id}`).addEventListener('click', () => {
+            if (typeof window.openQualityImportModal === 'function') {
+                window.openQualityImportModal();
+            } else {
+                alert('Quality import system not available. Please ensure quality-library.js is loaded.');
+            }
         });
 
         // Initial quality grid render
@@ -408,7 +449,6 @@ window.DigimonSheet = {
                         self.compute(data, root);
                     }
                 },
-                // Add this function to open modal in edit mode
                 openEditModal: (qualityIndex) => {
                     const quality = data.qualities.list[qualityIndex];
                     const modal = document.getElementById('qualityModal');
@@ -429,7 +469,7 @@ window.DigimonSheet = {
             self.compute(data, root);
             self.updateHealthBar(id, data);
             return root;
-    }, // <-- This closes the render function
+    },
 
     stageValue(data) {
         return STAGE_MAP[String(data.meta.stage)]||1;

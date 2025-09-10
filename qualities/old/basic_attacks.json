@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Basic Attacks",
+  "description": "Fundamental attack qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "name": "Powerful Strike",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Your attacks hit with exceptional force. Add +2 damage to all damage-dealing attacks.",
+      "tags": ["damage", "melee", "basic"]
+    },
+    {
+      "name": "Precise Targeting",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "You can target weak spots with deadly accuracy. Add +1 accuracy to all attacks.",
+      "tags": ["accuracy", "precision", "basic"]
+    },
+    {
+      "name": "Multi-Strike",
+      "type": "Attack",
+      "dpCost": 3,
+      "description": "You can attack multiple targets in a single action. When making a melee attack, you may target up to 3 adjacent enemies with the same attack roll.",
+      "tags": ["multi-target", "melee", "advanced"]
+    },
+    {
+      "name": "Ranged Mastery",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Your ranged attacks are exceptionally effective. Increase the range of all ranged attacks by +2 and add +1 damage.",
+      "tags": ["ranged", "damage", "range"]
+    },
+    {
+      "name": "Critical Focus",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "You can focus your attacks for maximum impact. Once per battle, you may declare a critical hit before rolling. That attack deals double damage.",
+      "tags": ["critical", "focus", "once-per-battle"]
+    }
+  ]
+}

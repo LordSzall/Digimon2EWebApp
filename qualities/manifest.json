@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-01-07",
+  "basePath": "qualities/",
+  "description": "DDA2E Quality Library Manifest - Edit this file to add new quality collections",
+  "qualities": [
+    {
+      "filename": "core_qualities.json",
+      "name": "Core Qualities",
+      "description": "All Starting Core Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "offensive_qualities.json",
+      "name": "Offensive Qualities",
+      "description": "All Starting Offensive Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["offensive", "child", "attack", "damage", "accuracy"]
+    },
+    {
+      "filename": "reach_qualities.json",
+      "name": "Reach Qualities",
+      "description": "All Reach Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["offensive", "child", "attack", "damage", "accuracy"]
+    },
+    {
+      "filename": "defensive_qualities.json",
+      "name": "Defensive Qualities",
+      "description": "All Starting Defensive Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["defensive", "child", "armor", "dodge", "protection"]
+    },
+    {
+      "filename": "stance_qualities.json",
+      "name": "Stance Qualities",
+      "description": "All Starting Stance Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["brave", "stance", "fierce", "tactical"]
+    },
+    {
+      "filename": "preserv_qualities.json",
+      "name": "Preservation Qualities",
+      "description": "All Starting Preservation Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["preserve", "child", "support", "healing"]
+    },
+    {
+      "filename": "utility_qualities.json",
+      "name": "Utility Qualities",
+      "description": "All Starting Utility Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["utility", "child", "skill", "movement", "exploration"]
+    },
+    {
+      "filename": "clash_qualities.json",
+      "name": "Clash Qualities",
+      "description": "All Starting Clash Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["clash", "confrontation", "melee"]
+    },
+    {
+      "filename": "basic_effects.json",
+      "name": "Basic Effects",
+      "description": "All Basic Effect Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["buff", "debuff", "effect", "status"]
+    },
+    {
+      "filename": "advanced_effects.json",
+      "name": "Advanced Effects",
+      "description": "All Advanced Effect Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["buff", "debuff", "effect", "enhanced"]
+    },
+    {
+      "filename": "master_effects.json",
+      "name": "Master Effects",
+      "description": "All Master Effect Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["buff", "debuff", "effect", "enhanced"]
+    },
+    {
+      "filename": "core_qualities_2.json",
+      "name": "Core Qualities 2",
+      "description": "All Adult Core Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "offensive_qualities_2.json",
+      "name": "Offensive Qualities 2",
+      "description": "All Adult Offensive Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["offensive", "child", "attack", "damage", "accuracy"]
+    },
+    {
+      "filename": "defensive_qualities_2.json",
+      "name": "Defensive Qualities 2",
+      "description": "All Adult Defensive Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["defensive", "child", "armor", "dodge", "protection"]
+    },
+    {
+      "filename": "utility_qualities_2.json",
+      "name": "Utility Qualities 2",
+      "description": "All Adult Utility Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["utility", "child", "skill", "movement", "exploration"]
+    },
+    {
+      "filename": "evoker_qualities.json",
+      "name": "Evoker Qualities",
+      "description": "All Adult Preservation Qualities",
+      "count": 24,
+      "types": ["Static", "Trigger"],
+      "tags": ["preserve", "child", "support", "healing"]
+    },
+    {
+      "filename": "core_qualities_3.json",
+      "name": "Core Qualities 3",
+      "description": "All Perfect and Ultimate Core Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "offensive_qualities_3.json",
+      "name": "Offensive Qualities 3",
+      "description": "All Perfect and Ultimate Offensive Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "defensive_qualities_3.json",
+      "name": "Defensive Qualities 3",
+      "description": "All Perfect and Ultimate Defensive Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "stance_qualities_2.json",
+      "name": "Defensive Qualities 3",
+      "description": "All Perfect and Ultimate Defensive Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "utility_qualities_3.json",
+      "name": "Defensive Qualities 3",
+      "description": "All Perfect and Ultimate Defensive Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "mode_change_qualities.json",
+      "name": "Defensive Qualities 3",
+      "description": "All Perfect and Ultimate Defensive Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    },
+    {
+      "filename": "free_qualities.json",
+      "name": "Free Qualities",
+      "description": "All Free Qualities",
+      "count": 26,
+      "types": ["Static", "Trigger", "Attack"],
+      "tags": ["core", "child", "data-opt", "speed", "defense", "attack", "skill", "element"]
+    }
+  ]
+}

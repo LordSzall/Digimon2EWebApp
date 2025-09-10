@@ -1,0 +1,52 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Area Attack",
+"description": "Area attack type qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Area Attack: T:BLAST",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack creates a circular zone that originates somewhere within the User’s Effective Limit. It has a Base Radius of 1 Space, but the Attacker may add half its BIT to the Radius. This Area Attack can only be applied to [RANGE] Attacks.",
+"tags": ["area", "ranged-only"]
+},
+{
+"name": "Area Attack: T:BURST",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack affects a number of Spaces around the Attacker. It has a Base Range of 1 Space, but the Attacker may add half its DOS to the Radius. This Attack goes outward from the Attacker, and thus the Attacker is not considered a Target for the purposes of Damage or Effects.",
+"tags": ["area", "melee-or-range"]
+},
+{
+"name": "Area Attack: T:CONE",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack creates a 90 degree cone which originates adjacent to the user. The shape has a Base Length of 2 Spaces, but the Attacker may add its BIT to the length.",
+"tags": ["area", "melee-or-range"]
+},
+{
+"name": "Area Attack: T:LINE",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack creates a pillar adjacent to the User, with a Base Length of 3 Spaces. The Attacker may add its CPU to the range. If the pillar would hit a solid wall, it may ‘bounce’ off of the wall, and potentially hit additional targets (but a Target can only be hit once). The pillar’s width is 1 Space as a minimum, but the user may increase the width by 1 Space for each Size it is larger than Large.",
+"tags": ["area", "melee-or-range"]
+},
+{
+"name": "Area Attack: T:PASS",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack allows the user to charge in a straight line in a given direction, hitting every Target along the way. When declaring an Area Attack, the user Moves a Base Distance equal to their RAM in a straight line, and cannot change their direction. A [T:PASS] Attack requires the Attacker to Move to use; so if the user has a Pass Attack they must use 2 Actions to use it. However, if the Attack also has the [CHARGE] Tag, it may be used as 1 Action instead, and the Digimon may also add to the distance travelled up to its Movement. This Area Attack can only be applied to [MELEE] Attacks.",
+"tags": ["area", "melee-only", "movement"]
+},
+{
+"name": "Area Attack: T:WAVE",
+"type": "Attack",
+"dpCost": 1,
+"description": "The Attack creates a circular zone that can be placed anywhere adjacent to the Attacker. The zone itself has a Base Radius of 2 Spaces, but the Attacker may add half its DOS to the Radius.",
+"tags": ["area", "melee-or-range"]
+}
+]
+}

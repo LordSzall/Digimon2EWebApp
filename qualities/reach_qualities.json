@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Reach Qualities",
+  "description": "Qualities that extend a Digimon's melee combat reach.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Any",
+      "name": "REACH: WIDE SWINGS",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**UP TO 3 RANKS**\n\nThe Digimon's Reach with its [MELEE] Attacks increase by the number of Ranks in this Quality. These Attacks are only able to hit unobstructed Enemies, which means these Attacks cannot be made through another Ally or Enemy's Space, nor if there is a sizeable enough barrier between the Digimon and the Target to provide cover.\n\nIn addition, if the Digimon uses a [MELEE] Area Attack, the Base Size of the Area Attack increases by the Ranks they have in this Quality, except for [T:PASS] and [T:LINE]. Instead, the width of [T:LINE] is increased by 1 Space by the Ranks in this Quality, and the Digimon may treat itself as 1 Space wider for each Rank in this Quality when making a [T:PASS] Attack. These are all affected by the restrictions previously mentioned, which means that if other Targets stand behind each other, the ones at the front can act as Barriers and shield the ones behind.",
+      "tags": ["reach", "melee", "area-attack", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Any",
+      "name": "REACH: LONG ARMS",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**UP TO 3 RANKS**\n\nThe Digimon's Reach with its [MELEE] Attacks increase by the number of Ranks in this Quality. These Attacks bypass obstructions, such as Allies, Enemies and potential Cover. However, the Digimon has a penalty to its Accuracy on [MELEE] Attacks against Enemies within its Reach for each space closer they are from their Maximum Reach. For example, a Digimon with Reach 2 would have a -1 Penalty to Attack Targets within 2 Spaces, while a Digimon with Reach 3 would have a -3 Penalty to Attack Targets that are within 3 Spaces. The Digimon still needs line of sight on a Target to attack them.\n\nOn its turn, the Digimon may also hold itself a number of Spaces directly away from a surface equal to its Ranks in this Quality. For example, a Diaboromon with Reach 2 may hover up to 2 Spaces away from a wall it is currently climbing due to its long limbs. The Digimon is still considered to be in [MELEE] to any opponent next to it on that surface, but this does increase the range of a Digimon's [MELEE] and [RANGE] Attacks against opponents (such as flying Digimon).",
+      "tags": ["reach", "melee", "obstruction-bypass", "accuracy-penalty", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Any",
+      "name": "REACH: EXTENDED GRAPPLE",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**UP TO 3 RANKS**\n\nThe Digimon's Reach with its Clash increases by the number of Ranks in this Quality. If it does, when the Digimon Attacks the Clashed opponent, it suffers a penalty to Accuracy equal to the number of Spaces away the Clash Target is. If the Clash Target doesn't have Reach, the Digimon rolls full Dodge on Attacks made against the Digimon.\n\nIn addition, the Clasher gains a new Primary Clash Action: Pull. The Digimon immediately pulls the Target to the closest unoccupied adjacent Space. If the Target is a Larger size that the Digimon, the Digimon must first succeed on a CPU (Feats of Strength) Check, with a TN of 12 + the Target's CPU.",
+      "tags": ["reach", "clash", "grapple", "pull", "up-to-3-ranks"]
+    }
+  ]
+}

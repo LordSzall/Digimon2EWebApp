@@ -1,0 +1,24 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Selective Targeting",
+"description": "Precision targeting qualities for area attacks",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Selective Targeting I",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon's Area Attack tagged Attacks will no longer be able to Damage Allies or place negative Effects on them. Enemies the Digimon attacks will not be able to gain benefits from positive Effects. When the Digimon targets a specific Digimon with an Attack that is locked in a Clash with someone else, the Target Digimon only benefits from their own CPU for Armor. If the Digimon makes a [CLEANSE] Tagged Attack, it can choose to only reduce the duration of Positive Effects or Negative Effects.",
+"tags": ["area-attack", "selective", "incompatible-bombardment", "incompatible-firewall-bypass"]
+},
+{
+"name": "Selective Targeting II",
+"type": "Trigger",
+"dpCost": 1,
+"description": "Whenever the Digimon makes an Attack with an Area Attack Tag and an Effect Tag, it can change the Tags of the Attack: The Attack is treated as [DAMAGE] for Enemies and [SUPPORT] for Allies, or the Effect does not affect Enemies. This can be used to turn a [SUPPORT] Attack meant for Allies into a [DAMAGE] Attack for Enemies while still providing benefits to allies.",
+"tags": ["area-attack", "selective", "incompatible-bombardment", "incompatible-firewall-bypass", "incompatible-data-specialization-status-warlord"]
+}
+]
+}

@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Defensive Qualities 3",
+  "description": "Advanced defensive qualities for Stage 3+ Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "BERSERKER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3, COMBAT MONSTER**\n**REQUIRED FOR: BOILING BLOOD**\n\nThe Digimon's **Resolve** cap now equals the Digimon's **Stage** x 2.",
+      "tags": ["resolve", "stage-3-requirement", "requires-combat-monster"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "BOILING BLOOD",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3, BERSERKER**\n\nWhen the Digimon begins Combat, it starts with **Resolve** equal to its **Ranks** in this Quality.\n\nWhen the Digimon's current **Wound Boxes** are below its Maximum **Wound Boxes**, it generates **Resolve** equal to its **Ranks** in this Quality at the start of its turns. If it is below half its Maximum **Wound Boxes**, it gains double the amount.\n\nHowever, if the Digimon reaches its **Resolve** cap at the start of its turn, it must immediately make a **CPU (Endurance) Check**, with a **TN** equal to 15 - the Digimon's **DOS**.\n\n**Failure**: The Digimon takes **Unalterable Damage** equal to double its **ranks** in this Quality.\n**Success**: Nothing happens.",
+      "tags": ["resolve", "stage-3-requirement", "requires-berserker", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CHROME DIGIZOID ARMOR",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +2 **ARM** and +1 **Health**.",
+      "tags": ["armor", "health", "stage-3-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "CURSED DIGIZOID ARMOR",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains a +2 **ARM** and +1 **Health**.\n\nThe Digimon takes a -1 penalty to **ARM** if it is currently benefiting from a Positive Effect, but gains a +2 bonus to **ARM** if it is currently suffering from a Negative Effect.",
+      "tags": ["armor", "health", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "ADAPTIVE DIGIZOID ARMOR",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nAt the start of the **Round**, the Digimon gains 4 points which it can use to grant itself a bonus to either **DOD** or **ARM**. It can split these points up as it sees fit.\n\nFor example, at the start of the **Round** the Digimon may choose to spend 3 points giving itself a +3 **DOD**, and then gain a +1 **ARM** using the remaining point.",
+      "tags": ["armor", "dodge", "adaptive", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "SHARP DIGIZOID ARMOR",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +3 **ARM** and +3 **Health**.\n\nWhenever the Digimon is hit by a **[DAMAGE]** Attack, it deals **damage** equal to its **CPU** + **Stage** to the Attacker. This **damage** is reduced by **Armor** but cannot be Dodged. The **Damage** dealt by this Quality, however, cannot be brought below 1.",
+      "tags": ["armor", "health", "retaliation", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "HEAVY DIGIZOID ARMOR",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +4 **ARM**.\n\nThe Digimon suffers a -1 penalty to its **Movement**, but gains +1 **CPU**.",
+      "tags": ["armor", "cpu", "movement-penalty", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "FLEXIBLE DIGIZOID ARMOR",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +2 **ARM** and +3 **DOD**.\n\nThe Digimon gains +1 **RAM**, and the Digimon is considered one **Size Smaller** while moving. It can move through the **Spaces** of Digimon larger than it, even if the user isn't **Small** or smaller, but it cannot end its movement there.",
+      "tags": ["armor", "dodge", "movement", "size", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "LIGHT DIGIZOID ARMOR",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +5 **DOD** and +1 **Health**.\n\nThe Digimon's **Movement** is increased by 1, and gains a single Automatic **Dodge** success on every **Dodge Check** it makes. This stacks with **ABSOLUTE EVASION**, and doesn't decrease the **Dodge Pool**.",
+      "tags": ["dodge", "health", "movement", "auto-success", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "SHINING DIGIZOID ARMOR",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4**\n**INCOMPATIBLE: ANY OTHER DIGIZOID ARMOR**\n\nThe Digimon gains +2 **ARM** and +5 **Health**.\n\nThe Digimon reduces the **Potency** of incoming Negative Effects by 1 (to a minimum of 1). In addition, whenever it would take **Unalterable Damage** due to an Enemy, it can make a **Pool Check** with a number of dice for each **Damage** it would take, reducing the **Damage** by 1 for each **Success**.",
+      "tags": ["armor", "health", "effect-reduction", "damage-reduction", "stage-4-requirement", "incompatible-other-digizoid"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "OVERWRITE",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nThe Digimon adds its **ranks** in **INSTINCT** to its total **Wound Boxes**.\n\nWhenever the Digimon would suffer an Effect, it can choose to take **Unalterable Damage** equal to the cost of that Effect to negate it. For example, if the Digimon would suffer from **[WEAK]**, it can instead take 2 **Unalterable Damage**.\n\nThis **Unalterable Damage** caused by this Quality applies to **COMBAT MONSTER**. This Quality **CANNOT** be suppressed.",
+      "tags": ["health", "effect-negation", "stage-3-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "UNDYING INFORCE",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nThe Digimon has an unparalleled regenerative ability. Whenever the Digimon would be below half their **Wound Box** maximum, the Digimon gains a passive **[REGEN]** Effect with a **potency** equal to its **ranks** in **INSTINCT**. This has no effect when the Digimon is at 0 **Wound Boxes**.\n\nIf this Effect would be affected by **[CLEANSE]**, the **Potency** reduction or removal of the Effect only persists for 1 **Round**.\n\nIf the Digimon has the Quality **SECOND WIND**, it bypasses the restriction that doesn't allow it to **Attack** the same turn it is used, and gains additional uses of it equal to its **Ranks** in **INSTINCT**.\n\nAdditionally, **once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1s that come up on a **Health Check**. If the Digimon possesses **VITAL ENERGY**, the dice results you can reroll instead increase by 1 (to a maximum of 3).",
+      "tags": ["regen", "healing", "second-wind", "health-check", "stage-4-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "TEMPORAL INFORCE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nYour Digimon has the extraordinary ability to repeat certain instances or is something of a temporal anomaly. You no longer have to roll **Initiative** for Combat. After all other rolls for **Initiative** have been made, you decide where you go on the **Turn Order**. Other Digimon cannot take **Interrupt Actions** during your turn, such as **Intercede**. The only time a Digimon can take an **Action** this way is due to **Hold Action**.\n\nAfter deciding where you go on the turn order, every other turn, you may adjust your position on the **Turn Initiative**. However, if your Digimon was afflicted with **[LAG]**, they cannot adjust their turn initiative. If the Digimon has any **Ranks** of **COMBAT AWARENESS**, you are immune to the effects of **[LAG]** and you add your **Ranks** in **INSTINCT** to any bonuses it provides.\n\nAdditionally, **once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1s that come up on an **Accuracy Check**. If the Digimon possesses **HUGE POWER**, the dice results you can reroll instead increase by 1 (to a maximum of 3).",
+      "tags": ["initiative", "turn-order", "interrupt-immunity", "accuracy-check", "stage-4-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "OMNISCIENT INFORCE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nYour Digimon has an extraordinary ability to predict their opponents or can even see glimpses into the future. The Digimon gains the ability to use the **Hold Action** which affects themselves, regardless of whether they have a Tamer.\n\nThe Digimon may take the **Hold Action Once per Turn** for free. Therefore, a Digimon can take two **Hold Actions** on its turn, one for free and one using 2 **Actions**. Whenever the Digimon rolls an **Accuracy** or **Dodge Check** as part of **Hold Action**, it can add its **ranks** in **INSTINCT** as a bonus to the **Pool Check**. The Digimon can also bypass the **once per turn** limit for **Attacks** when it uses **Hold Action**. If the Digimon uses 2 **Actions** to take a **Hold Action** alongside the free **Hold Action** granted by this Quality, it can instead use **Hold Action** for something that costs 2 **Actions** (like **Called Shot**).\n\nAdditionally, **once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1s that come up on a **Dodge Check**. If the Digimon possesses **AVOIDANCE**, the dice results you can reroll instead increase by 1 (to a maximum of 3).",
+      "tags": ["hold-action", "accuracy", "dodge", "pool-check", "stage-4-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "DIGITAL HAZARD",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nThe Digimon gains the effect of a single **[HAZARD]** Tag. This Tag can be applied to one of the Digimon's attacks and replaces the **[MELEE]**, **[RANGE]**, **[DAMAGE]** and **[SUPPORT]** Tags. Once a **[HAZARD]** Attack is declared, the user deals automatic **Damage** (meaning, neither **Accuracy** nor **Dodge** are rolled) to everything within a radius of the Digimon's **Stage** + 1. **Damage** taken from this attack is deducted by **Armor** as per normal. It gains a bonus to **Damage** equal to its **ranks** in **INSTINCT**.\n\nEach time **[HAZARD]** is used after its first use per Combat, the Digimon takes **unalterable damage** equal to its **Stage**. This **Unalterable Damage** does not add points to the Digimon's **COMBAT MONSTER** count.\n\nThis **Attack** cannot be affected by **SELECTIVE TARGETING** or given Secondary Tags like **[PIERCING]**, **[CERTAIN]**, or **[CHARGE]**, but it can be given an **Attack Effect** and can also be a **Signature Move**. If there is an **Effect Tag** attached to the Attack with **[HAZARD]**, a minimum of 4 **Damage** must be dealt to apply the Effect.",
+      "tags": ["hazard", "area-damage", "auto-hit", "self-damage", "stage-4-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "ZERO UNIT",
+      "type": "Trigger",
+      "dpCost": 3,
+      "description": "**REQUIREMENT: STAGE 4, 1 RANK OF INSTINCT**\n**INCOMPATIBLE: ALGORITHM, ANY OTHER GAIN FORCE**\n\nThe Digimon applies the **[ZERO]** Tag to one **[SUPPORT]** Attack, which counts as a Positive Effect with no duration. The **Attack** can only grant the benefits of **[ZERO]** **once per Combat**, and when it does it cannot be used as an **Area Attack** and requires 2 **Actions**. It provides one of the following benefits, determined by a chosen Target. The Digimon chooses when to use the effect of **[ZERO]** when it declares the **Attack**, like an **Area Attack**.\n\nAll **Allies** within a number of **Spaces** equal to the Digimon's **Stage**: a Target can immediately take the **Evolution Action** for Free as long as it has unlocked a higher **Stage** it can Evolve to. If the Evolution requires **Evolution Points**, the Digimon is immediately treated as if it had spent **Evolution Points** equal to the Attacker's **Ranks** of **INSTINCT** and can then spend any additional **Evolution Points** it requires.\n\nA single Defeated **Ally**: the Digimon is immediately brought back with a number of **Wound Boxes** equal to double the Digimon's **Ranks** in **INSTINCT**, no longer Defeated. If the Digimon was in a higher **Stage** before it became Defeated, it evolves back to that **Stage** with the given **Wound Boxes**. This has no effect on Digimon that have reverted to **DigiEggs**.\n\nIf the Tag is placed on the Digimon's **Signature Move**, the bonus to **Evolution Points** or **Wound Boxes** also increases based on the Digimon's **Battery**. If a Positive **Attack Effect Tag** is used on the same **Attack** that **[ZERO]** is applied, it automatically applies the Positive **Attack Effect** without rolls required for a number of **Rounds** equal to the Digimon's **Ranks** in **INSTINCT**, but only to one Target affected by the **Attack**.",
+      "tags": ["zero", "support", "revive", "evolution", "stage-4-requirement", "requires-instinct", "incompatible-algorithm"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "PURE OVERWRITE",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 4, 2 RANKS OF INSTINCT, 2 RANKS OF ALGORITHM**\n**INCOMPATIBLE: ANY OTHER GAIN FORCE**\n\nThe Digimon has survived in perilous conditions, and has gained a new form for it. The Digimon has immunity to all Negative Effects that cost 2 **DP** or lower.\n\n**THIS QUALITY CANNOT BE SUPPRESSED.**\n\nIf the Digimon possesses the Quality **SECOND WIND**, it may activate it on their turn without expending a use at the cost of **1 extra Action**. This also allows it to use it when there are no uses remaining.",
+      "tags": ["immunity", "effect-immunity", "second-wind", "stage-4-requirement", "requires-instinct", "requires-algorithm"]
+    }
+  ]
+}

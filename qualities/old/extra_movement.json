@@ -1,0 +1,45 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Extra Movement",
+"description": "Additional movement type qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Extra Movement: Flight",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon suffers -1 Movement. The Digimon is capable of flying through the air. The Digimon loses this Extra Movement while it is at half its Maximum Wound Boxes or fewer.",
+"tags": ["core-discount", "movement", "up-to-5-ranks"]
+},
+{
+"name": "Extra Movement: Digger",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon suffers -1 Movement. The Digimon is capable of burrowing through the ground equal to its Movement, so long as it’s as soft as dirt. Snow or sand are other alternatives. While underground, it does not treat any creatures within half its range as obscured as long as they are touching the same ground. It also does not treat any underground Digimon as obscured if it is above ground.",
+"tags": ["core-discount", "movement", "up-to-5-ranks"]
+},
+{
+"name": "Extra Movement: Swimmer",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon suffers -1 Movement. The Digimon’s swimming Movement now uses the Digimon’s full Movement. It does not treat any Digimon as obscured due to the surface of water, regardless of whether the Digimon itself is underwater or not.",
+"tags": ["core-discount", "movement", "up-to-5-ranks"]
+},
+{
+"name": "Extra Movement: Wallelimber",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon suffers -1 Movement. The Digimon is capable of scaling vertical surfaces equal to its Movement, but not on ceilings.",
+"tags": ["core-discount", "movement", "up-to-5-ranks"]
+},
+{
+"name": "Extra Movement: Jumper",
+"type": "Static",
+"dpCost": 1,
+"description": "The Digimon suffers -1 Movement. The Digimon’s Jump height and length now uses the Digimon’s full Movement.",
+"tags": ["core-discount", "movement", "up-to-5-ranks"]
+}
+]
+}

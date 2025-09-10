@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Defensive Qualities",
+  "description": "Defensive qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "ABSOLUTE EVASION",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "Incompatible: **UNCATCHABLE TARGET**\nThe Digimon gains automatic Successes equal to the **Ranks** in **ABSOLUTE EVASION**. These automatic Successes are deducted from the Base **Dodge** Pool.\n\nHowever, every time the Digimon would suffer a **Dodge** penalty from consecutive Dodging, the automatic Successes are removed instead until none remain. When the Digimon would reset its **Dodge** Pool at the end of its turn, it regains these automatic Successes.",
+      "tags": ["limited", "up-to-3-ranks", "dodge-requirement", "incompatible-uncatchable-target"]
+    },
+    {
+      "stage": "Child",
+      "name": "AVOIDANCE I",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**Once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1's that appear when making a **Dodge Check**.\n\n**This Quality does not affect Bonus Dice granted from Tamer Actions.**",
+      "tags": ["dodge", "reroll"]
+    },
+    {
+      "stage": "Adult",
+      "name": "AVOIDANCE II",
+      "type": "Trigger",
+      "dpCost": 4,
+      "description": "**Once per round** (which resets at the end of the Digimon's turns), the Digimon may reroll any 1's and 2's that appear when making a **Dodge Check**.\n\n**This Quality does not affect Bonus Dice granted from Tamer Actions.**",
+      "tags": ["dodge", "reroll"]
+    },
+    {
+      "stage": "Child",
+      "name": "COMBAT AWARENESS I",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon can now make **Awareness Checks** as 1 **Action** instead of 2 **Actions**.\n\nThe Digimon adds its **Ranks** in this Quality to its **Initiative**.\n\nThe Digimon adds its **Ranks** in this Quality to its **ACC** and **DOD** for the first **Round** of Combat.",
+      "tags": ["awareness", "initiative", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "COMBAT AWARENESS II",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "The Digimon can now make **Awareness Checks** as 1 **Action** instead of 2 **Actions**.\n\nThe Digimon adds its **Ranks** in this Quality to its **Initiative**.\n\nThe Digimon adds its **Ranks** in this Quality to its **ACC**, **DOD** and **Movement** for the first **Round** of Combat. It also adds its **Ranks** in this Quality to **Awareness Checks**.",
+      "tags": ["awareness", "movement", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "COMBAT AWARENESS III",
+      "type": "Static",
+      "dpCost": 3,
+      "description": "The Digimon can now make **Awareness Checks** as 1 **Action** instead of 2 **Actions**.\n\nThe Digimon adds its **Ranks** in this Quality to its **Initiative**.\n\nThe Digimon adds its **Ranks** in this Quality to its **ACC**, **DOD** and **Movement** for the first **Round** of Combat. It also adds its **Ranks** in this Quality to **Awareness Checks**.\n\nThe Digimon also treats **Surprise Rounds** triggered against it as a normal **Round** of Combat.\n\nThe Digimon no longer suffers any penalty to **Awareness Checks** based on sight, such as obscured areas. The Digimon automatically spots any Digimon attempting to **Hide** if they do not roll above a **TN** of 10 + the Digimon's **DOS**.",
+      "tags": ["awareness", "surprise", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "COMBAT MONSTER",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "Incompatible: **CROSS COUNTER | SUMMONER | CONJURER | POSITIVE REINFORCEMENT**\nWhenever the Digimon takes **Damage** from an Enemy, or from its own Qualities, it gains **Resolve** equal to the **Damage** taken. The maximum **Resolve** a Digimon can have is equal to its **Stage** + 2.\n\nWhen the Digimon successfully makes an **Attack**, all **Resolve** is expended and added to the **DAM** of the **Attack**. **Resolve** also resets at the end of Combat.\n\nYou only gain **Resolve** from **Damage** taken to **Wound Boxes**.",
+      "tags": ["resolve", "damage-bonus", "incompatible-support"]
+    },
+    {
+      "stage": "Child",
+      "name": "BULLET PROOF",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "When this Digimon is Attacked, any further **Attack** from the same Attacker suffers a penalty to **ACC** and **DAM** equal to the Digimon's **Stage**.\n\nThe Digimon's **ARM** can reduce the **Damage** of any **Attack** affected by this Quality to 0.\n\nThis penalty resets at the end of the Digimon's turn.",
+      "tags": ["damage-reduction", "accuracy-penalty"]
+    },
+    {
+      "stage": "Child",
+      "name": "SUBSTITUTE",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "Right as the Digimon is hit by an attack, before taking **Damage** it may choose to make a decoy to take the blow instead. The Digimon makes a **RAM (Evasion) Check** as a **Free Action**.\n\n**Success**: The Digimon forfeits **Wound Boxes** equal to its **Stage** + 1.\n**Critical Success**: The Digimon only forfeits half as many **Wound Boxes**.\n\nEach time this Quality is used, the **TN** increases by 3 for any further use until the end of Combat.\n\n**SUBSTITUTE** cannot be used to avoid an **Attack** while in a **Clash**.",
+      "tags": ["evasion", "damage-mitigation", "free-action"]
+    }
+  ]
+}

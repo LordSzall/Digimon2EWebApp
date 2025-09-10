@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Free Qualities",
+  "description": "A collection of Qualities with no DP cost, available to any Stage Digimon.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Any",
+      "name": "MEMORY UPGRADE",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE PER RANK. UP TO 3 RANKS.\n\nThe Digimon increases its Attack List by 1, but each Attack the Digimon has before taking a Rank in this Quality must have 3 or more Tags (at least [MELEE] or [RANGE], [DAMAGE] or [SUPPORT], and one or more Quality Tag).\n\n**This requirement increases for every Rank in this Quality.** For example, in order to have 5 Attacks on a Stage 3 Digimon, two Ranks of this Quality would need to be taken and four of those Attacks would need a total of 4 Tags each.\n\nThe [HAZARD] Tag counts as three Tags.\n\n**This Quality does not count towards the Digimon’s Free Quality limit.**",
+      "tags": ["free", "attack-list", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Any",
+      "name": "A JOB WELL DONE",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n\nWhen Initiative is rolled, the Digimon rolls 1d6 and is affected by the result on the following table:\n\n**Roll Effect**\n1. The Digimon suffers from a penalty equal to their Stage to their highest stat (besides Health), and takes an immediate Unalterable Damage of the same value. This applies even if the Digimon evolves, and persists for the Duration of the Combat.\n2. The Digimon takes their Stage as a penalty to their Armor for the duration of the Combat. This applies even if the Digimon evolves.\n3. Combat continues as per normal, and there is no demerit.\n4. The Digimon gains Temporary Wound Boxes equivalent to their Stage for the duration of the Combat.\n5. The Digimon gains Temporary Wound Boxes equivalent to their Stage which stack with other Temporary Wound Boxes, and gains a Damage bonus equivalent to their Stage Bonus for the duration of the battle. If the Digimon gains more Temporary Wound Boxes, the ones granted by this Quality are always removed first.",
+      "tags": ["free", "initiative", "random-effect"]
+    },
+    {
+      "stage": "Any",
+      "name": "FRAGILE WEAPONRY",
+      "type": "Attack",
+      "dpCost": 0,
+      "description": "FREE.\n**REQUIREMENT: 1 RANK OF WEAPON**\n\nRoll 1d6 whenever the Digimon connects with a [WEAPON] Attack.\n- On a roll of 1, it no longer benefits from the Weapon Quality or any Quality that has Weapon as a prerequisite for the duration of the Combat, including this one. (The Digimon can still use the Attacks with the [WEAPON] Tag, it just no longer has any benefits from that Tag, including this Quality).\n- On a roll of 6, the [WEAPON] Attack gains its Stage x 2 to Damage for that Attack.",
+      "tags": ["free", "weapon", "random-effect", "requires-weapon"]
+    },
+    {
+      "stage": "Any",
+      "name": "FRAGILE ARMOR",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n**REQUIREMENT: ANY QUALITY THAT INCREASES ARMOR**\n\nRoll 1d6 whenever the Digimon is hit by an attack.\n- On a roll of 1, the Digimon’s Armor breaks and it no longer benefits from Qualities that improve its Armor Stat for the duration of the Combat, including this one.\n- On a roll of 6, the Digimon gains their Stage x 2 to Armor against that attack.",
+      "tags": ["free", "armor", "random-effect", "requires-armor-quality"]
+    },
+    {
+      "stage": "Any",
+      "name": "INCONSISTENT SIZE",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n**REQUIREMENT: STAGE 2+**\n\nThe Digimon has no control over the size it becomes once it evolves.\n\nUpon the Digimon’s evolution to the Stage with this Quality, roll 1d6 to determine its size according to the table. The Digimon’s size remains this way, until the end of Combat and they devolve. This affects the Digimon’s CPU and RAM as size normally does.\n\n**Roll Effect**\n1-2: The Digimon’s Size becomes Medium.\n3-4: The Digimon’s Size becomes Large.\n5-6: The Digimon’s Size becomes Huge.",
+      "tags": ["free", "size", "random-effect", "stage-2-requirement"]
+    },
+    {
+      "stage": "Any",
+      "name": "VIOLENT OVERWRITE",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n\nAt the start of every round, roll 1d6.\n- **On a roll of 1**, the Digimon takes unalterable damage of its Stage.\n- **On a roll of 6**, the Digimon recovers a number of Wound Boxes equal to their Stage.",
+      "tags": ["free", "random-effect", "healing", "damage"]
+    },
+    {
+      "stage": "Any",
+      "name": "MERCIFUL MODE",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n\nYour Digimon’s attacks are by default non-lethal. The Digimon can only take the Hold Back Action instead of the Attack Action, but you can now use Hold Back no matter the Stance.",
+      "tags": ["free", "non-lethal", "action"]
+    },
+    {
+      "stage": "Any",
+      "name": "POSITIVE REINFORCEMENT",
+      "type": "Trigger",
+      "dpCost": 0,
+      "description": "FREE.\n**REQUIREMENT: COMBAT MONSTER | CONJURER | SUMMONER**\n\nThe Digimon is a particularly sensitive soul, and needs a lot of Positive Reinforcement to bounce back after taking a misstep. The Digimon gains a Mood Meter, represented with a 1d6, and starts with a Mood of 3 every combat. Upon taking this quality, this Digimon works with the following convention:\n- Whenever the Digimon lands an attack or dodges an attack, it gains +1 Mood.\n- Conversely, whenever the Digimon misses an Attack or is hit by an attack, it suffers -1 Mood.\n\nDepending on the Digimon’s Mood Value, they gain the following benefits or demerits:\n\n| Mood | Effect |\n|------|--------|\n| 1 | Poor: -1 Accuracy and Armor for every point below 3. |\n| 2-3 | Neutral: No bonuses or penalties. |\n| 4-5 | Good: +1 Dodge and Damage for every point above 3. |\n| 6 | Very Good: +2 Dodge and Damage for every point above 3. |\n\nIf the Digimon’s Mood drops to 1, the Human Partner may use 2 Actions to cheer up their Digimon to set their Digimon’s Mood Value to 4.",
+      "tags": ["free", "mood-meter", "requires-combat-monster-or-conjurer-or-summoner"]
+    },
+    {
+      "stage": "Any",
+      "name": "MIND OVER MATTER",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n\nThe Digimon suffers -1 in all Stats. In exchange, they may select two Skills from a single Attribute Category (excluding RAM) and treat them as if they have **Prodigious Skill**. The selected Prodigious Skills must come from the same category.\n\nFor example, if the Body Attribute is selected, the Digimon must choose two out of a selection of Athletics, Endurance, or Feats of Strength.",
+      "tags": ["free", "skill-bonus", "stat-penalty"]
+    },
+    {
+      "stage": "Any",
+      "name": "JUSTICE IS BLIND",
+      "type": "Trigger",
+      "dpCost": 0,
+      "description": "FREE.\n\nThe Digimon is visually impaired or blind, and cannot see. Subsequently, on taking this Free Quality, the Digimon is now under these stipulations:\n\n- The Digimon is treated as if it has **Prodigious Skill**: Awareness towards auditory situations and checks challenging Hide in Plain Sight, but automatically fails any visual-based checks.\n- In combat, the Digimon is treated as if it has both [T:WAVE] attached to its Melee attacks, while Ranged Attacks have [T:CONE] Area Attacks for free. While the Digimon are allowed multiple instances of the aforementioned tags, they cannot buy any other Area Attack Tag.\n- The Digimon cannot benefit from Selective Targeting.\n- If the Digimon makes a Single-Target attack, it must use **1 extra Action**. Alternatively, the Digimon’s Tamer can give up **1 Action** in the Digimon’s stead, as the Tamer gives the Digimon specific directions on where to aim, or where to move.",
+      "tags": ["free", "sensory", "area-attack", "action-penalty"]
+    },
+    {
+      "stage": "Any",
+      "name": "SLAYER",
+      "type": "Static",
+      "dpCost": 0,
+      "description": "FREE.\n\nSlayer is a very specific Quality: when you purchase this Quality, choose a type of target based on a Family, Type of Digimon (Dragon, Demon, Beast, etc), or an Elemental Type.\n\nThe Digimon gains a bonus equal to its DOS when making Accuracy checks against targets who match its preferred enemy which was chosen above. However, if it misses on an Attack that would benefit from this bonus, it takes Unalterable Damage equal to its Stage.",
+      "tags": ["free", "favored-enemy", "accuracy-bonus", "self-damage"]
+    }
+  ]
+}

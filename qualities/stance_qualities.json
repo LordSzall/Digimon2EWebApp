@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Stance Qualities",
+  "description": "Stance-based combat qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "FIERCE SOUL",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "The Digimon gains access to **Fierce Stance**.\n\nWhile in **Fierce Stance**, the Digimon gains a bonus to **DAM** equal to its **Stage**, but suffers a penalty to **Movement** and **Range** of the same amount.\n\nAlso while in **Fierce Stance**, if the Digimon were to miss one of its **Attacks**, the same **Attack** can be immediately used again on the same target as a **Free Action once per turn**. The Target still suffers the penalty to **DOD** from the initial **Attack**.",
+      "tags": ["stance", "damage-bonus", "free-action"]
+    },
+    {
+      "stage": "Child",
+      "name": "BRAVE HEART",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "The Digimon gains access to **Brave Stance**.\n\nWhile in **Brave Stance**, the Digimon gains a bonus to **ARM** equal to its **Stage**, but suffers a penalty to **Movement** of the same amount.\n\nIf the Digimon chooses to **Intercede** while in **Brave Stance**, should the Digimon survive the **Attack**, it is affected by **[SHARPEN]** with a **Potency** equal to the number of **Ally** Digimon within a number of **Spaces** equal to the Digimon's **CPU**.",
+      "tags": ["stance", "armor-bonus", "intercede"]
+    }
+  ]
+}

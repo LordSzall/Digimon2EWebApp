@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Advanced Effect Qualities",
+  "description": "Advanced attack effect qualities for all Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Any",
+      "name": "BURN",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[BURN]** Tag to one **[DAMAGE]** Attack. The Target takes **Unalterable Damage** whenever it moves a **Space**, willing or otherwise, for the duration. If moved unwillingly, it only takes this **Damage** for each 2 **Spaces** it moves.\n\nThis **Unalterable Damage** cannot exceed the Target's **Stage** x 2.\n\nDoes not stack with **[FREEZE]**, **[POISON]** and **[RUIN]**.",
+      "tags": ["negative", "effect", "duration", "damage", "unalterable"]
+    },
+    {
+      "stage": "Any",
+      "name": "CONFUSE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[CONFUSE]** Tag to one **Attack**. The Target's **ACC** and **DOD** are reduced by the Target's highest **Derived Stat** (minimum of **Stage**) for the duration.",
+      "tags": ["negative", "effect", "duration", "accuracy-reduction", "dodge-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "DISTRACT",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[DISTRACT]** Tag to one **Attack**. The Target's **ACC** and **DOD** are reduced by the Caster's **RAM** for the duration.",
+      "tags": ["negative", "effect", "duration", "ram-scaling", "accuracy-reduction", "dodge-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "DOOM",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[DOOM]** Tag to one **Attack**. For the duration, if the Target would gain **Wound Boxes** or **Temporary Wound Boxes**, deduct from the **Potency** of this Effect instead, which equals the Caster's **DOS** + **Stage**.\n\nThis Effect ends early if its **Potency** is brought to 0.",
+      "tags": ["negative", "effect", "duration", "dos-scaling", "stage-scaling", "healing-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "DULL",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[DULL]** Tag to one **Attack**. The Target's **DAM** is reduced by the Caster's **CPU** for the duration.",
+      "tags": ["negative", "effect", "duration", "cpu-scaling", "damage-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "FRALL",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[FRALL]** Tag to one **Attack**. The Target's **ARM** is reduced by the Caster's **DOS** for the duration.",
+      "tags": ["negative", "effect", "duration", "dos-scaling", "armor-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "FREEZE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[FREEZE]** Tag to one **[DAMAGE]** Attack. The Target takes **Unalterable Damage** equal to the Target's **Stage** x 2 at the end of each of its turns if it didn't take the **Move Action**, for the Duration.\n\nThis **Damage** only equals **Stage** if the Target is a participant of a **Clash**.\n\nDoes not stack with **[BURN]**, **[POISON]** and **[RUIN]**. Max duration of 3 turns.",
+      "tags": ["negative", "effect", "duration", "damage", "unalterable"]
+    },
+    {
+      "stage": "Any",
+      "name": "HEAVY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[HEAVY]** Tag to one **Attack**. The Target loses the benefits of its **Extra Movement** and **Teleport** Qualities for the Duration.\n\nIf a Digimon has neither of these Qualities, it loses -1 **Movement** instead.",
+      "tags": ["negative", "effect", "duration", "movement-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "POISON",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[POISON]** Tag to one **[DAMAGE]** Attack. At the start of the Target's turns, the Target takes **Unalterable Damage** equal to its **CPU** for the duration.\n\nDoes not stack with **[BURN]**, **[FREEZE]** and **[RUIN]**. Max duration of 3 turns.",
+      "tags": ["negative", "effect", "duration", "damage", "unalterable", "cpu-scaling"]
+    },
+    {
+      "stage": "Any",
+      "name": "CLEANSE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[CLEANSE]** Tag to one **Attack**. The Target reduces the **Duration** of all Effects on the Target equal to the Potential **Duration [CLEANSE]** would have.\n\nIf the Digimon has the **Selective Targeting** Quality, it can choose to only reduce the **Duration** of Positive Effects or Negative Effects.",
+      "tags": ["support", "effect", "duration-reduction"]
+    },
+    {
+      "stage": "Any",
+      "name": "HASTE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[HASTE]** Tag to one **Attack**. The Target gains 1 **Action**, and gains this Effect until the end of its next turn.\n\nThe Target can use this extra **Action** to make an **Attack**, which bypasses the '**Once per Round**' rule.\n\nRequires 1 extra **Action** to use.",
+      "tags": ["positive", "effect", "action-economy"]
+    },
+    {
+      "stage": "Any",
+      "name": "IMMUNE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[IMMUNE]** Tag to one **Attack**. The Target reduces the **Duration** of incoming Negative Effects by 1, to a minimum of 1, for the **Duration**.",
+      "tags": ["positive", "effect", "duration", "debuff-resistance"]
+    },
+    {
+      "stage": "Any",
+      "name": "NIMBLE",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[NIMBLE]** Tag to one **Attack**. The Target's **ACC** and **DOD** are increased by the Caster's **BIT** for the duration.",
+      "tags": ["positive", "effect", "duration", "bit-scaling", "accuracy-bonus", "dodge-bonus"]
+    },
+    {
+      "stage": "Any",
+      "name": "SHARPEN",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[SHARPEN]** Tag to one **Attack**. The Target's **DAM** is increased by the Caster's **RAM** for the duration.",
+      "tags": ["positive", "effect", "duration", "ram-scaling", "damage-bonus"]
+    },
+    {
+      "stage": "Any",
+      "name": "SHIELD",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[SHIELD]** Tag to one **Attack**. The Target gains **Temporary Wound Boxes** equal to the Caster's **BIT** + **Stage** that last for the duration.\n\nThis Effect ends early if all the **Temporary Wound Boxes** are diminished.",
+      "tags": ["positive", "effect", "duration", "bit-scaling", "stage-scaling", "temporary-health"]
+    },
+    {
+      "stage": "Any",
+      "name": "STURDY",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Apply the **[STURDY]** Tag to one **Attack**. The Target's **ARM** is increased by the Caster's **DOS** for the duration.",
+      "tags": ["positive", "effect", "duration", "dos-scaling", "armor-bonus"]
+    }
+  ]
+}

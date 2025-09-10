@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Mode Change Qualities",
+  "description": "Qualities that allow a Digimon to swap its stats and abilities.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "MODE CHANGE I",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+**\n**REQUIRED FOR: MODE CHANGE II**\n\nThis is the first rank of the Mode Change quality.\n\nThe Digimon’s **ARM** and **DMG** OR its **ACC** and **DOD** may be swapped with **1 Action.**\n\nThis Quality only affects Base Stats; it is not changed by things like Qualities that modify stats, Stances, or Directing. Even if stats are swapped around, the Derived Stats of the Digimon are unchanged.",
+      "tags": ["mode-change", "stat-swap", "stage-3-requirement", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "MODE CHANGE II",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+, MODE CHANGE I**\n**REQUIRED FOR: MODE CHANGE III**\n\nThis is the second rank of the Mode Change quality.\n\nTwo of the Digimon’s Stats except **Health** may be swapped with **1 Action.**\n\nThis Quality only affects Base Stats; it is not changed by things like Qualities that modify stats, Stances, or Directing. Even if stats are swapped around, the Derived Stats of the Digimon are unchanged.",
+      "tags": ["mode-change", "stat-swap", "stage-3-requirement", "requires-mode-change-i", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "MODE CHANGE III",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+, MODE CHANGE II**\n**REQUIRED FOR: SUPERIOR MODE**\n\nThis is the third and final rank of the Mode Change quality.\n\nAll of the Digimon’s Stats except **Health** may be swapped around as the Digimon sees fit with **1 Action.**\n\nThis Quality only affects Base Stats; it is not changed by things like Qualities that modify stats, Stances, or Directing. Even if stats are swapped around, the Derived Stats of the Digimon are unchanged.",
+      "tags": ["mode-change", "stat-swap", "stage-3-requirement", "requires-mode-change-ii", "up-to-3-ranks"]
+    },
+    {
+      "stage": "Ultimate",
+      "name": "SUPERIOR MODE",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 4, 3 RANKS OF MODE CHANGE**\n\nWhen the Digimon takes this Quality, it can select a number of Qualities it has with a total DP cost equal to triple its Stage or less (this ignores Discounts). All Qualities that require a selected Quality as a prerequisite must also be selected.\n\nThe Digimon can then select a number of different Qualities with the same total DP cost. These become the Digimon’s **Mode Change Qualities**. Any Mode Change Quality cannot be something the Digimon has already purchased. It can also choose a different Size that it has unlocked for that Stage.\n\nWhen the Digimon uses Mode Change, it can also swap the selected Qualities with its new Mode Change Qualities as well as changes Size if it chose a new one, and remains that way until the end of Combat or the Digimon uses Mode Change again to revert to its previous state. Changing Size also changes Derived Stats if the bonus would be different. If the Digimon was in a Stance granted by a Quality (such as **Brave Stance**) and it loses that Quality in the Mode Change, it reverts to Neutral Stance. If the Digimon had a bonus to Health from Qualities that it loses, it suffers Unalterable Damage equal to the Health it loses and its Maximum Wound Boxes are reduced by the same amount. Conversely, if the Digimon would gain bonus Health from its Move Change Qualities, it gains Maximum Wound Boxes equal to the bonus and also heals the same amount of Wound Boxes.\n\nThe Digimon may also select an Attack they have when they take this Quality and format a new Attack which replaces the chosen Attack when this Quality is activated during Mode Change. This could turn a **[MELEE] [DAMAGE]** Attack into a **[RANGE] [SUPPORT]** Attack. Any additional Attack Tags that the original Attack had, and whether or not the Attack was a Signature Move, must be transferable to this new Attack when Mode Change is activated.",
+      "tags": ["superior-mode", "quality-swap", "size-change", "attack-change", "stage-4-requirement", "requires-mode-change-iii"]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Core Static Qualities",
+"description": "Core static qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Accelerate",
+"type": "Static",
+"dpCost": 1,
+"description": "For each Rank you take in this Quality, the Digimon gains +1 Movement. The maximum Ranks that can take in Accelerate is equal to the Digimon’s base RAM.",
+"tags": ["limited", "core-discount", "movement"]
+},
+{
+"name": "Prodigious Skill",
+"type": "Static",
+"dpCost": 1,
+"description": "Whenever you take this Quality, choose a specific Skill that corresponds with a Tamer’s list of Skills (such as Feats of Strength, Stealth, Awareness, etc). The Digimon may now add 1 + double their Derived Stat (RAM, CPU, BIT or DOS) when making Skill Checks for that specific type of Skill, instead of just the Derived Stat. Some Qualities a Digimon can purchase will ask for a Skill Check using a Derived Stat, but alternatively they can use a Skill listed in brackets with pre-mentioned Derived Stat if they have the Prodigious Skill for that Skill Check. The maximum Ranks a Digimon can take in this Quality is equal to its Stage.",
+"tags": ["limited", "core-discount", "skill"]
+}
+]
+}

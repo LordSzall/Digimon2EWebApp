@@ -1,0 +1,80 @@
+{
+"version": "1.0",
+"application": "DDA2E Quality Collection",
+"type": "quality-collection",
+"name": "Naturewalk",
+"description": "Elemental terrain adaptation qualities for all Digimon",
+"lastUpdated": "2025-01-07",
+"qualities": [
+{
+"name": "Naturewalk: Fire",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [BURN] on it by 1. The Digimon ignores the penalties of extreme heat. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Water",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of [FRATL] on it by 1. The Digimon can breathe underwater. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Wind",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon halves the Potency of [PULL] affecting it (when it’s used as a Negative effect). The Digimon reduces any Crash Damage it takes by 1. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Earth",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon halves the Potency of [PUSH] affecting it (when it’s used as a Negative effect). The Digimon reduces any Damage it takes from environmental factors (such as falling debris or sharp terrain) by 1. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Ice",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [FREEZE] on it by 1. The Digimon ignores the penalties of extreme cold. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Wood",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [POISON] on it by 1. The Digimon can focus on non-artificial land and learn one fact on a subject related to the surrounding area once per day. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Steel",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [HEAVY] on it by 1. The Digimon can understand the purpose of any artificial object it can touch once per day. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Thunder",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [DULL] on it by 1. The Digimon can power or recharge an electronic device once per day. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Darkness",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [DOOM] on it by 1. The Digimon can see through dark or dimly-lit areas unimpeded. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+},
+{
+"name": "Naturewalk: Light",
+"type": "Trigger",
+"dpCost": 1,
+"description": "The Digimon gains +1 to a Stat of its choice except Health. The Digimon reduces the Duration of any [DISTRACT] on it by 1. The Digimon can create a light source on its body that provides light in a number of spaces equal to its Stage around it. The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.",
+"tags": ["core-discount", "elemental", "terrain", "up-to-2-ranks"]
+}
+]
+}

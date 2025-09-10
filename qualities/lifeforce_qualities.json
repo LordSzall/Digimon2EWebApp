@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Lifeforce Qualities",
+  "description": "Qualities that utilize a Digimon's own health as a resource for powerful effects.",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "LIFEFORCE BARRIER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+**\n**REQUIRED FOR: LIFEFORCE ENGINE**\n\nWhen the Digimon or its Ally within the Digimon's Range would be targeted by an Attack, it can choose to use an Interrupt Action and expend its own Wound Boxes. The minimum amount of Wound Boxes required is equal to its Stage, and the maximum amount is equal to double its Stage.\n\nThe Ally gains Temporary Wound Boxes against the Attack. If the Attack reduces the Temporary Wound Boxes to 0, the Digimon regains Wound Boxes equal to half the Wound Boxes expended to use this Quality.\n\nTemporary Wound Boxes are not expended when using this Quality, only expending true Wound Boxes. Lost Wound Boxes contribute to Combat Monster.\n\nA Digimon with this Quality cannot benefit from it.",
+      "tags": ["lifeforce", "barrier", "interrupt", "health-cost", "stage-3-requirement"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "LIFEFORCE ENGINE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+, LIFEFORCE BARRIER OR LIFEFORCE RELEASE**\n\nOnce per round (which resets on the Digimon’s turn), when the Digimon uses a Lifeforce Quality, it can reduce its Action cost by 1 Action (to a minimum of 0) by expending 3 additional Wound Boxes.\n\nThese additional Wound Boxes expended are not added to the total Wound Boxes expended for the Quality’s Effect. Temporary Wound Boxes are not expended when using this Quality, only expending true Wound Boxes. Lost Wound Boxes contribute to Combat Monster.",
+      "tags": ["lifeforce", "engine", "action-reduction", "health-cost", "stage-3-requirement", "requires-lifeforce-barrier-or-release"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "SHARED SUFFERING",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+**\n\nWhen an Ally within a number of Spaces equal to the Digimon's DOS takes Damage from an Enemy, the Digimon gains 1 Resolve. Lost Wound Boxes contribute to Combat Monster.",
+      "tags": ["lifeforce", "resolve", "ally-synergy", "stage-3-requirement"]
+    }
+  ]
+}

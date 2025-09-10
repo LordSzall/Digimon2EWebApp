@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Utility Qualities 3",
+  "description": "Advanced utility and support qualities for Stage 3+ Digimon",
+  "lastUpdated": "2025-01-07",
+  "qualities": [
+    {
+      "stage": "Perfect",
+      "name": "TRANSPORTER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: STAGE 3+, TELEPORT**\n\nThe Digimon is now capable of warping away with allies in tow while using **Teleport**. The allies must be adjacent for the Transporter to work properly. This also means it can use the Teleport Quality to bring allies out of harm’s way in reaction to an Attack.\n\nAll allies who are transported in this manner also forfeit Action on their next turn (as if Interceding). If a Digimon cannot pay the Action cost, another participating Digimon can choose to or this Quality doesn’t affect said Digimon.\n\nFinally, the Digimon’s **Teleport** distance increases by 1.",
+      "tags": ["teleport", "movement", "ally-transport", "utility", "stage-3-requirement", "requires-teleport"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "HOLY WARD",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+, 1 RANK OF BASIC EFFECT, ADVANCED EFFECT OR MASTER EFFECT (WITH A POSITIVE EFFECT)**\n**REQUIRED FOR: CHAOTIC BALANCE**\n**INCOMPATIBLE: DARK EMBLEM**\n\nWhenever the Digimon connects with a Positive Effect Tagged Attack (an Effect which would bolster or shield a target such as **[SHIELD]**, **[SHARPEN]**, or **[VIGOR]**), the Digimon rolls its **BIT** in the form of a Pool Check.\n\nFor every Success, it may heal 1 **Wound Box** from among the Targets of the Attack (for example if there are 3 Targets and 5 successes, the Digimon could heal one Target 1 **Wound Box**, and two other Targets 2 **Wound Boxes** each).\n\nThis Quality may not be activated more than once per round, and Qualities such as **Huge Power** do not affect it, as it is not an Accuracy check but a check to see how many **Wound Boxes** are recovered.",
+      "tags": ["healing", "positive-effect", "support", "stage-3-requirement", "requires-effect", "incompatible-dark-emblem"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "DARK EMBLEM",
+      "type": "Trigger",
+      "dpCost": 2,
+      "description": "**REQUIREMENT: STAGE 3+, 1 RANK OF BASIC EFFECT, ADVANCED EFFECT OR MASTER EFFECT (WITH A NEGATIVE EFFECT)**\n**REQUIRED FOR: CHAOTIC BALANCE**\n**INCOMPATIBLE: HOLY WARD**\n\nWhenever the Digimon connects with a Negative Effect Tagged Attack (an Effect which would hinder or damage a Target such as **[POISON]**, **[BLIND]**, or **[WEAK]**), the Digimon rolls its **BIT** in the form of a Pool Check.\n\nFor every success, it may deal 1 **Unalterable Damage** from among the Targets of the Attack (for example if there are 3 Targets and 5 successes, the Digimon could deal one Target 1 **Unalterable Damage**, and two other Targets 2 **Unalterable Damage** each).\n\nThis Quality may not be activated more than once per round, and Qualities such as **Huge Power** do not affect it, as it is not an Accuracy check but a check to see how much **Unalterable Damage** is dealt.",
+      "tags": ["damage", "negative-effect", "unalterable-damage", "stage-3-requirement", "requires-effect", "incompatible-holy-ward"]
+    },
+    {
+      "stage": "Perfect",
+      "name": "CHAOTIC BALANCE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**REQUIREMENT: HOLY WARD OR DARK EMBLEM**\n\nThe Digimon is now capable of purchasing both **Holy Ward** and **Dark Emblem**. However, both Qualities cannot be activated in the same round, and if one Quality was used, it cannot be used again the next turn. However, if one Quality was used in the last round, the other Quality gains +1 Success to the result of the Pool Check from the Quality.\n\n---\n\n### How it Works\n\nIf a Digimon used **Dark Emblem**, it couldn’t use it again on its following turn, but it can use **Holy Ward**.\n\nIf it does so, **Holy Ward** gains +1 Success to the result of the Pool Check to regain **Wound Boxes**, and if **Dark Emblem** is used in the following turn, it would also gain +1 Success to the **Unalterable Damage**.",
+      "tags": ["synergy", "holy-ward", "dark-emblem", "pool-check-bonus"]
+    }
+  ]
+}
