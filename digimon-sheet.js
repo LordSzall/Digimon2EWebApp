@@ -489,7 +489,7 @@ window.DigimonSheet = {
     },
 
     woundTotal(data) {
-        return (this.stageValue(data)) + (this.statTotal(data, 'HP')*2) - (Number(data.stats.HP.bonus)*2);
+        return (this.stageValue(data)) + (this.statTotal(data, 'HP')*2);
     },
 
     batteryTotal(data) {
