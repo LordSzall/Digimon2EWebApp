@@ -72,7 +72,7 @@ window.DigimonSheet = {
         <input type="number" id="current-wounds-${id}" data-bind="combat.currentWounds" value="0" min="0" />
         </label>
         <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="woundTotal">0</div></div>
-        <div class="tiny">Formula: (Stage Value - 1) + (HP × 2) + HP Bonus</div>
+        <div class="tiny">Formula: (Total HP x 2) + Stage Value</div>
         </div>
         <div>
         <label>Temp. Wound Boxes:
@@ -83,8 +83,7 @@ window.DigimonSheet = {
         <label>Battery:
         <input type="number" step="1" min="0" data-bind="combat.batteryManual" />
         </label>
-        <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="batteryTotal">0</div></div>
-        <div class="tiny">Formula: Stage Value + 1</div>
+        <div class="kpi mt-6"><div class="muted">Total</div><div class="value" data-out="batteryTotal">3</div></div>
         </div>
         </div>
         </section>
@@ -106,7 +105,7 @@ window.DigimonSheet = {
             <div class="stat-name">${k}</div>
             <label>DP:<input type="number" step="1" min="0" data-bind="stats.${k}.dp" /></label>
             <label>Bonus:<input type="number" step="1" data-bind="stats.${k}.bonus" /></label>
-            <div class="tiny">Total = Stage + DP + Bonus</div>
+            <div class="tiny">Total = Stage Value + DP + Bonus</div>
             </div>`);
             statsGrid.appendChild(card);
         });
@@ -490,11 +489,11 @@ window.DigimonSheet = {
     },
 
     woundTotal(data) {
-        return (this.stageValue(data) - 1) + (this.statTotal(data, 'HP')*2) - (Number(data.stats.HP.bonus)||0);
+        return (this.stageValue(data)) + (this.statTotal(data, 'HP')*2) - (Number(data.stats.HP.bonus)*2);
     },
 
     batteryTotal(data) {
-        return this.stageValue(data);
+        return 3;
     },
 
     statDPSum(data) {
@@ -517,7 +516,7 @@ window.DigimonSheet = {
     miscTotal(data, k) {
         const b = Number(data.misc[k].bonus)||0;
         switch(k) {
-            case 'Movement': return this.stageValue(data) + 1 + b;
+            case 'Movement': return this.stageValue(data) + 2 + b;
             case 'Range': return this.derivedTotal(data, 'BIT') + 3 + b;
             case 'MaxRange': return (this.derivedTotal(data, 'BIT') + 3) + (this.stageValue(data)-1) + b;
             case 'Initiative': return this.derivedTotal(data, 'RAM') + b;
