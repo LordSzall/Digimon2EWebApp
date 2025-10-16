@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Core Qualities 2",
+  "description": "All Core Qualities for Stage 2 Digimon",
+  "lastUpdated": "2025-10-14",
+  "qualities": [
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: FLIGHT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: FLIGHT**\nThe Digimon is not slowed down by even the harshest of winds while it's in the air and it loses its Flying Speed while it is at a quarter of its Maximum **Wound Boxes** or below instead of half.",
+      "tags": ["flight", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: DIGGER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: DIGGER**\nThe Digimon is now capable of digging through the majority of surfaces without being slowed down. It can dig through harder materials such as stone, ice or even some softer metals but this is now treated as **Difficult Terrain**.\n\nWhen the Digimon digs through such hard materials, it leaves a tunnel behind equal to its **Size** that other Digimon can pass through.\n\nThe Digimon's tremor-based sight now increases to its full **Range** while underground, and can even feel them while above ground up to a number of **Spaces** equal to half its **Range**.",
+      "tags": ["digging", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: SWIMMER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: SWIMMER**\nThe Digimon is capable of swimming without being slowed down by harsh currents. The Digimon can also use this type of **Movement** to move through liquids other than water, with restrictions from the GM.\n\nThe Digimon ignores any penalties to see other creatures underwater while it is also underwater. It can now **Hold its Breath** an unlimited amount of times per Combat. Outside of Combat, the Digimon can hold its breath for a number of minutes equal to its **CPU**.\n\nIf the Digimon has the **NATUREWALK: WATER** Quality, the Digimon ignores all **Difficult Terrain** underwater.",
+      "tags": ["swimming", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: WALLCLIMBER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: WALLCLIMBER**\nThe Digimon is now capable of walking on ceilings, and cannot be slowed or slip off any normal wall surfaces.\n\nThe Digimon also becomes immune to the Effects of **[ROOT]**.",
+      "tags": ["climbing", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ADVANCED MOBILITY: JUMPER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Requirement: **EXTRA MOVE: JUMPER**\nThe Digimon no longer has to Jump in a straight line, able to curve itself in the air.\n\nThe Digimon also gains bonus **Damage** reduction equal to its **RAM** when taking damage from falling or being thrown. If the Digimon also possesses the **TUMBLER** Quality, it negates all **Damage** from falling.\n\nThe Digimon can use its Jump **Movement** to move in and out of **Difficult Terrain** as a **Move Action** rather than **Difficult Move** as long as it is not at half its Maximum **Wound Boxes** or fewer.",
+      "tags": ["jumping", "movement", "core-discount", "requires-extra-movement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SPRINT",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Requirement: **ACCELERATE**\nWhen the Digimon takes an Action which involves its Movement, it can choose to double its Movement for that Action. This affects more than just the **Move Action**, such as **Difficult Move**, **Intercede** or **[CHARGE]** Attacks. This Quality can be triggered Once per Combat.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["movement", "core-discount", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "SAFEGUARD",
+      "type": "Static",
+      "dpCost": 2,
+      "description": "Requirement: **FILE UNKNOWN**\nIncompatible: **TROJAN**\nThe Digimon’s code is protected against outside interference. The TN for any Enemy that requires a derived stat from the Digimon, such as **Mighty Blow** or **Substitute**, gains +3. The Digimon also gains +1 Resistance. Finally, the Digimon also completely negates any triggered **[T:TROJAN]** Attacks against it (and does not diminish Dodge).\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["movement", "core-discount", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "TROJAN",
+      "type": "Attack",
+      "dpCost": 2,
+      "description": "Requirement: **FILE UNKNOWN**\nIncompatible: **SAFEGUARD**\nThe Digimon applies the **[T:TROJAN]** Tag to a **[DAMAGE]** Attack. **[T:TROJAN]** cannot be applied to an Attack with an Effect Tag. If a **[T:TROJAN]** Attack deals at least 2 Damage after Armor (not including **Unalterable Damage**), the Attacker can choose to make a BIT (Knowledge) Check. The TN equals 10 + the Target’s DOS. However, if triggered, **the Attack deals half Damage (after armor) to Digimon with File Unknown**, and is completely ineffective against Digimon with **Safeguard**. \n- *Critical Failure*: Nothing happens.\n- *Failure*: The Target is inflicted with **[DEBILITATE 1]** for 1 Round.\n- *Success*: The Target is inflicted with **[DEBILITATE 2]**.\n- *Critical Success*: The Attack also deals 2 extra Damage.\n\nEach time the Quality is used, even on a Failure, the TN increases by 6, or 3 if the Attack is a Signature Move, for all any further use until the end of Combat. If used on an Area Attack, it applies to the closest Target.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["movement", "core-discount", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ELEMENTAL FORCE",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Requirement: **NATUREWALK**\nWhen taking a Rank in this Quality, the Digimon chooses a Naturewalk Element it has purchased. The Digimon applies an Attack Tag with the same name as that Element to one **[DAMAGE]** Attack. When an Attack with an Element Tag is declared, this Quality can be triggered to gain a bonus to Damage equal to 1 + Ranks in this Quality for that Attack. However, if triggered, **the Attack deals no bonus Damage to a Digimon that shares the same Naturewalk as the chosen Element**, and the Attack is **completely ineffective** against Digimon with the Element and the **Element Master** Quality (and does not penalize Dodge).\n\n Each time a Rank is taken in this Quality, the Digimon can choose either the same Naturewalk Element or a new one. Multiple Elemental Force Tags cannot be placed on the same Attack, even those with different Elements. \n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["element", "attack", "core-discount", "stage-2-requirement"]
+    },
+    {
+      "stage": "Adult",
+      "name": "ELEMENT MASTER",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Requirement: **1+ Rank of NATUREWALK**\nThe Digimon gains the ability to manipulate an aspect of nature of their associated Element that was taken with Naturewalk. If Naturewalk was taken multiple times, this Quality can affect any Elements chosen, but only one at a time. The Digimon may interact with natural sources of the Element and produce unique effects. These effects usually have no bearing on Combat. Whenever the Digimon would encounter difficulty in manipulating an Element, like producing a complex effect or manipulating a non-natural source, the GM ultimately determines if any use of this Quality is something to allow, possibly even requiring a DOS (Fortitude) Skill Check for something that should be achievable, but difficult. During its turn, a Digimon can make a DOS (Fortitude) Check to manipulate the Elements they have as a Free Action Once per Round.\n\n**The Digimon also completely negates any Elemental Force Attacks triggered against it for any Element it has with Naturewalk,** and only takes 1 **Unalterable Damage** for Dangerous Terrain of the same Elements instead of 2 **Unalterable Damage**\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["element", "attack", "core-discount", "stage-2-requirement"]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "version": "1.0",
+  "application": "DDA2E Quality Collection",
+  "type": "quality-collection",
+  "name": "Core Qualities",
+  "description": "A comprehensive collection of core qualities for all Digimon.",
+  "lastUpdated": "2025-14-10",
+  "qualities": [
+    {
+      "stage": "Child",
+      "name": "ACCELERATE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains +1 **Movement** for each **Rank** in this Quality.\n\nThe maximum **Ranks** that can take in **ACCELERATE** is equal to the Digimon’s **RAM**.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "limited", "core-discount", "movement"]
+    },
+    {
+      "stage": "Child",
+      "name": "PRODIGIOUS SKILL",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "**Whenever you take this Quality, choose a specific Skill that corresponds with a Tamer’s list of Skills (such as Feats of Strength, Stealth, Awareness, etc)**.\n\nThe Digimon gains a +3 bonus to those Skill Checks.\n\nThe maximum Ranks a Digimon can take in this Quality is equal to its **Stage**.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "skill", "limited", "core-discount", "skill"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: CLOSE COMBAT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains a +1 bonus to **ACC** when using a **[MELEE]** tagged Attack. This bonus increases to +3 if the **Target** is missing **Wound Boxes**. \n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: RANGED STRIKER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains a +1 bonus to its **ACC** when using a **[RANGE]** Tagged Attack. The Digimon gains +2 to its Range and Effective Limit.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: WARDEN",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains a +1 bonus to **ARM**. The Digimon can take an **Interrupt Action** spending 1 less Action (potentially a **Free Action**) **Once per Combat**.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: BRAWLER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains a +1 bonus to all **Clash Checks**. The Digimon gains a +1 bonus to **DAM** when Attacking a Digimon it’s Clashing with.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: SPEEDSTER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains a +1 bonus to its **Movement**. The Digimon ignores the first penalty to its **DOD** from being Attacked after its turn.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: EFFECT WARRIOR",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon gains +1 **Potency** to all Attack Effect Tags that use a Derived Stat from the Caster.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "DATA OPT: VARIABLE",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon can reroll a **Skill Check** or **Pool Check** it has made **ONCE PER ROUND** (which resets at the end of the Digimon’s turns) during Combat. It must take the new result.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "data-opt", "core-discount", "data-optimization"]
+    },
+    {
+      "stage": "Child",
+      "name": "EXTRA MOVE: FLIGHT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon suffers -1 **Movement**. The Digimon is capable of flying through the air. The Digimon loses this Extra Movement while it is at half its Maximum Wound Boxes or fewer.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "core-discount", "movement", "up-to-5-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "EXTRA MOVE: DIGGER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon is capable of burrowing through the ground equal to its **Movement**, so long as it’s as soft as dirt. Snow or sand are other alternatives. While underground, it does not treat any creatures within half its **RANGE** as **OBSCURED**, as long as they are touching the same ground. It also does not treat any underground Digimon as **OBSCURED** if it is above ground.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "core-discount", "movement", "up-to-5-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "EXTRA MOVE: SWIMMER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon’s **SWIMMING Movement** now uses the Digimon’s full **Movement**. It does not treat any Digimon as **OBSCURED** due to the surface of water, regardless of whether the Digimon itself is underwater or not.\nIt can now Hold its Breath an unlimited amount of times per Combat.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "core-discount", "movement", "up-to-5-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "EXTRA MOVE: WALLCLIMBER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon is capable of scaling vertical surfaces equal to its **Movement**, but not on ceilings.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "core-discount", "movement", "up-to-5-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "EXTRA MOVE: JUMPER",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "The Digimon’s Jump height and length now uses the Digimon’s full **Movement**.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "speed", "core-discount", "movement", "up-to-5-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: FIRE",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[BURN]** by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: WATER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[FREEZE]** by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: WIND",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces any **Crash Damage** it takes by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: EARTH",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[POISON]** by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: ICE",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[FREEZE]** by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: WOOD",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[POISON]** by 1. \n\n The Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS FEATURE IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: STEEL",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces the Damage it takes from **[BURN]** by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: THUNDER",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon reduces any **Crash Damage** it takes by 1. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: DARKNESS",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon can see through dark or dimly-lit areas unimpeded, and gains a +1 bonus to Awareness. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "NATUREWALK: LIGHT",
+      "type": "Trigger",
+      "dpCost": 1,
+      "description": "Incompatible: **FILE UNKNOWN**\nThe Digimon gains +1 to a Stat of its choice. The Digimon can see through dark or dimly-lit areas unimpeded, and gains a +1 bonus to Awareness. \n\nThe Digimon does not suffer Movement penalties from Difficult Terrain of its chosen environment and is resistant to Elemental Force Attacks of the same Tag.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "element", "core-discount", "elemental", "terrain", "up-to-2-ranks"]
+    },
+    {
+      "stage": "Child",
+      "name": "INSTINCT",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Incompatible: **WEAPON**\nYour Digimon possesses a driving force behind its movements, derived from the energy of its own being. The Digimon gains a bonus to **DOD**, **HP** and **Movement** equal to the **Ranks** in this Quality.\n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "defense", "core", "ranks", "basic"]
+    },
+    {
+      "stage": "Child",
+      "name": "WEAPON",
+      "type": "Attack",
+      "dpCost": 1,
+      "description": "Incompatible: **INSTINCT**\nYour Digimon has a Weapon, or some type of fighting style it prefers. Attacks which use said Weapon or fighting style may gain a **[WEAPON]** Tag. \n\nA Digimon may only have a number of **[WEAPON]** Tagged Attacks equal to the Ranks it has in this Quality. Whenever a Digimon uses a [WEAPON] Tagged Attack, it gains a bonus to **ACC** and **DAM** equal to the **Ranks** in this Quality. In addition, an Attack gains the following benefit depending on whether it is **[MELEE]** or **[RANGE]**.\n\n- **[RANGE]**: The Attack the same bonus to Range and Effective Limit. \n\n- **[MELEE]**: A number of 4s rolled on the Attack, equal to the Ranks in this Quality, can be counted as Successes. **[DAMAGE]** Atacks gain +1 Damage. \n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "attack", "core", "ranks", "basic"]
+    },
+    {
+      "stage": "Child",
+      "name": "FILE UNKNOWN",
+      "type": "Static",
+      "dpCost": 1,
+      "description": "Incompatible: **NATUREWALK**\nThe Digimon is an unusual digital lifeform, attuned more to the code of the world rather than the elements. The Digimon gains +1 to a Core Stat of its choice. The Digimon can also use the **Difficult Move Action** using **1 less Action** Once per Combat. In addition, any Damage the Digimon takes from **[T:TROJAN]** Attacks is halved after Armor (rounded up) if it is triggered. \n\n**THIS QUALITY IS INCLUDED IN THE CORE DISCOUNT QUALITIES**",
+      "tags": ["core", "discount", "attack", "core", "ranks", "basic"]
+    }
+  ]
+}
